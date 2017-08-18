@@ -127,7 +127,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="MyForm.cpp">
+      <FileType>CppCode</FileType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
