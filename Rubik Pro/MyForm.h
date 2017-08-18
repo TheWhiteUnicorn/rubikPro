@@ -1,6 +1,6 @@
 #pragma once
 
-void startForm(array<String^>^ arg);
+//void startForm(array<String^>^ arg);
 
 namespace RubikPro {
 
