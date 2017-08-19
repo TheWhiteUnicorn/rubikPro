@@ -104,7 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -127,11 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="cube\Cube.cpp" />
+    <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MyForm.cpp">
-      <FileType>CppCode</FileType>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -141,15 +139,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="interface\MyForm.h" />
+    <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="interface\MyForm.resx" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
