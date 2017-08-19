@@ -5,7 +5,7 @@
 Cube::Cube()
 {
 	initEdges();
-	Cube::reset;
+	Cube::reset();
 }
 
 Cube::Cube(color(&edg)[6][3][3])
@@ -31,7 +31,7 @@ Cube::~Cube()
 }
 
 const color*** Cube::get_edges() {
-	return edges;
+	return (const color***)edges;
 }
 
 void Cube::reset() {
