@@ -8,6 +8,7 @@ Cube::Cube()
 	Cube::reset();
 }
 
+
 Cube::Cube(color(&edg)[6][3][3])
 {
 	initEdges();
@@ -18,6 +19,7 @@ Cube::Cube(color(&edg)[6][3][3])
 		}
 	}
 }
+
 
 Cube::~Cube()
 {
@@ -30,8 +32,8 @@ Cube::~Cube()
 	delete[]edges;
 }
 
-const color*** Cube::get_edges() {
-	return (const color***)edges;
+const color *** Cube::get_edges() {
+	return (const color ***)edges;
 }
 
 void Cube::reset() {
@@ -45,7 +47,7 @@ void Cube::reset() {
 
 void Cube::initEdges() {
 	this->edges = new color**[6];
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 6; i++) {
 		edges[i] = new color*[3];
 		for (int j = 0; j < 3; j++) {
 			edges[i][j] = new color[3];

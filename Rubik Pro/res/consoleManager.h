@@ -1,12 +1,9 @@
+#pragma once
 #include <iostream>
 #include <stdio.h>
 #include <Windows.h>
+#include "res.hpp"
 
-using namespace std;
 
-void dispEdges() {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	SetConsoleTextAttribute(hConsole, (WORD)((15 << 4) | 0));
-	cout << "Hello world";
-}
+// Отобразить развертку граней кубика
+void dispEdges(const color *** edg);
