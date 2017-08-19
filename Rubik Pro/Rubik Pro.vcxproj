@@ -140,12 +140,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cube.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="interface\MyForm.h" />
-    <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>
