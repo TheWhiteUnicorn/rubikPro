@@ -104,7 +104,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>NotSet</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -140,51 +140,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="interface\MyForm.h" />
-    <ClInclude Include="res\consoleManager.h" />
+    <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Debug\main.obj" />
-    <Object Include="x64\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.obj" />
-    <Object Include="x64\Debug\main.obj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Debug\Rubik Pro.Build.CppClean.log" />
-    <Text Include="Debug\Rubik Pro.log" />
-    <Text Include="x64\Debug\Rubik Pro.Build.CppClean.log" />
-    <Text Include="x64\Debug\Rubik Pro.log" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Debug\Rubik Pro.tlog\CL.command.1.tlog" />
-    <None Include="Debug\Rubik Pro.tlog\metagen.write.1.tlog" />
-    <None Include="Debug\Rubik Pro.tlog\Rubik Pro.lastbuildstate" />
-    <None Include="Debug\Rubik Pro.tlog\unsuccessfulbuild" />
-    <None Include="Debug\vc141.pdb" />
-    <None Include="x64\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.asm" />
-    <None Include="x64\Debug\Rubik Pro.tlog\CL.command.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\CL.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\CL.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140-cvtres.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140-cvtres.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140-rc.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140-rc.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.6140.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.command.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\link.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\metagen.read.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\metagen.write.1.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\Rubik Pro.lastbuildstate" />
-    <None Include="x64\Debug\Rubik Pro.tlog\Rubik Pro.write.1u.tlog" />
-    <None Include="x64\Debug\Rubik Pro.tlog\TZRES.DLL.bi" />
-    <None Include="x64\Debug\Rubik Pro.tlog\unsuccessfulbuild" />
-    <None Include="x64\Debug\vc141.pdb" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
