@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cube\Cube.cpp" />
+    <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />

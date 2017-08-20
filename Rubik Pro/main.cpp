@@ -11,7 +11,7 @@ int main() {
 	//startForm()
 
 	Cube* cube = new Cube();
-
+	cube->rotate(TEST);
 	dispEdges(cube->get_edges());
 
 	system("pause");

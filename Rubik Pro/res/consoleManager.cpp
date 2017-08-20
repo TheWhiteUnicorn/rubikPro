@@ -17,7 +17,7 @@ void dispEdges(const color*** edg) {
 		}
 		cout << endl;		
 	}
-
+	cout << endl;
 	for (int j = 0; j < 3; j++) {
 		for (int i = 1; i < 4; i++) {
 			for (int k = 0; k < 3; k++) {
@@ -29,7 +29,7 @@ void dispEdges(const color*** edg) {
 		}
 		cout << endl;
 	}
-
+	cout << endl;
 	for (int j = 0; j < 3; j++) {
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
 		cout << "        "; // 8 spaces
@@ -39,7 +39,7 @@ void dispEdges(const color*** edg) {
 		}
 		cout << endl;
 	}
-
+	cout << endl;
 	for (int j = 0; j < 3; j++) {
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
 		cout << "        "; // 8 spaces

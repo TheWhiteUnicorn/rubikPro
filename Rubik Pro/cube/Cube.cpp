@@ -45,6 +45,13 @@ void Cube::reset() {
 	}
 }
 
+void Cube::rotate(Move move) {
+	swH(0, 1, 2);
+	swV(1, 0, 3);
+	swV(2, 0, 1);
+	rot(0, false);
+}
+
 void Cube::initEdges() {
 	this->edges = new color**[6];
 	for (int i = 0; i < 6; i++) {

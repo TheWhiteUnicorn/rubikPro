@@ -20,10 +20,25 @@ public:
 	// Преобразовать кубик в собранное состояние
 	void reset();
 
-
-	void rotate();
+	// Совершить поворот, принимает значение типа перечисления move
+	void rotate(Move move);
 private:
-	void initEdges();
+	// Массив граней
 	color*** edges;
+
+	// Создать трехмерный массив граней
+	void initEdges();
+
+
+	//## Элементарные функции для поворотов
+	// Обмен линий местами (горизонтальный)
+	void swH(int row, int edge1, int edge2);
+
+	// Обмен линий местами (вертикальный)
+	void swV(int col, int edge1, int edge2);
+	
+	void rot(int edge, bool CKW);
+
+	
 };
 
