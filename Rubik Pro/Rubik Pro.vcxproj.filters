@@ -26,9 +26,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <Filter>Файлы ресурсов</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="interface\MyForm.resx">
       <Filter>Файлы ресурсов</Filter>
     </EmbeddedResource>
@@ -43,5 +40,8 @@
     <ClInclude Include="res\res.hpp">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="cv\readme.txt" />
   </ItemGroup>
 </Project>

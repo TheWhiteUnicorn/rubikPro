@@ -146,6 +146,9 @@
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="cv\readme.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
