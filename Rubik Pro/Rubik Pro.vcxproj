@@ -143,14 +143,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="cv\readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

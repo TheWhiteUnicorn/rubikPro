@@ -43,8 +43,8 @@
     <ClInclude Include="res\res.hpp">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="cv\readme.txt" />
+    <ClInclude Include="cv\Camera.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

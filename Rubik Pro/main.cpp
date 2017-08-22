@@ -1,6 +1,6 @@
 #include <iostream>
 #include "interface\MyForm.h"
-#include "cv\Camera.cpp"
+#include "cv\Camera.h"
 //#include "cube\Cube.h"
 
 using namespace std;
