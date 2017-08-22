@@ -31,11 +31,14 @@ private:
 
 
 	//## Элементарные функции для поворотов
-	// Обмен линий местами (горизонтальный)
-	void swH(int row, int edge1, int edge2);
+	// Поворот слоя, параллельного оси X
+	void sideRotX(int row, int dir);
 
-	// Обмен линий местами (вертикальный)
-	void swV(int col, int edge1, int edge2);
+	// Поворот слоя, параллельного оси Y
+	void sideRotY(int col, int dir);
+
+	// Поворот слоя, параллельного оси Z
+	void sideRotZ(int col, int dir);
 	
 	void rot(int edge, bool CKW);
 

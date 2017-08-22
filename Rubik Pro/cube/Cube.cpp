@@ -8,7 +8,6 @@ Cube::Cube()
 	Cube::reset();
 }
 
-
 Cube::Cube(color(&edg)[6][3][3])
 {
 	initEdges();
@@ -19,7 +18,6 @@ Cube::Cube(color(&edg)[6][3][3])
 		}
 	}
 }
-
 
 Cube::~Cube()
 {
@@ -46,10 +44,7 @@ void Cube::reset() {
 }
 
 void Cube::rotate(Move move) {
-	swH(0, 1, 2);
-	swV(1, 0, 3);
-	swV(2, 0, 1);
-	rot(0, false);
+	sideRotX(2, 1);
 }
 
 void Cube::initEdges() {

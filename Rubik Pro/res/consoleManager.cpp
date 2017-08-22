@@ -8,25 +8,39 @@ void dispEdges(const color*** edg) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 
-	for (int j = 0; j < 3; j++) {
+	for (int j = 2; j >=0; j--) {
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
 		cout << "        "; // 8 spaces
-		for (int k = 0; k < 3; k++) {
-			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[0][j][k]] << 4) | 0));
+		for (int k = 2; k >=0; k--) {
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[2][j][k]] << 4) | 0));
 			cout << "  ";
 		}
 		cout << endl;		
 	}
 	cout << endl;
 	for (int j = 0; j < 3; j++) {
-		for (int i = 1; i < 4; i++) {
-			for (int k = 0; k < 3; k++) {
-				SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[i][j][k]] << 4) | 0));
-				cout << "  ";
-			}
-			SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
+	
+		for (int k = 2; k >= 0; k--) {
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[1][j][k]] << 4) | 0));
 			cout << "  ";
 		}
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
+		cout << "  ";
+		
+		for (int k = 0; k < 3; k++) {
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[0][j][k]] << 4) | 0));
+			cout << "  ";
+		}
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
+		cout << "  ";
+
+		for (int k = 0; k < 3; k++) {
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[3][2 - j][k]] << 4) | 0));
+			cout << "  ";
+		}
+		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
+		cout << "  ";
+
 		cout << endl;
 	}
 	cout << endl;
