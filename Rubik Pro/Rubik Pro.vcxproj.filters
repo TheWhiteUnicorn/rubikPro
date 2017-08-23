@@ -6,6 +6,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="cube\movements.cpp" />
+    <ClCompile Include="cv\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -17,33 +18,16 @@
     <ClCompile Include="interface\MyForm.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
-    <ClCompile Include="cv\Camera.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="interface\MyForm.resx">
-      <Filter>Файлы ресурсов</Filter>
-    </EmbeddedResource>
+    <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="interface\MyForm.h" />
+    <ClInclude Include="res\consoleManager.h" />
+    <ClInclude Include="res\res.hpp" />
+    <ClInclude Include="cv\Camera.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cube\Cube.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="interface\MyForm.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="res\res.hpp">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-    <ClInclude Include="cv\Camera.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
-	<ClInclude Include="res\consoleManager.h">
-		<Filter>Заголовочные файлы</Filter>
-	</ClInclude>
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="interface\MyForm.resx" />
     <EmbeddedResource Include="interface\MyForm.resx" />
   </ItemGroup>
 </Project>

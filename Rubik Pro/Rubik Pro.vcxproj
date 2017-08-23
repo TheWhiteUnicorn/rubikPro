@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\movements.cpp" />
+    <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />

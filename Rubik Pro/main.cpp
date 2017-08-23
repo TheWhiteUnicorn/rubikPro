@@ -2,6 +2,7 @@
 #include "interface\MyForm.h"
 #include "cube\Cube.h"
 #include "res\consoleManager.h"
+#include "cv\Camera.h"
 
 using namespace std;
 
