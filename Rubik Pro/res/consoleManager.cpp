@@ -21,7 +21,7 @@ void dispEdges(const color*** edg) {
 	for (int j = 0; j < 3; j++) {
 	
 		for (int k = 2; k >= 0; k--) {
-			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[1][j][k]] << 4) | 0));
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[1][k][j]] << 4) | 0));
 			cout << "  ";
 		}
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
@@ -35,7 +35,7 @@ void dispEdges(const color*** edg) {
 		cout << "  ";
 
 		for (int k = 0; k < 3; k++) {
-			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[3][2 - j][k]] << 4) | 0));
+			SetConsoleTextAttribute(hConsole, (WORD)((colorDepends[edg[3][k][2 - j]] << 4) | 0));
 			cout << "  ";
 		}
 		SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default

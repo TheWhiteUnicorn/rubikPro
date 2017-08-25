@@ -44,7 +44,7 @@ void Cube::reset() {
 }
 
 void Cube::rotate(Move move) {
-	sideRotX(2, 1);
+
 }
 
 void Cube::initEdges() {
