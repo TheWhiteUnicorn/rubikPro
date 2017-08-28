@@ -102,7 +102,7 @@ void Cube::sideRotZ(int col, Dir dir) {
 	}
 }
 
-void Cube::rot(int edge, Dir dir) {//CKW - по часовой, если true
+void Cube::rot(int edge, Dir dir) {
 	color t[3][3];
 	
 	for (int j = 0; j < 3; j++) {

@@ -142,6 +142,7 @@ void Cube::rotate(int move, int dir) {
 		this->rotate(Move(move), Dir(dir));
 	}
 }
+
 void Cube::initEdges() {
 	this->edges = new color**[6];
 	for (int i = 0; i < 6; i++) {
