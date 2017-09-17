@@ -1,12 +1,12 @@
 #include "consoleManager.h"
 
-// Массив для установки соответствия цветов перечисления color кодам цветов, которые используются в консоли.
-// Индекс элемента массива соотв. номеру цвета в color
+// Массив для установки соответствия цветов перечисления Color кодам цветов, которые используются в консоли.
+// Индекс элемента массива соотв. номеру цвета в Color
 int colorDepends[6] = { 15, 6, 2, 4, 1, 14 };
 
 using namespace std;
 
-void dispEdges(const color*** edg) {
+void dispEdges(const Color*** edg) {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	// Одна верхняя грань

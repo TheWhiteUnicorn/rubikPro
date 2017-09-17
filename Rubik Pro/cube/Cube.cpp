@@ -8,7 +8,7 @@ Cube::Cube()
 	Cube::reset();
 }
 
-Cube::Cube(color(&edg)[6][3][3])
+Cube::Cube(Color(&edg)[6][3][3])
 {
 	initEdges();
 	for (int i = 0; i < 6; i++) {
@@ -30,15 +30,15 @@ Cube::~Cube()
 	delete[]edges;
 }
 
-const color *** Cube::get_edges() {
-	return (const color ***)edges;
+const Color *** Cube::get_edges() {
+	return (const Color ***)edges;
 }
 
 void Cube::reset() {
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 3; j++) {
 			for (int k = 0; k < 3; k++)
-				edges[i][j][k] = color(i);
+				edges[i][j][k] = Color(i);
 		}
 	}
 }
@@ -144,11 +144,11 @@ void Cube::rotate(int move, int dir) {
 }
 
 void Cube::initEdges() {
-	this->edges = new color**[6];
+	this->edges = new Color**[6];
 	for (int i = 0; i < 6; i++) {
-		edges[i] = new color*[3];
+		edges[i] = new Color*[3];
 		for (int j = 0; j < 3; j++) {
-			edges[i][j] = new color[3];
+			edges[i][j] = new Color[3];
 		}
 	}
 }

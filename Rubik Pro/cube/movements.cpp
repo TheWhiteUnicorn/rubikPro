@@ -2,21 +2,21 @@
 
 // Для случаев, когда одна грань повернута относительно другой
 #define switchCols(x, y) for (int k = 0; k < 3; k++) {	\
-		color t = x;									\
+		Color t = x;									\
 		x = y;			\
 		y = t;			\
 }
 
 // Обмен линий местами (горизонтальный)
 #define swH(row1, row2, e1, e2) for (int k = 0; k < 3; k++) {	\
-		color t = edges[e1][row1][k];						\
+		Color t = edges[e1][row1][k];						\
 		edges[e1][row1][k] = edges[e2][row2][k];			\
 		edges[e2][row2][k] = t;								\
 	}
 
 // Обмен линий местами (вертикальный)
 #define swV(col1, col2, e1, e2) for (int j = 0; j < 3; j++) {	\
-		color t = edges[e1][j][col1];						\
+		Color t = edges[e1][j][col1];						\
 		edges[e1][j][col1] = edges[e2][j][col2];			\
 		edges[e2][j][col2] = t;								\
 	}
@@ -103,7 +103,7 @@ void Cube::sideRotZ(int col, Dir dir) {
 }
 
 void Cube::rot(int edge, Dir dir) {
-	color t[3][3];
+	Color t[3][3];
 	
 	for (int j = 0; j < 3; j++) {
 		for (int k = 0; k < 3; k++) {

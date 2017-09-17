@@ -6,4 +6,4 @@
 
 
 // Отобразить развертку граней кубика
-void dispEdges(const color *** edg);
+void dispEdges(const Color *** edg);
