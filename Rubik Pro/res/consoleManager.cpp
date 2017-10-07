@@ -73,3 +73,23 @@ void dispEdges(const Color*** edg) {
 	}
 	SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
 }
+
+// Показывает в консоли развертку кубика, и позволяет совершать повороты
+void cubeDemo(Cube& cube) {
+	int mov = -1;
+	int dir = -1;
+	while (true) {
+		std::cout << "Rubik Pro beta" << std::endl;
+		cout << "Rotation performed: " << mov << " " << dir << endl;
+
+		dispEdges(cube.get_edges());
+
+		cout << "Move: ";
+		cin >> mov >> dir;
+		if (mov == -1) return;
+		if (mov == -2) cube.reset();
+		cube.rotate(mov, dir);
+
+		system("cls");
+	}
+}

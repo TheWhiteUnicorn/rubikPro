@@ -1,6 +1,9 @@
 #include "Cube.h"
-#include "..\res\res.hpp"
+#include <iostream>
+#include <ctime>
 
+#define invD(dir) dir == 2 ? dir : Dir(1 - int(dir))
+const int NUM_OF_MOVEMENTS = 18, NUM_OF_DIRS = 3;
 
 Cube::Cube()
 {
@@ -43,7 +46,16 @@ void Cube::reset() {
 	}
 }
 
-#define invD(dir) dir == 2 ? dir : Dir(1 - int(dir))
+
+
+void Cube::trick(int numOfOperations) {
+	srand(time(0));
+	for (int i = 0; i < numOfOperations; i++) {
+		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
+	}
+}
+
+
 
 void Cube::rotate(Move move, Dir dir) {
 	switch (move)

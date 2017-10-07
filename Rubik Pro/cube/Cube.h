@@ -17,6 +17,9 @@ public:
 	// ѕреобразовать кубик в собранное состо€ние
 	void reset();
 
+	// «апутать кубик
+	void trick(int numOfOperations);
+
 	// —овершить поворот. принимает значение типа перечислени€ Move и Dir.
 	void rotate(Move move, Dir dir);
 

@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assembly\analysis\Analysis.cpp" />
+    <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
@@ -144,7 +146,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assembly\analysis\Analysis.h" />
+    <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="cube\Element.h" />
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
@@ -152,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

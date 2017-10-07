@@ -7,6 +7,8 @@
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
+    <ClCompile Include="control\Master.cpp" />
+    <ClCompile Include="assembly\analysis\Analysis.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -25,9 +27,15 @@
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />
     <ClInclude Include="cv\Camera.h" />
+    <ClInclude Include="cube\Element.h" />
+    <ClInclude Include="control\Master.h" />
+    <ClInclude Include="assembly\analysis\Analysis.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
     <EmbeddedResource Include="interface\MyForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>
