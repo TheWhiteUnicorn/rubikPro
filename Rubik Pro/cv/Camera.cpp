@@ -18,7 +18,7 @@ static double angle(Point pt1, Point pt2, Point pt0)
 	return cos;
 }
 
-static void drawSquares(Mat& image, const vector<vector<Point> >& squares, Scalar(all))
+static void drawSquares(Mat& image, const vector<vector<Point> >& squares)
 {
 	for (size_t i = 0; i < squares.size(); i++)
 	{
