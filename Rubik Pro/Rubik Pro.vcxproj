@@ -129,7 +129,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="assembly\analysis\Analysis.cpp" />
+    <ClCompile Include="assembly\analysis\Analyser.cpp" />
+    <ClCompile Include="assembly\Assembler.cpp" />
+    <ClCompile Include="assembly\readinessAuditor.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\movements.cpp" />
@@ -146,7 +148,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="assembly\analysis\Analysis.h" />
+    <ClInclude Include="assembly\analysis\Analyser.h" />
+    <ClInclude Include="assembly\Assembler.h" />
+    <ClInclude Include="assembly\readinessAuditor.h" />
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />

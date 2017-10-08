@@ -1,11 +1,14 @@
 #pragma once
 #include "../res/res.hpp"
 
+//Слой, в котором находится элемент
 enum ElementLocLayer {TOP, MID, BOT};
 
 struct Element
 {
+	// Слой
 	ElementLocLayer layer;
+	// Направление
 	int side;
 };
 

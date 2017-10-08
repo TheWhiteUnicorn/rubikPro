@@ -8,7 +8,9 @@
     <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="control\Master.cpp" />
-    <ClCompile Include="assembly\analysis\Analysis.cpp" />
+    <ClCompile Include="assembly\analysis\Analyser.cpp" />
+    <ClCompile Include="assembly\Assembler.cpp" />
+    <ClCompile Include="assembly\readinessAuditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,7 +31,9 @@
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="cube\Element.h" />
     <ClInclude Include="control\Master.h" />
-    <ClInclude Include="assembly\analysis\Analysis.h" />
+    <ClInclude Include="assembly\analysis\Analyser.h" />
+    <ClInclude Include="assembly\Assembler.h" />
+    <ClInclude Include="assembly\readinessAuditor.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
