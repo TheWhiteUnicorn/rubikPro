@@ -8,7 +8,7 @@ using namespace std;
 int main() {
 	std::cout << "Hello world" << std::endl;
 	cout << "Testing testing" << endl;
-	Test();
+	Cube();
 	//startForm()
 	system("pause");
 	return 0;
