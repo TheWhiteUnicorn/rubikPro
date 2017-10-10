@@ -10,7 +10,7 @@
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
-    <ClCompile Include="assembly\readinessAuditor.cpp" />
+    <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -33,7 +33,8 @@
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="assembly\analysis\Analyser.h" />
     <ClInclude Include="assembly\Assembler.h" />
-    <ClInclude Include="assembly\readinessAuditor.h" />
+    <ClInclude Include="assembly\analysis\readinessAuditor.h" />
+    <ClInclude Include="assembly\Formula.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

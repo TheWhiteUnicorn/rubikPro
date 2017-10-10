@@ -1,5 +1,5 @@
 #pragma once
-#include "..\cube\Cube.h"
+#include "..\..\cube\Cube.h"
 
 class readinessAuditor
 {
