@@ -1,15 +1,14 @@
 #include <iostream>
 #include "interface\MyForm.h"
 #include "cv\Camera.h"
-//#include "cube\Cube.h"
+#include "control\Master.h"
 
 using namespace std;
 
 int main() {
-	std::cout << "Hello world" << std::endl;
-	cout << "Testing testing" << endl;
+	Master master;
+	//master.freeMode();
 	Cube();
-	//startForm()
 	system("pause");
 	return 0;
 }
