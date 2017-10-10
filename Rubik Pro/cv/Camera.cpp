@@ -98,7 +98,7 @@ static void findSquares(const Mat& image, vector<vector<Point> >& squares, bool 
 	}
 }
 
-int Cube()
+int CubeCV()
 {
 	int c;
 	VideoCapture cap(0); // opens default webcam

@@ -11,7 +11,7 @@ const int NUM_OF_SIDE_EDGES = 4;
 
 class Analyser {
 public:
-	Analyser(Cube &);
+	Analyser(Cube & cube);
 	~Analyser();
 
 	// Найти все грани, на которых есть белая наклейка
