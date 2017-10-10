@@ -18,7 +18,7 @@ static double angle(Point pt1, Point pt2, Point pt0)
 	return cos;
 }
 
-static void drawSquares(Mat& image, const vector<vector<Point> >& squares)
+static void drawSquares(Mat& image, const vector<vector<Point> >& squares) 
 {
 	for (size_t i = 0; i < squares.size(); i++)
 	{
@@ -26,7 +26,7 @@ static void drawSquares(Mat& image, const vector<vector<Point> >& squares)
 		int n = (int)squares[i].size();
 		int shift = 1;
 
-		Rect r = boundingRect(Mat(squares[i]));
+		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
 		r.x = r.x + r.width / 16;
 		r.y = r.y + r.height / 16;
 		r.width = r.width / 2;
@@ -43,7 +43,7 @@ static void drawSquares(Mat& image, const vector<vector<Point> >& squares)
 
 // возвращает последовательность квадратов, обнаруженных на изображении.
 // последовательность сохраняется в указанном хранилище
-static void findSquares(const Mat& image, vector<vector<Point> >& squares, bool inv = false)
+static void findSquares(const Mat& image, vector<vector<Point> >& squares)
 {
 	squares.clear();
 
@@ -52,8 +52,10 @@ static void findSquares(const Mat& image, vector<vector<Point> >& squares, bool 
 	vector<vector<Point> > contours;
 
 	cvtColor(image, gray0, COLOR_BGR2GRAY);
-	GaussianBlur(gray0, gray0, Size(7, 7), 1.5, 1.5);
-	Canny(gray0, gray, 0, 30, 3);
+	GaussianBlur(image, gray0, Size(7, 7), 1.5, 1.5);
+	dilate(image, image, NULL);
+	Canny(gray0, gray, 50, 200, 3);
+	GaussianBlur(gray, gray0, Size(7, 7), 1.5, 1.5);
 
 
 
@@ -69,12 +71,12 @@ static void findSquares(const Mat& image, vector<vector<Point> >& squares, bool 
 		// к периметру контура
 		approxPolyDP(Mat(contours[i]), approx, 9, true);
 
-		// square contours should have 4 vertices after approximation
-		// relatively large area (to filter out noisy contours)
-		// and be convex.
-		// Note: absolute value of an area is used because
-		// area may be positive or negative - in accordance with the
-		// contour orientation
+		// квадратные контуры должны иметь 4 вершины после аппроксимации
+		// относительно большая площадь (чтобы отфильтровать шумные контуры)
+		// и быть выпуклыми.
+		// Примечание: абсолютное значение области используется, потому что
+		// площадь может быть положительной или отрицательной - в соответствии с
+		// оринетацией конутров.
 		if (approx.size() == 4 &&
 			fabs(contourArea(Mat(approx))) > 5 &&
 			isContourConvex(Mat(approx)))
@@ -98,9 +100,10 @@ static void findSquares(const Mat& image, vector<vector<Point> >& squares, bool 
 	}
 }
 
-int Cube()
+
+int Camera()
 {
-	int c;
+
 	VideoCapture cap(0); // opens default webcam
 
 	if (!cap.isOpened())
@@ -122,12 +125,10 @@ int Cube()
 		findSquares(frame, squares);
 		drawSquares(frame, squares);
 		imshow("Rubic Detection", frame);
-		c = waitKey(33);
 
-		if (c == 27)
-			return 0;
+		char c = cvWaitKey(33);
+		if (c == 27)  // нажата ESC
 
+			break;
 	}
-
-	return 0;
 }
