@@ -76,12 +76,12 @@ void Assembler::doTopCross(Formula & res) {
 int Assembler::findMidColor(Color color) {
 	int res = -1;
 	for (int i = 0; i < 6; i++) {
-		if (_cube.get_edges[i][1][1] == color)
+		if (_cube.get_edges()[i][1][1] == color)
 			res = i;
 	}
 	return res;
 }
 
-Operation Assembler::findOptimalYRot(int src, int tgt) {
-
-}
+//Operation Assembler::findOptimalYRot(int src, int tgt) {
+//	
+//}
