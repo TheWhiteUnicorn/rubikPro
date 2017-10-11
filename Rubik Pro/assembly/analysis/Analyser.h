@@ -3,9 +3,9 @@
 #include "..\..\cube\Element.h"
 #include <map>
 
-const int NUM_OF_ELEMENTS = 27;
-const int NUM_OF_WHITES = 4;
-const int NUM_OF_YELLOWS = 9;
+//const int NUM_OF_ELEMENTS = 27;
+const int NUM_OF_WHITES = 4; //Имеется в виду количество элементов одного класса (4 - угловых и 4 - ребра)
+const int NUM_OF_YELLOWS = 4;
 const int NUM_OF_SIDE_EDGES = 4;
 
 
@@ -22,7 +22,7 @@ public:
 private:
 	Cube & _cube;
 
-	Element* _elements[NUM_OF_ELEMENTS];
+	//Element* _elements[NUM_OF_ELEMENTS];
 
 	Corner* _whitesCorn[NUM_OF_WHITES];
 	Edge* _whitesEdge[NUM_OF_WHITES];

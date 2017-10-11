@@ -1,18 +1,16 @@
 #include "Analyser.h"
 
-Analyser::Analyser(Cube & cube) : _cube(cube) {}
+Analyser::Analyser(Cube & cube) : _cube(cube) {
+	for (int i = 0; i < NUM_OF_WHITES; i++) {
+		_whitesEdge[i] = NULL;
+		_whitesCorn[i] = NULL;
+	}
+}
 
 Analyser::~Analyser() {
-	/*for (int i = 0; i < NUM_OF_WHITES; i++) {
-		try {
-			delete _whitesCorn[i];
-		}
-		catch (...) {}
-
-		try {
-			delete _whitesEdge[i];
-		}
-		catch (...) {}
+	for (int i = 0; i < NUM_OF_WHITES; i++) {
+		if (_whitesCorn[i] != NULL) delete _whitesCorn[i];
+		if (_whitesEdge[i] != NULL) delete _whitesEdge[i];
 	}
 	/*for (int i = 0; i < NUM_OF_YELLOWS; i++) {
 		delete _yellows[i];
@@ -20,7 +18,7 @@ Analyser::~Analyser() {
 	for (int i = 0; i < NUM_OF_SIDE_EDGES; i++) {
 		delete _sideEdges[i];
 	}
-	for (int i = 0; i < NUM_OF_ELEMENTS; i++) {
+	/*for (int i = 0; i < NUM_OF_ELEMENTS; i++) {
 		delete _elements[i];
 	}*/
 }
