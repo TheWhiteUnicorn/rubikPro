@@ -1,14 +1,15 @@
 #include <iostream>
 #include "interface\MyForm.h"
-#include "cv\Camera.h"
 #include "control\Master.h"
+#include "cv\Camera.h"
+
 
 using namespace std;
 
 int main() {
 	Master master;
 	//master.freeMode();
-	Cube();
+	//CubeCV();
 	system("pause");
 	return 0;
 }

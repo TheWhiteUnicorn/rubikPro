@@ -3,11 +3,18 @@
 Analyser::Analyser(Cube & cube) : _cube(cube) {}
 
 Analyser::~Analyser() {
-	for (int i = 0; i < NUM_OF_WHITES; i++) {
-		delete _whitesCorn[i];
-		delete _whitesEdge[i];
+	/*for (int i = 0; i < NUM_OF_WHITES; i++) {
+		try {
+			delete _whitesCorn[i];
+		}
+		catch (...) {}
+
+		try {
+			delete _whitesEdge[i];
+		}
+		catch (...) {}
 	}
-	for (int i = 0; i < NUM_OF_YELLOWS; i++) {
+	/*for (int i = 0; i < NUM_OF_YELLOWS; i++) {
 		delete _yellows[i];
 	}
 	for (int i = 0; i < NUM_OF_SIDE_EDGES; i++) {
@@ -15,7 +22,7 @@ Analyser::~Analyser() {
 	}
 	for (int i = 0; i < NUM_OF_ELEMENTS; i++) {
 		delete _elements[i];
-	}
+	}*/
 }
 
 const Edge ** Analyser::findWhitesEdge() {

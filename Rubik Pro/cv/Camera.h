@@ -1,2 +1,2 @@
 #pragma once
-int Camera();
+int CubeCV();
