@@ -57,8 +57,6 @@ static void findSquares(const Mat& image, vector<vector<Point> >& squares)
 	Canny(gray0, gray, 50, 200, 3);
 	GaussianBlur(gray, gray0, Size(7, 7), 1.5, 1.5);
 
-
-
 	// найти контуры и сохранить их все как список
 	findContours(gray, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
 
