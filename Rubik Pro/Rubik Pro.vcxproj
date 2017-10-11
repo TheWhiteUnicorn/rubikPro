@@ -129,10 +129,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assembly\analysis\Analyser.cpp" />
+    <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
+    <ClCompile Include="assembly\Assembler.cpp" />
+    <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
+    <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="res\consoleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -142,13 +148,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="assembly\analysis\Analyser.h" />
+    <ClInclude Include="assembly\analysis\readinessAuditor.h" />
+    <ClInclude Include="assembly\Assembler.h" />
+    <ClInclude Include="assembly\Formula.h" />
+    <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
+    <ClInclude Include="cube\Element.h" />
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="interface\MyForm.h" />
+    <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
