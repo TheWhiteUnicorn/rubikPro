@@ -22,6 +22,16 @@ Cube::Cube(Color(&edg)[6][3][3])
 	}
 }
 
+Cube::Cube(Cube & cub) { // Возможно, не работает. Протестировать
+	initEdges();
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cub.get_edges()[i][j][k];
+		}
+	}
+}
+
 Cube::~Cube()
 {
 	for (int i = 0; i < 6; i++) {
@@ -49,13 +59,11 @@ void Cube::reset() {
 
 
 void Cube::trick(int numOfOperations) {
-	srand(time(0));
+	srand(0/*time(0)*/);
 	for (int i = 0; i < numOfOperations; i++) {
 		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
 	}
 }
-
-
 
 void Cube::rotate(Move move, Dir dir) {
 	switch (move)
@@ -131,28 +139,48 @@ void Cube::rotate(Move move, Dir dir) {
 		rot(1, invD(dir));
 		break;
 	case y:
-		sideRotZ(0, dir);
-		sideRotZ(1, dir);
-		sideRotZ(2, dir);
-		rot(2, dir);
-		rot(4, invD(dir));
-		break;
-	case z:
 		sideRotY(0, dir);
 		sideRotY(1, dir);
 		sideRotY(2, dir);
 		rot(0, dir);
 		rot(5, invD(dir));
 		break;
+	case z:
+		sideRotZ(0, invD(dir));
+		sideRotZ(1, invD(dir));
+		sideRotZ(2, invD(dir));
+		rot(2, dir);
+		rot(4, invD(dir));
+		break;
 	default:
 		break;
 	}
+}
+
+void Cube::rotate(Operation op) {
+	this->rotate(op.move, op.direction);
 }
 
 void Cube::rotate(int move, int dir) {
 	if (move >= 0 && move <= 17 && dir >= 0 && dir <= 2) {
 		this->rotate(Move(move), Dir(dir));
 	}
+}
+
+void Cube::applyFormula(Formula & f) {
+	for (auto i = f.get_sequence().begin(); i != f.get_sequence().end(); ++i) {
+		rotate(*i);
+	}
+}
+
+Cube & Cube::operator=(Cube & cub) {
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cub.get_edges()[i][j][k];
+		}
+	}
+	return *this;
 }
 
 void Cube::initEdges() {

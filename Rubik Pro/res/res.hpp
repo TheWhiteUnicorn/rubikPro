@@ -4,7 +4,7 @@
 	enum Color { WHITE, ORANGE, GREEN, RED, BLUE, YELLOW };
 
 	// Ќаправление вращени€. —оответственно, по часовой, против и двойной поворот
-	enum Dir { CKW, ACKW, DOUBL };
+	enum Dir { CKW, ACKW, DOUBL, NONE };
 
 	// ѕеречисление всех возможных движений кубика
 	enum Move { F, R, L, U, D, B, M, S, E, Fw, Rw, Lw, Uw, Dw, Bw, x, y, z };

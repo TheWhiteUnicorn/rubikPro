@@ -1,5 +1,6 @@
 #pragma once
 #include "..\res\res.hpp"
+#include "..\res\Formula.h"
 
 class Cube
 {
@@ -8,6 +9,8 @@ public:
 	Cube();
 	// Конструктор, принимающий массив граней
 	Cube(Color(&edg)[6][3][3]);
+	// К-тор копирования
+	Cube(Cube&);
 	// Деструктор
 	~Cube();
 
@@ -23,12 +26,19 @@ public:
 	// Совершить поворот. принимает значение типа перечисления Move и Dir.
 	void rotate(Move move, Dir dir);
 
+	// Совершить поворот. принимает обект класса Operation.
+	void rotate(Operation);
+
 	// Coвершить поворот. принимает значения типа int 
 	// move - код движения 
 	// dir - направление поворота
 	// move - от 0 до 17, dir - от 0 до 2
 	void rotate(int move, int dir);
 
+	// Применить готовую формулу к модели
+	void applyFormula(Formula& f);
+
+	Cube& operator=(Cube& cub);
 private:
 	// Массив граней
 	Color*** edges;

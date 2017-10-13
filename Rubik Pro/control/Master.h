@@ -10,6 +10,7 @@ class Master
 	//Рабочая модель кубика
 	Cube _cube;
 	Assembler _assembler{_cube};
+
 public:
 	Master();
 	~Master();

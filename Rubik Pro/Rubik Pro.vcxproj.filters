@@ -2,15 +2,16 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="cube\Cube.cpp" />
-    <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="cube\movements.cpp" />
-    <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
+    <ClCompile Include="interface\MyForm.cpp" />
+    <ClCompile Include="cv\Camera.cpp" />
+    <ClCompile Include="res\Formula.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -25,16 +26,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cube\Cube.h" />
-    <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />
-    <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="cube\Element.h" />
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="assembly\analysis\Analyser.h" />
     <ClInclude Include="assembly\Assembler.h" />
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
-    <ClInclude Include="assembly\Formula.h" />
+    <ClInclude Include="interface\MyForm.h" />
+    <ClInclude Include="cv\Camera.h" />
+    <ClInclude Include="res\Formula.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

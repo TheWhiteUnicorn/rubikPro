@@ -2,12 +2,16 @@
 #include "..\..\cube\Cube.h"
 #include "..\..\cube\Element.h"
 #include <map>
+#include <vector>
 
-//const int NUM_OF_ELEMENTS = 27;
+using namespace std;
+
 const int NUM_OF_WHITES = 4; //Имеется в виду количество элементов одного класса (4 - угловых и 4 - ребра)
 const int NUM_OF_YELLOWS = 4;
 const int NUM_OF_SIDE_EDGES = 4;
 
+#define _edgeVector vector<pair<Edge*, bool>>
+#define _cornVector vector<pair<Corner*, bool>>
 
 class Analyser {
 public:
@@ -15,17 +19,21 @@ public:
 	~Analyser();
 
 	// Найти все грани, на которых есть белая наклейка
-	const Edge ** Analyser::findWhitesEdge();
+	const _edgeVector findWhitesEdge();
 	// Найти все уголки, на которых есть белая наклейка
-	const Element** findWhitesCorn();
+	const _cornVector findWhitesCorn();
 
 private:
 	Cube & _cube;
 
+	// Второе значение пары сигнализирует о том, проинициализирован ли объект на данный момент
+	_edgeVector _whitesEdge;
+	_cornVector _whitesCorn;
+
 	//Element* _elements[NUM_OF_ELEMENTS];
 
-	Corner* _whitesCorn[NUM_OF_WHITES];
-	Edge* _whitesEdge[NUM_OF_WHITES];
+	//Corner* _whitesCorn[NUM_OF_WHITES];
+	//Edge* _whitesEdge[NUM_OF_WHITES];
 
 	Element* _yellows[NUM_OF_YELLOWS];
 	Element* _sideEdges[NUM_OF_SIDE_EDGES];
