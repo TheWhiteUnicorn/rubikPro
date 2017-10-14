@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
+    <ClCompile Include="assembly\assemblCommon.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />

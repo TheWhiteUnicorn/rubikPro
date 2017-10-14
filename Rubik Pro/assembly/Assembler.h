@@ -14,15 +14,17 @@ class Assembler {
 	//Класс анализатор
 	Analyser * _analyser;
 
-	/// Приватные функции
+	// Приватные функции
 	int findMidColor(Color color, Cube & cube);
 	Dir findOptimalYRot(int src, int tgt);
 	int sideCoordOfEdgeToAdvancedPos(int side);
+	// Записывает операцию в результат и сразу же применяет к _liveCube
+	void applyOperation(Formula & res, Operation & oper);
 public:
 	Assembler(Cube & c);
 	~Assembler();
 	
-	void allignCube(Formula &);
+	void allignCube(Formula &, Color colorOnTop, Color colorOnFront);
 	void doTopCross(Formula &);
 };
 

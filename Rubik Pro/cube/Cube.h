@@ -2,6 +2,8 @@
 #include "..\res\res.hpp"
 #include "..\res\Formula.h"
 
+#define DISP_ALL_MOVEMENTS
+
 class Cube
 {
 public:

@@ -18,17 +18,19 @@ public:
 	Analyser(Cube & cube);
 	~Analyser();
 
+	void set_cube(Cube& cub) { this->_cube = cub; }
+
 	// Найти все грани, на которых есть белая наклейка
-	const _edgeVector findWhitesEdge();
+	void findWhitesEdge(_edgeVector & whitesEdge);
 	// Найти все уголки, на которых есть белая наклейка
-	const _cornVector findWhitesCorn();
+	void findWhitesCorn(_cornVector & whitesCorn);
 
 private:
 	Cube & _cube;
 
 	// Второе значение пары сигнализирует о том, проинициализирован ли объект на данный момент
-	_edgeVector _whitesEdge;
-	_cornVector _whitesCorn;
+	//_edgeVector _whitesEdge;
+	//_cornVector _whitesCorn;
 
 	//Element* _elements[NUM_OF_ELEMENTS];
 
@@ -73,4 +75,7 @@ private:
 	};
 
 //	std::map<Color, Color>  sideEdgesAssoc[4] { { GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE}, {ORANGE, GREEN} };
+
+	//Функция сравнения двх граней по второму цвету
+	//bool cmpEdgeVectorsBySecondColor(const pair<Edge*, bool> x, const pair<Edge*, bool> y);
 };

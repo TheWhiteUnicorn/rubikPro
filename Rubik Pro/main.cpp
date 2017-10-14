@@ -4,7 +4,7 @@
 #define _CRTDBG_MAP_ALLOC
 #endif
 
-#define DISP_ALL_MOVEMENTS
+
 #define NO_SRAND_BY_TIME
 
 #include <iostream>

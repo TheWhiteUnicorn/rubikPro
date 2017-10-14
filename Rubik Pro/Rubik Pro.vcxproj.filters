@@ -12,6 +12,7 @@
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="res\Formula.cpp" />
+    <ClCompile Include="assembly\assemblCommon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
