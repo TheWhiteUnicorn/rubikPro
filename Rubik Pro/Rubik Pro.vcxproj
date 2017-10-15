@@ -136,6 +136,7 @@
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\ColorArray.cpp" />
+    <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="cv\Recognition.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />
+    <ClInclude Include="cv\InitialRecogniser.h" />
     <ClInclude Include="cv\Recognition.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />

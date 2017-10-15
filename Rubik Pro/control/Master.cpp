@@ -8,6 +8,10 @@ Master::~Master(){
 	
 }
 
+void Master::readEdges() {
+	
+}
+
 void Master::standartAssembly(){
 	_cube.trick(20);
 	dispEdges(_cube.get_edges());
