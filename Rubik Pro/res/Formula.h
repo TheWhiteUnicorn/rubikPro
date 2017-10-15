@@ -33,4 +33,8 @@ public:
 		sequence.pop_front();
 		return answ;
 	}	
+
+	void clear() {
+		sequence.clear();
+	}
 };

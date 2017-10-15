@@ -131,16 +131,19 @@
   <ItemGroup>
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
-    <ClCompile Include="assembly\assemblCommon.cpp" />
+    <ClCompile Include="assembly\assemblyCommon.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
+    <ClCompile Include="assembly\assemblyTopCross.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
+    <ClCompile Include="cube\Element.cpp" />
     <ClCompile Include="cube\movements.cpp" />
     <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="res\Formula.cpp" />
+    <ClCompile Include="res\res.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

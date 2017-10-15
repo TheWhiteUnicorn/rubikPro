@@ -2,15 +2,19 @@
 #include <algorithm>
 
 Analyser::Analyser(Cube & cube) : _cube(cube) {
-	//_whitesCorn.resize(NUM_OF_WHITES);
-	//_whitesEdge.resize(NUM_OF_WHITES);
+	_whitesCorn.resize(NUM_OF_WHITES);
+	_whitesEdge.resize(NUM_OF_WHITES);
+	for (int i = 0; i < NUM_OF_WHITES; i++) {
+		_whitesEdge[i].first = new Edge();
+		_whitesCorn[i].first = new Corner();
+	}
 }
 
 Analyser::~Analyser() {
-	/*for (int i = 0; i < NUM_OF_WHITES; i++) {
+	for (int i = 0; i < NUM_OF_WHITES; i++) { //TODO ifы не нужны, убрать
 		if (_whitesCorn[i].second) delete _whitesCorn[i].first;
 		if (_whitesEdge[i].second) delete _whitesEdge[i].first;
-	}*/
+	}
 	/*for (int i = 0; i < NUM_OF_YELLOWS; i++) {
 		delete _yellows[i];
 	}
@@ -27,8 +31,14 @@ bool cmpEdgeVectorsBySecondColor(pair<Edge*, bool> x, pair<Edge*, bool> y) {
 	return x.first->get_second() < y.first->get_second();
 }
 
-void Analyser::findWhitesEdge(_edgeVector & whitesEdge) {
-	whitesEdge.resize(NUM_OF_WHITES);
+void Analyser::refresh() {
+	for (int i = 0; i < NUM_OF_WHITES; i++) {
+		_whitesEdge[i].first->placed = false;
+		_whitesCorn[i].first->placed = false;
+	}
+}
+
+_edgeVector& Analyser::findWhitesEdge() {
 
 	int addedEdges = 0;
 	for (int i = 0, side = 0, layer = 0; i < 12; i++, side++) {
@@ -40,21 +50,22 @@ void Analyser::findWhitesEdge(_edgeVector & whitesEdge) {
 		Color first = _cube.get_edges()[_edgesMap[i][0][0]][_edgesMap[i][0][1]][_edgesMap[i][0][2]];
 		Color second = _cube.get_edges()[_edgesMap[i][1][0]][_edgesMap[i][1][1]][_edgesMap[i][1][2]];
 		if (first == WHITE) {
-			whitesEdge[addedEdges].first = new Edge(ElementLocLayer(layer), side, first, second, 0);
-			whitesEdge[addedEdges].second = true;
+			_whitesEdge[addedEdges].first->set(ElementLocLayer(layer), side, first, second, 0);
+			_whitesEdge[addedEdges].second = true;
 			addedEdges++;
 		}
 		else if (second == WHITE) {
-			whitesEdge[addedEdges].first = new Edge(ElementLocLayer(layer), side, first, second, 1);
-			whitesEdge[addedEdges].second = true;
+			_whitesEdge[addedEdges].first->set(ElementLocLayer(layer), side, first, second, 1);
+			_whitesEdge[addedEdges].second = true;
 			addedEdges++;
 		}
 	}
 
 	// Если нашло меньше 4 ребер, мы где-то ошиблись, либо неправильный юзверь дал нам неправильный кубик
 	//if (addedEdges < NUM_OF_WHITES) return nullptr;
-	std::sort (whitesEdge.begin(), whitesEdge.end(), cmpEdgeVectorsBySecondColor);
+	std::sort (_whitesEdge.begin(), _whitesEdge.end(), cmpEdgeVectorsBySecondColor);
 	//return (const _edgeVector)_whitesEdge;
+	return _whitesEdge;
 }
 
 void Analyser::findWhitesCorn(_cornVector & whitesCorn) {

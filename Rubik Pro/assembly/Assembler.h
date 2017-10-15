@@ -15,15 +15,28 @@ class Assembler {
 	Analyser * _analyser;
 
 	// Приватные функции
+	// Найти, на какой грани находится цвет
 	int findMidColor(Color color, Cube & cube);
-	Dir findOptimalYRot(int src, int tgt);
-	int sideCoordOfEdgeToAdvancedPos(int side);
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
+	Dir findOptimalYRot(int src, int tgt, ElementLocLayer layer);
+	Dir findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer);
+
+	// Преобразует номер грани, на которой находится элемент, в расшир. позицию
+	ElementLocSide sideCoordOfEdgeToAdvancedPos(int side);
+	// Преобразует расшир. позицию в номер грани, на которой находится элемент
+	int AdvancedPosToSideCoordOfEdge(ElementLocSide side);
+
 	// Записывает операцию в результат и сразу же применяет к _liveCube
 	void applyOperation(Formula & res, Operation & oper);
+	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
+	void applyOperation(Formula & res, Move mov, Dir dir);
+	// 
+	void allign(Formula &, Color colorOnTop, Color colorOnFront);
 public:
 	Assembler(Cube & c);
 	~Assembler();
 	
+	void refresh();
 	void allignCube(Formula &, Color colorOnTop, Color colorOnFront);
 	void doTopCross(Formula &);
 };

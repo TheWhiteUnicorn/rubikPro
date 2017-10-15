@@ -142,18 +142,18 @@ void Cube::rotate(Move move, Dir dir) {
 		rot(1, invD(dir));
 		break;
 	case y:
+		sideRotZ(0, dir);
+		sideRotZ(1, dir);
+		sideRotZ(2, dir);
+		rot(2, dir);
+		rot(4, invD(dir));
+		break;
+	case z:
 		sideRotY(0, dir);
 		sideRotY(1, dir);
 		sideRotY(2, dir);
 		rot(0, dir);
 		rot(5, invD(dir));
-		break;
-	case z:
-		sideRotZ(0, invD(dir));
-		sideRotZ(1, invD(dir));
-		sideRotZ(2, invD(dir));
-		rot(2, invD(dir));
-		rot(4, dir);
 		break;
 	default:
 		break;
