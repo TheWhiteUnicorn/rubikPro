@@ -1,9 +1,6 @@
-#include <iostream>
-#include "opencv2/imgproc.hpp"
-#include "opencv2/highgui.hpp"
+#include "Recognition.h"
+#include "../res/res.hpp"
 
-using namespace cv;
-using namespace std;
 
 // вспомогательная функция:
 // находит косинус угла между векторами
@@ -18,8 +15,15 @@ static double angle(Point pt1, Point pt2, Point pt0)
 	return cos;
 }
 
-static void drawSquares(Mat& image, const vector<vector<Point> >& squares) 
+struct RubickColors
 {
+	Scalar colors[6][3][3];
+};
+
+RubickColors * drawSquares(Mat& image, const vector<vector<Point> >& squares) 
+{
+	RubickColors *color = new RubickColors();
+	
 	for (size_t i = 0; i < squares.size(); i++)
 	{
 		const Point* p = &squares[i][0];
@@ -33,12 +37,26 @@ static void drawSquares(Mat& image, const vector<vector<Point> >& squares)
 		r.height = r.height / 2;
 
 		Mat roi = image(r);
-		Scalar color = mean(roi);
-		polylines(image, &p, &n, 1, true, color, 2, LINE_AA, shift);
+		Scalar temp_color = mean(roi);
+
+		for (int i = 0; i < 6; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				for (int k = 0; k < 3; k++)
+				{
+					color->colors[i][j][k] = temp_color; //DO IT
+				}
+			}
+		}
+
+		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
-		ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, color, 2, LINE_AA);
+		ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+
 	}
+	return color;
 }
 
 // возвращает последовательность квадратов, обнаруженных на изображении.
@@ -113,6 +131,11 @@ int CubeCV()
 
 	for (;;)
 	{
+		if (!cap.isOpened())
+		{
+			VideoCapture cap(0);
+		}
+
 		cap >> frame;
 
 		if (frame.empty())
@@ -121,6 +144,7 @@ int CubeCV()
 		}
 		findSquares(frame, squares);
 		drawSquares(frame, squares);
+		//Array(frame, squares);
 		imshow("Rubic Detection", frame);
 
 		char c = cvWaitKey(33);
