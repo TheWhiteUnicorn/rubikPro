@@ -9,6 +9,7 @@ Master::~Master(){
 }
 
 void Master::readEdges() {
+	InitialRecogniser initRec;
 	
 }
 
