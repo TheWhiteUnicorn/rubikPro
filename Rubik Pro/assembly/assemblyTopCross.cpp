@@ -21,8 +21,10 @@ void Assembler::doTopCross(Formula & res) {
 			case MID: {
 				
 				if(whitesFirst->get_orientation() == 0){
-					allign(res, WHITE, _liveCube.get_edges()[(AdvancedPosToSideCoordOfEdge())][1][1]);
-					//applyOperation(res, U, findOptimalYRot());
+					allign(res, WHITE, _liveCube.get_edges()[(AdvancedPosToSideCoordOfEdge(++(whitesFirst->side)))][1][1]);
+					applyOperation(res, U, findOptimalYRot(
+						sideCoordOfEdgeToAdvancedPos(findMidColor(whitesFirst->get_second(), _liveCube)).side, 2, TOP
+					));
 				} else {
 
 				}

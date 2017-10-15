@@ -83,7 +83,7 @@ ElementLocSide Assembler::sideCoordOfEdgeToAdvancedPos(int side) {
 }
 
 int Assembler::AdvancedPosToSideCoordOfEdge(ElementLocSide side) {
-	assert(side.side >= 0 && side.side <= 5 && side.side != 2 && side.side != 4);
+
 	switch (side.side) {
 	case 0: return 5;
 	case 1: return 3;

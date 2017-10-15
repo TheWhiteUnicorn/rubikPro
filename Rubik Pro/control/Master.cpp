@@ -13,8 +13,13 @@ void Master::standartAssembly(){
 
 	while (true) {
 		_cube.trick(20);
-		cout << "+++++++++++Tricked++++++++++++" << endl;
+		cout << "++++++++++++Tricked++++++++++++" << endl;
 		dispEdges(_cube.get_edges());
+
+		/*2 2
+		3 1*/
+		_cube.rotate(2, 2);
+		_cube.rotate(3, 1);
 
 		Formula formula;
 		_assembler.refresh();
