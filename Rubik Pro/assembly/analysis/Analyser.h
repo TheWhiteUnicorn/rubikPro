@@ -25,7 +25,7 @@ public:
 	// Найти все грани, на которых есть белая наклейка
 	_edgeVector& findWhitesEdge();
 	// Найти все уголки, на которых есть белая наклейка
-	void findWhitesCorn(_cornVector & whitesCorn);
+	_cornVector& findWhitesCorn();
 
 private:
 	Cube & _cube;

@@ -9,6 +9,8 @@ struct Operation {
 	Move move;
 	// Направление
 	Dir direction;
+
+	Operation& invert();
 };
 
 struct Formula {

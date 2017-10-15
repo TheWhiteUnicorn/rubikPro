@@ -22,14 +22,14 @@ class Assembler {
 	Dir findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer);
 
 	// Преобразует номер грани, на которой находится элемент, в расшир. позицию
-	ElementLocSide sideCoordOfEdgeToAdvancedPos(int side);
+	ElementLocSide sideToAdv(int side);
 	// Преобразует расшир. позицию в номер грани, на которой находится элемент
-	int AdvancedPosToSideCoordOfEdge(ElementLocSide side);
+	int advToSide(ElementLocSide side);
 
 	// Записывает операцию в результат и сразу же применяет к _liveCube
-	void applyOperation(Formula & res, Operation & oper);
+	Operation applyOperation(Formula & res, Operation & oper);
 	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
-	void applyOperation(Formula & res, Move mov, Dir dir);
+	Operation applyOperation(Formula & res, Move mov, Dir dir);
 	// 
 	void allign(Formula &, Color colorOnTop, Color colorOnFront);
 public:

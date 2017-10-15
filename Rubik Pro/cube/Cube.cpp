@@ -62,7 +62,7 @@ void Cube::reset() {
 
 
 void Cube::trick(int numOfOperations) {
-	srand(2/*time(0)*/);
+	srand(3/*time(0)*/);
 	for (int i = 0; i < numOfOperations; i++) {
 		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
 	}

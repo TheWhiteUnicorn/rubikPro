@@ -16,10 +16,10 @@ void Master::standartAssembly(){
 		cout << "++++++++++++Tricked++++++++++++" << endl;
 		dispEdges(_cube.get_edges());
 
-		/*2 2
-		3 1*/
-		_cube.rotate(2, 2);
-		_cube.rotate(3, 1);
+
+		/*_cube.rotate(2, 2);
+		_cube.rotate(3, 1);*/
+		_cube.rotate(4, 2);
 
 		Formula formula;
 		_assembler.refresh();
