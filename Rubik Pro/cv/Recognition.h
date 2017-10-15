@@ -1,3 +1,4 @@
+#pragma once
 
 
 //Scalar drawSquares(Mat& image, const vector<vector<Point> >& squares);
