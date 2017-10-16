@@ -10,7 +10,7 @@ Assembler::~Assembler() {
 	delete _analyser;
 }
 
-void Assembler::allignCube(Formula & res, Color colorOnTop, Color colorOnFront) {
+void Assembler::allignCube(FormulaStack & res, Color colorOnTop, Color colorOnFront) {
 	_liveCube = _cube;
 	allign(res, colorOnTop, colorOnFront);
 }

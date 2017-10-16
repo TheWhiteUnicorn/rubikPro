@@ -1,5 +1,10 @@
 #include "Master.h"
 
+void Master::applyAllFormulas(FormulaStack& formStack) {
+	while (formStack.doFirstUnperfOper(_cube)) {}
+	formStack.clear();
+}
+
 Master::Master(){
 
 }
@@ -20,15 +25,27 @@ void Master::standartAssembly(){
 		/*_cube.rotate(2, 2);
 		_cube.rotate(3, 1);*/
 		_cube.rotate(4, 2);
+		
+		FormulaStack stack;
+		stack.pushBack(Operation(F, CKW));
+		stack.pushBack(Operation(F, ACKW));
+		applyAllFormulas(stack);
 
-		Formula formula;
+		//Formula formula;
 		_assembler.refresh();
 
-		_assembler.allignCube(formula, WHITE, BLUE);
-		_cube.applyFormula(formula);
-		formula.clear();
+		_assembler.allignCube(stack, WHITE, BLUE);
+		applyAllFormulas(stack);
+		
+		cout << "TopCoross" << endl;
+		_assembler.doTopCross(stack);
+		applyAllFormulas(stack);
+		
+		cout << "TopLayer" << endl;
+		_assembler.allignCube(stack, YELLOW, GREEN);
+		_assembler.doTopLayer(stack);
+		applyAllFormulas(stack);
 
-		_assembler.doTopCross(formula);
 	}
 }
 

@@ -5,6 +5,7 @@
 
 
 
+
 #define invD(dir) dir == 2 ? dir : Dir(1 - int(dir))
 const int NUM_OF_MOVEMENTS = 18, NUM_OF_DIRS = 3;
 

@@ -16,6 +16,7 @@
     <ClCompile Include="assembly\assemblyTopCross.cpp" />
     <ClCompile Include="res\res.cpp" />
     <ClCompile Include="cube\Element.cpp" />
+    <ClCompile Include="assembly\assemblyTopLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

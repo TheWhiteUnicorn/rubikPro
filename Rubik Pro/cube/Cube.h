@@ -39,7 +39,7 @@ public:
 
 	// Применить готовую формулу к модели
 	void applyFormula(Formula& f);
-
+	
 	Cube& operator=(Cube& cub);
 private:
 	// Массив граней

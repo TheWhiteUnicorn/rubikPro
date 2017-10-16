@@ -10,8 +10,8 @@ const int NUM_OF_WHITES = 4; //Имеется в виду количество элементов одного класса
 const int NUM_OF_YELLOWS = 4;
 const int NUM_OF_SIDE_EDGES = 4;
 
-#define _edgeVector vector<pair<Edge*, bool>>
-#define _cornVector vector<pair<Corner*, bool>>
+#define _edgeVector vector<Edge*>
+#define _cornVector vector<Corner*>
 
 class Analyser {
 public:
@@ -78,6 +78,5 @@ private:
 
 //	std::map<Color, Color>  sideEdgesAssoc[4] { { GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE}, {ORANGE, GREEN} };
 
-	//Функция сравнения двх граней по второму цвету
-	//bool cmpEdgeVectorsBySecondColor(const pair<Edge*, bool> x, const pair<Edge*, bool> y);
+	
 };

@@ -19,7 +19,12 @@ class Assembler {
 	int findMidColor(Color color, Cube & cube);
 	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
 	Dir findOptimalYRot(int src, int tgt, ElementLocLayer layer);
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
 	Dir findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer);
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
+	Dir findOptimalYRot(ElementLocSide & src, int tgt, ElementLocLayer layer);
+	// Найти, на какой стороне по расширенной системе должен в итоге стоять угловой элемент
+	ElementLocSide findCornAdvSide(Corner& corn);
 
 	// Преобразует номер грани, на которой находится элемент, в расшир. позицию
 	ElementLocSide sideToAdv(int side);
@@ -27,17 +32,18 @@ class Assembler {
 	int advToSide(ElementLocSide side);
 
 	// Записывает операцию в результат и сразу же применяет к _liveCube
-	Operation applyOperation(Formula & res, Operation & oper);
+	Operation applyOperation(FormulaStack & res, Operation & oper);
 	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
-	Operation applyOperation(Formula & res, Move mov, Dir dir);
-	// 
-	void allign(Formula &, Color colorOnTop, Color colorOnFront);
+	Operation applyOperation(FormulaStack & res, Move mov, Dir dir);
+	// Выставить кубик так, по верхнему и переднему цвету
+	void allign(FormulaStack &, Color colorOnTop, Color colorOnFront);
 public:
 	Assembler(Cube & c);
 	~Assembler();
 	
 	void refresh();
-	void allignCube(Formula &, Color colorOnTop, Color colorOnFront);
-	void doTopCross(Formula &);
+	void allignCube(FormulaStack &, Color colorOnTop, Color colorOnFront);
+	void doTopCross(FormulaStack &);
+	void doTopLayer(FormulaStack &);
 };
 

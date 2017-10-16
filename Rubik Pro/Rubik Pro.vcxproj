@@ -134,6 +134,7 @@
     <ClCompile Include="assembly\assemblyCommon.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
     <ClCompile Include="assembly\assemblyTopCross.cpp" />
+    <ClCompile Include="assembly\assemblyTopLayer.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\Element.cpp" />

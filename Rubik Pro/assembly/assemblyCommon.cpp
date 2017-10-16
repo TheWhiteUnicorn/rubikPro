@@ -70,6 +70,14 @@ Dir Assembler::findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, Element
 	return findOptimalYRot(src.side, tgt.side, layer);
 }
 
+Dir Assembler::findOptimalYRot(ElementLocSide& src, int tgt, ElementLocLayer layer) {
+	return findOptimalYRot(src.side, tgt, layer);
+}
+
+ElementLocSide Assembler::findCornAdvSide(Corner & corn) {
+	return sideToAdv(findMidColor(corn.get_side1(), _liveCube));
+}
+
 //јвтоматическое преобразование из кода боковой грани (1-4) в код по расширенной системе позиционировани€ (только дл€ координат ребер!)
 ElementLocSide Assembler::sideToAdv(int side) {
 	assert(side >= 0 && side <= 5 && side != 2 && side != 4);
@@ -94,21 +102,20 @@ int Assembler::advToSide(ElementLocSide side) {
 }
 
 // «аписывает операцию в результат и сразу же примен€ет к _liveCube
-Operation Assembler::applyOperation(Formula & res, Operation & oper) {
-	res.push_back(oper);
+Operation Assembler::applyOperation(FormulaStack & res, Operation & oper) {
+	res.pushBack(oper);
 	_liveCube.rotate(oper);
 	return oper;
 }
 
-Operation Assembler::applyOperation(Formula & res, Move mov, Dir dir) {
+Operation Assembler::applyOperation(FormulaStack & res, Move mov, Dir dir) {
 	Operation oper{ mov, dir };
-	res.push_back(oper);
+	res.pushBack(oper);
 	_liveCube.rotate(oper);
 	return oper;
-	
 }
 
-void Assembler::allign(Formula & res, Color colorOnTop, Color colorOnFront) {
+void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront) {
 	assert(colorOnTop != colorOnFront); // ÷вета верхнего и нижнего центрального элемента не могут совпадать
 
 	int topPos = findMidColor(colorOnTop, _liveCube);

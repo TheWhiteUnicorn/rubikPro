@@ -11,6 +11,7 @@ class Master
 	Cube _cube;
 	Assembler _assembler{_cube};
 
+	void applyAllFormulas(FormulaStack& );
 public:
 	Master();
 	~Master();
