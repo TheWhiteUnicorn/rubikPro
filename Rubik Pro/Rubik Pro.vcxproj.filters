@@ -10,8 +10,6 @@
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
-    <ClCompile Include="cv\Recognition.cpp" />
-    <ClCompile Include="cv\ColorArray.cpp" />
     <ClCompile Include="cv\InitialRecogniser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +34,6 @@
     <ClInclude Include="assembly\Assembler.h" />
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
     <ClInclude Include="assembly\Formula.h" />
-    <ClInclude Include="cv\Recognition.h" />
     <ClInclude Include="cv\InitialRecogniser.h" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
@@ -14,13 +13,21 @@ struct RubickColors
 
 class InitialRecogniser
 {
+	VideoCapture *cap;
+	void preprocessing(Mat &image);
 
 public:
-	InitialRecogniser();
-	~InitialRecogniser();
 
-	static double angle(Point pt1, Point pt2, Point pt0);
-	RubickColors * drawSquares(Mat & image, const vector<vector<Point>>& squares, int edgeShown);
-	static void findSquares(const Mat & image, vector<vector<Point>>& squares);
+	InitialRecogniser();
+
+	
+	int CubeCV();
+	double angle(Point pt1, Point pt2, Point pt0);
+	RubickColors * fillSquares(int edgeShow);
+	void findSquares(Mat & image, vector<vector<Point>>& squares);
+	void drawSquares(Mat & image, const vector<vector<Point>>& squares);
+	void showFrame();
+	
 };
+
 

@@ -1,24 +1,11 @@
 #include "InitialRecogniser.h"
 
-
-
-InitialRecogniser::InitialRecogniser() {
-	VideoCapture cap(0); // opens default webcam
-
-	if (!cap.isOpened())
-	{
-		throw 1;
-	}
-
-	Mat frame;
-	vector<vector<Point> > squares;
-}
-
-
-InitialRecogniser::~InitialRecogniser() {
-}
 // Это массив, который нужно заполнять с каждым вызовом
 RubickColors rawColors;
+
+InitialRecogniser::InitialRecogniser (){
+	
+};
 
 // вспомогательная функция:
 // находит косинус угла между векторами
@@ -32,8 +19,66 @@ double InitialRecogniser::angle(Point pt1, Point pt2, Point pt0) {
 	return cos;
 }
 
-RubickColors * InitialRecogniser::drawSquares(Mat& image, const vector<vector<Point> >& squares, int edgeShown /* Это номер грани, которую показывают, вызывая эту функцию, поле массива с соотв. гранью и нужно отображать*/) {
+
+
+RubickColors * InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую показывают, вызывая эту функцию, поле массива с соотв. гранью и нужно отображать*/) {
 	RubickColors *color = new RubickColors();
+
+	Mat image;
+	vector<vector<Point> > squares;
+
+	while (squares.size() != 9) {
+
+		*cap >> image;
+
+		Mat temp_frame;
+		image.copyTo(temp_frame);
+		findSquares(temp_frame, squares);
+		drawSquares(image, squares);
+		imshow("Rubic roi", image);
+		
+
+		if (squares.size() != 9) continue;
+		for (size_t i = 0; i < squares.size(); i++)
+		{
+			const Point* p = &squares[i][0];
+			int n = (int)squares[i].size();
+			int shift = 1;
+
+			// Ограничивающие прямоугольники
+			Rect r = boundingRect(Mat(squares[i]));  
+			r.x = r.x + r.width / 16;
+			r.y = r.y + r.height / 16;
+			r.width = r.width / 2;
+			r.height = r.height / 2;
+
+			Mat roi = image(r);
+			
+			Scalar temp_color = mean(roi);
+
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					color->colors[edgeShown][i][j] = temp_color;
+				}
+			}
+
+
+			polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+
+			Point center(r.x + r.width / 2, r.y + r.height / 2);
+			ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+
+		}
+		
+	}
+	return color;
+}
+
+
+void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& squares)
+{
 
 	for (size_t i = 0; i < squares.size(); i++)
 	{
@@ -48,45 +93,37 @@ RubickColors * InitialRecogniser::drawSquares(Mat& image, const vector<vector<Po
 		r.height = r.height / 2;
 
 		Mat roi = image(r);
+		
 		Scalar temp_color = mean(roi);
-
-		for (int i = 0; i < 6; i++)
-		{
-			for (int j = 0; j < 3; j++)
-			{
-				for (int k = 0; k < 3; k++)
-				{
-					color->colors[i][j][k] = temp_color; //JUST DO IT!!!
-				}
-			}
-		}
 
 		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
 		ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
-
 	}
-	return color;
-}
+};
+
+void InitialRecogniser::preprocessing(Mat &image)
+{
+	Mat element = getStructuringElement(0, Size(3, 3), Point(1));
+	cvtColor(image, image, COLOR_BGR2GRAY);
+	Canny(image, image, 55, 70);
+	morphologyEx(image, image, MORPH_GRADIENT, element);
+	morphologyEx(image, image, MORPH_CLOSE, element);
+};
+
 
 // возвращает последовательность квадратов, обнаруженных на изображении.
 // последовательность сохраняется в указанном хранилище
-void InitialRecogniser::findSquares(const Mat& image, vector<vector<Point> >& squares) {
+void InitialRecogniser::findSquares( Mat& image, vector<vector<Point> >& squares) {
 	squares.clear();
-
-	Mat gray, gray0;
 
 	vector<vector<Point> > contours;
 
-	cvtColor(image, gray0, COLOR_BGR2GRAY);
-	GaussianBlur(image, gray0, Size(7, 7), 1.5, 1.5);
-	dilate(image, image, NULL);
-	Canny(gray0, gray, 50, 200, 3);
-	GaussianBlur(gray, gray0, Size(7, 7), 1.5, 1.5);
+	preprocessing(image);
 
 	// найти контуры и сохранить их все как список
-	findContours(gray, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
+	findContours(image, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
 
 	vector<Point> approx;
 
@@ -124,4 +161,38 @@ void InitialRecogniser::findSquares(const Mat& image, vector<vector<Point> >& sq
 				squares.push_back(approx);
 		}
 	}
+}
+
+void InitialRecogniser::showFrame()
+{
+	Mat frame;
+	vector<vector<Point> > squares;
+
+	*cap >> frame;
+
+	//if (frame.empty())
+	//{
+	//	return -1;
+	//}
+	Mat temp_frame;
+	frame.copyTo(temp_frame);
+
+	findSquares(temp_frame, squares);
+	drawSquares(frame, squares);
+
+	imshow("Rubic Detection", frame);
+	//imshow("Rubic Huection", temp_frame);
+	
+}
+
+int InitialRecogniser::CubeCV()
+{
+	cap = new VideoCapture(0); // opens default webcam
+
+	if (!cap->isOpened())
+	{
+		return -1;
+	}
+
+	return 0;
 }
