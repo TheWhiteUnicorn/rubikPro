@@ -1,4 +1,5 @@
 #include "Master.h"
+#include "..\cv\InitialRecogniser.h"
 
 void Master::applyAllFormulas(FormulaStack& formStack) {
 	while (formStack.doFirstUnperfOper(_cube)) {}
@@ -11,6 +12,21 @@ Master::Master(){
 
 Master::~Master(){
 	
+}
+
+void Master::readEdges() {
+	InitialRecogniser initRec;
+	initRec.CubeCV();
+	for (;;)
+	{
+		initRec.showFrame();
+		char c = cvWaitKey(33);
+		if (c == 27)  // нажата ESC
+
+			break;
+	}
+
+	initRec.fillSquares(0);
 }
 
 void Master::standartAssembly(){
