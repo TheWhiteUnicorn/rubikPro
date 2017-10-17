@@ -13,16 +13,6 @@ int Assembler::findMidColor(Color color, Cube & cube) {
 	return res;
 }
 
-// Вспом. функция для findOptimalYRot
-/*int adaptYedgToZedg(int x) {
-	switch (x) {
-	case 0: return 1;
-	case 1: return 2;
-	case 5: return 3;
-	case 3: return 4;
-	}
-}*/
-
 Dir Assembler::findOptimalYRot(int src, int tgt, ElementLocLayer layer) {
 	Dir answ;
 
@@ -92,7 +82,6 @@ ElementLocSide Assembler::sideToAdv(int side) {
 
 //Автоматическое преобразование из кода по расширенной системе позиционирования в номер боковой грани (только для координат ребер!)
 int Assembler::advToSide(ElementLocSide side) {
-
 	switch (side.side) {
 	case 0: return 5;
 	case 1: return 3;
@@ -149,4 +138,3 @@ void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront)
 	int frontPos = findMidColor(colorOnFront, _liveCube);
 	applyOperation(res, Operation{ y, findOptimalYRot(sideToAdv(frontPos).side, 2, TOP) });
 }
-

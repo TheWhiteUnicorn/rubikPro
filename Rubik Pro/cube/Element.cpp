@@ -13,6 +13,22 @@ ElementLocSide & ElementLocSide::operator--() {
 	return *this;
 }
 
+ElementLocSide & ElementLocSide::operator+(int x) {
+	ElementLocSide res(this->side);
+	for (int i = 0; i < x; i++) {
+		res++;
+	}
+	return res;
+}
+
+ElementLocSide & ElementLocSide::operator-(int x) {
+	ElementLocSide res(this->side);
+	for (int i = 0; i < x; i++) {
+		res--;
+	}
+	return res;
+}
+
 ElementLocSide & ElementLocSide::operator=(int _side) {
 	side = _side;
 	return *this;

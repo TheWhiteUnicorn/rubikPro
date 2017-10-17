@@ -80,16 +80,16 @@ _cornVector& Analyser::findWhitesCorn() {
 		Color side1 = _cube.get_edges()[_cornersMap[i][1][0]][_cornersMap[i][1][1]][_cornersMap[i][1][2]];
 		Color side2 = _cube.get_edges()[_cornersMap[i][2][0]][_cornersMap[i][2][1]][_cornersMap[i][2][2]];
 		if (prim == WHITE) {
-			_whitesCorn[int(side1)]->set(ElementLocLayer(layer), side, prim, side1, side2, 0);
+			_whitesCorn[int(side1) - 1]->set(ElementLocLayer(layer), side, prim, side1, side2, 0);
 			//_whitesCorn[int(side1)].second = true;
 			addedCorners++;
 		}
 		else if (side1 == WHITE){
-			_whitesCorn[int(side2)]->set(ElementLocLayer(layer), side, prim, side1, side2, 1);
+			_whitesCorn[int(side2) - 1]->set(ElementLocLayer(layer), side, prim, side1, side2, 1);
 			addedCorners++;
 		}
 		else if (side2 == WHITE) {
-			_whitesCorn[int(prim)]->set(ElementLocLayer(layer), side, prim, side1, side2, 2);			
+			_whitesCorn[int(prim) - 1]->set(ElementLocLayer(layer), side, prim, side1, side2, 2);			
 			addedCorners++;
 		}
 	}

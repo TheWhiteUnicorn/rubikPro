@@ -13,10 +13,11 @@
     <ClCompile Include="cv\Camera.cpp" />
     <ClCompile Include="res\Formula.cpp" />
     <ClCompile Include="assembly\assemblyCommon.cpp" />
-    <ClCompile Include="assembly\assemblyTopCross.cpp" />
     <ClCompile Include="res\res.cpp" />
     <ClCompile Include="cube\Element.cpp" />
-    <ClCompile Include="assembly\assemblyTopLayer.cpp" />
+    <ClCompile Include="assembly\assembly2TopLayer.cpp" />
+    <ClCompile Include="assembly\assembly1TopCross.cpp" />
+    <ClCompile Include="assembly\assembly3MidLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

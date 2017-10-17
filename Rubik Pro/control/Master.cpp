@@ -20,18 +20,9 @@ void Master::standartAssembly(){
 		_cube.trick(20);
 		cout << "++++++++++++Tricked++++++++++++" << endl;
 		dispEdges(_cube.get_edges());
-
-
-		/*_cube.rotate(2, 2);
-		_cube.rotate(3, 1);*/
-		_cube.rotate(4, 2);
 		
 		FormulaStack stack;
-		stack.pushBack(Operation(F, CKW));
-		stack.pushBack(Operation(F, ACKW));
-		applyAllFormulas(stack);
 
-		//Formula formula;
 		_assembler.refresh();
 
 		_assembler.allignCube(stack, WHITE, BLUE);
@@ -42,10 +33,12 @@ void Master::standartAssembly(){
 		applyAllFormulas(stack);
 		
 		cout << "TopLayer" << endl;
-		_assembler.allignCube(stack, YELLOW, GREEN);
 		_assembler.doTopLayer(stack);
 		applyAllFormulas(stack);
 
+		cout << "MidLayer" << endl;
+		_assembler.doMidLayer(stack);
+		applyAllFormulas(stack);
 	}
 }
 

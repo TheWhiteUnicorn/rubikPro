@@ -15,6 +15,8 @@ public:
 	ElementLocSide& operator=(int);
 	ElementLocSide& operator++(); 
 	ElementLocSide& operator--();
+	ElementLocSide& operator+(int x);
+	ElementLocSide& operator-(int x);
 };
 
 struct Element

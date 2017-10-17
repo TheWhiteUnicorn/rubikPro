@@ -14,7 +14,7 @@ class Assembler {
 	//Класс анализатор
 	Analyser * _analyser;
 
-	// Приватные функции
+	// +++++++++++++++ Приватные функции +++++++++++++++++++
 	// Найти, на какой грани находится цвет
 	int findMidColor(Color color, Cube & cube);
 	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
@@ -35,8 +35,9 @@ class Assembler {
 	Operation applyOperation(FormulaStack & res, Operation & oper);
 	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
 	Operation applyOperation(FormulaStack & res, Move mov, Dir dir);
-	// Выставить кубик так, по верхнему и переднему цвету
+	// Выставить кубик по верхнему и переднему цвету
 	void allign(FormulaStack &, Color colorOnTop, Color colorOnFront);
+
 public:
 	Assembler(Cube & c);
 	~Assembler();
@@ -45,5 +46,6 @@ public:
 	void allignCube(FormulaStack &, Color colorOnTop, Color colorOnFront);
 	void doTopCross(FormulaStack &);
 	void doTopLayer(FormulaStack &);
+	void doMidLayer(FormulaStack &);
 };
 
