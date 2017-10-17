@@ -1,10 +1,10 @@
-#include "mainwindow.h"
+#include "ui/mainwindow.h"
 #include <QApplication>
 #include <iostream>
-#include "camera.h"
-#include "welcome.h"
-#include "Master.h"
-#include "mainwindow.h"
+#include "cv/camera.h"
+#include "ui/welcome.h"
+#include "cube/Master.h"
+#include "ui/mainwindow.h"
 
 
 using namespace std;
