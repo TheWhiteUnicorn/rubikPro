@@ -16,6 +16,8 @@ public:
 	Master();
 	~Master();
 
+	void readEdges();
+
 	//Свободный режим (никакой сборки, просто вращение граней вручную)
 	void freeMode();
 

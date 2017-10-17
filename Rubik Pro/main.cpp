@@ -10,9 +10,7 @@
 #include <iostream>
 #include "interface\MyForm.h"
 #include "control\Master.h"
-//#include "cv\Camera.h"
-
-
+#include "cv\InitialRecogniser.h"
 
 
 using namespace std;

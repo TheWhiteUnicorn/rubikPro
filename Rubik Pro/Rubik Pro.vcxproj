@@ -140,7 +140,7 @@
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\Element.cpp" />
     <ClCompile Include="cube\movements.cpp" />
-    <ClCompile Include="cv\Camera.cpp" />
+    <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
@@ -161,7 +161,7 @@
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />
-    <ClInclude Include="cv\Camera.h" />
+    <ClInclude Include="cv\InitialRecogniser.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\Formula.h" />
