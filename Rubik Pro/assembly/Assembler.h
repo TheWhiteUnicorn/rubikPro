@@ -3,6 +3,7 @@
 #include "..\cube\Element.h"
 #include "analysis\Analyser.h"
 #include "..\res\Formula.h"
+#include <assert.h>
 
 
 //Класс, отвечающий за процесс сборки. В нем производится анализ модели и подбираются алгоритмы, необходимые на текущем этапе сборки

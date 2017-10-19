@@ -15,7 +15,7 @@ Master::~Master(){
 
 void Master::standartAssembly(){
 
-
+	int iteration = 0;
 	while (true) {
 		_cube.trick(20);
 		cout << "++++++++++++Tricked++++++++++++" << endl;
@@ -39,6 +39,8 @@ void Master::standartAssembly(){
 		cout << "MidLayer" << endl;
 		_assembler.doMidLayer(stack);
 		applyAllFormulas(stack);
+
+		iteration++;
 	}
 }
 

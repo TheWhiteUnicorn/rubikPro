@@ -42,6 +42,7 @@
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="res\Formula.h" />
+    <ClInclude Include="res\formulasLib.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

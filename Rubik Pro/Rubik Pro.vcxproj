@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -165,6 +165,7 @@
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\Formula.h" />
+    <ClInclude Include="res\formulasLib.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>

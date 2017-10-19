@@ -7,8 +7,9 @@
 using namespace std;
 
 const int NUM_OF_WHITES = 4; //Имеется в виду количество элементов одного класса (4 - угловых и 4 - ребра)
+const int NUM_OF_MID_EDGES = 4;
 const int NUM_OF_YELLOWS = 4;
-const int NUM_OF_SIDE_EDGES = 4;
+
 
 #define _edgeVector vector<Edge*>
 #define _cornVector vector<Corner*>
@@ -26,27 +27,24 @@ public:
 	_edgeVector& findWhitesEdge();
 	// Найти все уголки, на которых есть белая наклейка
 	_cornVector& findWhitesCorn();
+	// Найти все грани, на которых нет ни белой ни желтой наклейки
+	_edgeVector& findMidEdge();
 
 private:
 	Cube & _cube;
 
-	// Второе значение пары сигнализирует о том, проинициализирован ли объект на данный момент
 	_edgeVector _whitesEdge;
 	_cornVector _whitesCorn;
-
-	//Element* _elements[NUM_OF_ELEMENTS];
-
-	//Corner* _whitesCorn[NUM_OF_WHITES];
-	//Edge* _whitesEdge[NUM_OF_WHITES];
+	_edgeVector _midEdges;
 
 	Element* _yellows[NUM_OF_YELLOWS];
-	Element* _sideEdges[NUM_OF_SIDE_EDGES];
+
 
 
 
 
 	// Восемь уголков - карта
-	int _cornersMap[8][3][3]{ // ЗДЕСЬ ВСЕ ОЧЕНЬ ПЛОХО И НЕПРАВИЛЬНО
+	int _cornersMap[8][3][3]{ // ЗДЕСЬ ВСЕ ОЧЕНЬ ХОРОШО И ПРАВИЛЬНО :3
 		{ { 2, 2, 0 },{ 5, 2, 2 },{ 3, 2, 2 } }, // Верхний слой
 		{ { 2, 0, 0 },{ 3, 0, 2 },{ 0, 0, 2 } },
 		{ { 2, 0, 2 },{ 0, 0, 0 },{ 1, 0, 0 } },
@@ -76,7 +74,6 @@ private:
 		{ { 4, 1, 0 },{ 1, 1, 2 } },
 	};
 
-//	std::map<Color, Color>  sideEdgesAssoc[4] { { GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE}, {ORANGE, GREEN} };
-
-	
+	// Карта сопоставления главного и дополнительного цвета граней среднего слоя
+	map<Color, Color>  sideEdgesAssoc { { ORANGE, GREEN },{ GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE} };
 };

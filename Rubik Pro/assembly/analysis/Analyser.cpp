@@ -4,11 +4,17 @@
 Analyser::Analyser(Cube & cube) : _cube(cube) {
 	_whitesCorn.resize(NUM_OF_WHITES);
 	_whitesEdge.resize(NUM_OF_WHITES);
+	_midEdges.resize(NUM_OF_MID_EDGES);
+
 	for (int i = 0; i < NUM_OF_WHITES; i++) {
 		_whitesEdge[i] = new Edge(TOP, 0, WHITE, Color(i+1), 0);
 
 		Color secCornColor = (i == 4) ? Color(1) : Color(i + 2);
 		_whitesCorn[i] = new Corner(TOP, 0, WHITE, Color(i+1), secCornColor, 0);
+	}
+
+	for (int i = 0; i < NUM_OF_MID_EDGES; i++) {
+		_midEdges[i] = new Edge(TOP, 0, Color(i+1), sideEdgesAssoc[Color(i+1)], 0);
 	}
 }
 
@@ -17,15 +23,9 @@ Analyser::~Analyser() {
 		delete _whitesCorn[i];
 		delete _whitesEdge[i];
 	}
-	/*for (int i = 0; i < NUM_OF_YELLOWS; i++) {
-		delete _yellows[i];
+	for (int i = 0; i < NUM_OF_MID_EDGES; i++) {
+		delete _midEdges[i];
 	}
-	for (int i = 0; i < NUM_OF_SIDE_EDGES; i++) {
-		delete _sideEdges[i];
-	}
-	/*for (int i = 0; i < NUM_OF_ELEMENTS; i++) {
-		delete _elements[i];
-	}*/
 }
 
 //
@@ -53,12 +53,10 @@ _edgeVector& Analyser::findWhitesEdge() {
 		Color second = _cube.get_edges()[_edgesMap[i][1][0]][_edgesMap[i][1][1]][_edgesMap[i][1][2]];
 		if (first == WHITE) {
 			_whitesEdge[int(second) - 1]->set(ElementLocLayer(layer), side, first, second, 0);
-			//_whitesEdge[int(second) - 1].second = true;
 			addedEdges++;
 		}
 		else if (second == WHITE) {
 			_whitesEdge[int(first) - 1]->set(ElementLocLayer(layer), side, first, second, 1);
-			//_whitesEdge[int(first) - 1].second = true;
 			addedEdges++;
 		}
 	}
@@ -81,7 +79,6 @@ _cornVector& Analyser::findWhitesCorn() {
 		Color side2 = _cube.get_edges()[_cornersMap[i][2][0]][_cornersMap[i][2][1]][_cornersMap[i][2][2]];
 		if (prim == WHITE) {
 			_whitesCorn[int(side1) - 1]->set(ElementLocLayer(layer), side, prim, side1, side2, 0);
-			//_whitesCorn[int(side1)].second = true;
 			addedCorners++;
 		}
 		else if (side1 == WHITE){
@@ -95,5 +92,41 @@ _cornVector& Analyser::findWhitesCorn() {
 	}
 
 	return _whitesCorn;
+}
+
+_edgeVector & Analyser::findMidEdge() { //TODO Оптимизировать, чтоб функция не искала, если уже нашла 4 элемента
+	int addedEdges = 0;
+
+	for (int i = 0, side = 0, layer = 0; i < 12; i++, side++) {
+		if (side == 4) {
+			side = 0;
+			layer++;
+		}
+
+		Color first = _cube.get_edges()[_edgesMap[i][0][0]][_edgesMap[i][0][1]][_edgesMap[i][0][2]];
+		Color second = _cube.get_edges()[_edgesMap[i][1][0]][_edgesMap[i][1][1]][_edgesMap[i][1][2]];
+
+		if ((first != WHITE && second != WHITE) && (first != YELLOW && second != YELLOW)) {
+
+			int orientation; 
+			Color tmp = sideEdgesAssoc[first];
+			if (tmp == second)
+				orientation = 0;
+			else
+				orientation = 1;
+
+			if (orientation == 0) {
+				_midEdges[int(first) - 1]->set(ElementLocLayer(layer), side, first, second, 0);
+				addedEdges++;
+			}
+			else if (orientation == 1) {
+				_midEdges[int(second) - 1]->set(ElementLocLayer(layer), side, first, second, 1);
+				addedEdges++;
+			}
+		}
+	}
+
+	if (addedEdges != 4) throw 1;
+	return _midEdges;
 }
 
