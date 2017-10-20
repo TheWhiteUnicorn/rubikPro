@@ -14,6 +14,12 @@ const int NUM_OF_YELLOWS = 4;
 #define _edgeVector vector<Edge*>
 #define _cornVector vector<Corner*>
 
+// Ситуации, которые могут возникать на нажнем кресте (палка, галка, точка, крест)
+enum YellowCrossSituation { STICK, DAW, DOT, CROSS };
+
+// Ситуации, которые могут возникать на нижнем слое (левая рыбка, правая рыбка, глаза, уши, восьмерка, двойные глаза, вертолет, сторона собрана)
+enum YellowLayerSituation {L_FISH, R_FISH, EYES, EARS, EIGHT, D_EYES, HELI, LAYER_DONE};
+
 class Analyser {
 public:
 	Analyser(Cube & cube);
@@ -29,6 +35,10 @@ public:
 	_cornVector& findWhitesCorn();
 	// Найти все грани, на которых нет ни белой ни желтой наклейки
 	_edgeVector& findMidEdge();
+	// Находит ситуации, которые могут возникать на нажнем кресте (палка, галка, точка, крест). Предполагается, что желтая грань расположена сверху
+	YellowCrossSituation findYellowCrossSituations(Dir&);
+	// Находит ситуации, которые могут возникать на нижнем слое (см. объявление перечисления). Предполагается, что желтая грань расположена сверху
+	YellowLayerSituation findYellowLayerSituations(Dir&);
 
 private:
 	Cube & _cube;
@@ -37,11 +47,9 @@ private:
 	_cornVector _whitesCorn;
 	_edgeVector _midEdges;
 
-	Element* _yellows[NUM_OF_YELLOWS];
 
 
-
-
+	// ++++++++++ Вспомогательные констркции ++++++++++++++++
 
 	// Восемь уголков - карта
 	int _cornersMap[8][3][3]{ // ЗДЕСЬ ВСЕ ОЧЕНЬ ХОРОШО И ПРАВИЛЬНО :3
@@ -76,4 +84,6 @@ private:
 
 	// Карта сопоставления главного и дополнительного цвета граней среднего слоя
 	map<Color, Color>  sideEdgesAssoc { { ORANGE, GREEN },{ GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE} };
+
+
 };

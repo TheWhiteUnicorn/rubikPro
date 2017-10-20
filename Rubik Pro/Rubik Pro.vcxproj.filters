@@ -18,6 +18,8 @@
     <ClCompile Include="assembly\assembly2TopLayer.cpp" />
     <ClCompile Include="assembly\assembly1TopCross.cpp" />
     <ClCompile Include="assembly\assembly3MidLayer.cpp" />
+    <ClCompile Include="assembly\assembly4BotCross.cpp" />
+    <ClCompile Include="assembly\assembly5BotFacet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,7 +44,7 @@
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="res\Formula.h" />
-    <ClInclude Include="res\formulasLib.h" />
+    <ClInclude Include="assembly\formulasLib.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

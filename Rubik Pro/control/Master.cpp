@@ -40,6 +40,14 @@ void Master::standartAssembly(){
 		_assembler.doMidLayer(stack);
 		applyAllFormulas(stack);
 
+		cout << "BotCross" << endl;
+		_assembler.doBotCross(stack);
+		applyAllFormulas(stack);
+
+		cout << "BotFacet" << endl;
+		_assembler.doBotFacet(stack);
+		applyAllFormulas(stack);
+
 		iteration++;
 	}
 }
@@ -47,4 +55,3 @@ void Master::standartAssembly(){
 void Master::freeMode(){
 	cubeDemo(_cube);
 }
-

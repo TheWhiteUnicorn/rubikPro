@@ -78,6 +78,7 @@ ElementLocSide Assembler::sideToAdv(int side) {
 	case 3: return ElementLocSide(1);
 	case 0: return ElementLocSide(2);
 	}
+	throw 1;
 }
 
 //јвтоматическое преобразование из кода по расширенной системе позиционировани€ в номер боковой грани (только дл€ координат ребер!)
@@ -88,6 +89,7 @@ int Assembler::advToSide(ElementLocSide side) {
 	case 2: return 0;
 	case 3: return 1;
 	}
+	throw 1;
 }
 
 // «аписывает операцию в результат и сразу же примен€ет к _liveCube
@@ -102,6 +104,13 @@ Operation Assembler::applyOperation(FormulaStack & res, Move mov, Dir dir) {
 	res.pushBack(oper);
 	_liveCube.rotate(oper);
 	return oper;
+}
+
+Operation Assembler::applyOperation(FormulaStack & res, const vector<pair<Move, int>> opers) {
+	for (auto i = opers.begin(); i != opers.end(); i++) {
+		applyOperation(res, i->first, Dir(i->second));
+	}
+	return Operation();
 }
 
 void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront) {

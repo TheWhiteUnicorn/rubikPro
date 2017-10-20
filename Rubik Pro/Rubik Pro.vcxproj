@@ -131,6 +131,8 @@
   <ItemGroup>
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
+    <ClCompile Include="assembly\assembly4BotCross.cpp" />
+    <ClCompile Include="assembly\assembly5BotFacet.cpp" />
     <ClCompile Include="assembly\assemblyCommon.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
     <ClCompile Include="assembly\assembly3MidLayer.cpp" />
@@ -158,6 +160,7 @@
     <ClInclude Include="assembly\analysis\Analyser.h" />
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
     <ClInclude Include="assembly\Assembler.h" />
+    <ClInclude Include="assembly\formulasLib.h" />
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />
@@ -165,7 +168,6 @@
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\Formula.h" />
-    <ClInclude Include="res\formulasLib.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>

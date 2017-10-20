@@ -4,6 +4,7 @@
 #include "analysis\Analyser.h"
 #include "..\res\Formula.h"
 #include <assert.h>
+#include "formulasLib.h"
 
 
 //Класс, отвечающий за процесс сборки. В нем производится анализ модели и подбираются алгоритмы, необходимые на текущем этапе сборки
@@ -36,6 +37,8 @@ class Assembler {
 	Operation applyOperation(FormulaStack & res, Operation & oper);
 	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
 	Operation applyOperation(FormulaStack & res, Move mov, Dir dir);
+	// Записывает все операции массива в результат и сразу же применяет к _liveCube
+	Operation applyOperation(FormulaStack & res, const vector<pair<Move, int>>);
 	// Выставить кубик по верхнему и переднему цвету
 	void allign(FormulaStack &, Color colorOnTop, Color colorOnFront);
 
@@ -48,5 +51,7 @@ public:
 	void doTopCross(FormulaStack &);
 	void doTopLayer(FormulaStack &);
 	void doMidLayer(FormulaStack &);
+	void doBotCross(FormulaStack &);
+	void doBotFacet(FormulaStack &);
 };
 

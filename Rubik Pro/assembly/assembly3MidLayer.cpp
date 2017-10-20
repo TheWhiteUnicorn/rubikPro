@@ -1,22 +1,22 @@
 #include "Assembler.h"
-
+//TODO перенести это в библиотеку формул!
 #define MOVE_TO_LEFT	applyOperation(res, U, ACKW);\
-						applyOperation(res, L, ACKW);\
-						applyOperation(res, U, ACKW);\
-						applyOperation(res, L, CKW);\
-						applyOperation(res, U, CKW);\
-						applyOperation(res, F, CKW);\
-						applyOperation(res, U, CKW);\
-						applyOperation(res, F, ACKW);
+							applyOperation(res, L, ACKW);\
+							applyOperation(res, U, ACKW);\
+							applyOperation(res, L, CKW);\
+							applyOperation(res, U, CKW);\
+							applyOperation(res, F, CKW);\
+							applyOperation(res, U, CKW);\
+							applyOperation(res, F, ACKW);
 
 #define MOVE_TO_RIGHT 	applyOperation(res, U, CKW);\
-						applyOperation(res, R, CKW);\
-						applyOperation(res, U, ACKW);\
-						applyOperation(res, R, ACKW);\
-						applyOperation(res, F, CKW);\
-						applyOperation(res, R, ACKW);\
-						applyOperation(res, F, ACKW);\
-						applyOperation(res, R, CKW);
+							applyOperation(res, R, CKW);\
+							applyOperation(res, U, ACKW);\
+							applyOperation(res, R, ACKW);\
+							applyOperation(res, F, CKW);\
+							applyOperation(res, R, ACKW);\
+							applyOperation(res, F, ACKW);\
+							applyOperation(res, R, CKW);
 
 
 #define curEdge midEdge[sortedAssocMap[i]]

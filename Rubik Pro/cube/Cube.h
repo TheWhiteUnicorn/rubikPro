@@ -17,7 +17,10 @@ public:
 	~Cube();
 
 	// Геттер для граней, возвращаемое значение недоступно для изменения
-	const Color *** get_edges();
+	const Color *** get_edges() const;
+
+	// Возвращает цвет наклейки по номеру грани и номеру наклейки в соответствии с разверткой
+	const Color get_color(int facet, int num) const;
 
 	// Преобразовать кубик в собранное состояние
 	void reset();
@@ -40,6 +43,7 @@ public:
 	// Применить готовую формулу к модели
 	void applyFormula(Formula& f);
 	
+	// Оператор присваивания
 	Cube& operator=(Cube& cub);
 private:
 	// Массив граней
@@ -62,4 +66,3 @@ private:
 	// Поворот боковой плоскости слоя
 	void rot(int edge, Dir dir);
 };
-
