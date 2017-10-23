@@ -89,3 +89,31 @@ const vector<pair<Move, int>> BOT_CORNS_DIAGONAL_SWITCH = {
 	{ R, 0 },
 	{ F, 1 }
 };
+
+const vector<pair<Move, int>> BOT_EDGES_TRIANGLE_ACKW = {
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 2 },
+};
+
+const vector<pair<Move, int>> BOT_EDGES_TRIANGLE_CKW = {
+	{ R, 2 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 0 },
+	{ R, 1 },
+};

@@ -280,3 +280,53 @@ int Analyser::findBotCornsConfig(Color & res) {
 	}
 	throw 1; // Situation not found
 }
+
+BotEdgesSituation Analyser::findBotEdgesSituation(Dir & res) {
+	assert(_cube.get_edges()[2][1][1] == YELLOW);
+	res = NONE;
+
+	_cube.rotate(x, ACKW);
+	int wrongPlacedEdges = 0; // считает неправильно выставленные реберные элементы
+	for (int i = 1; i < 5; i++) {
+		if (_cube.get_color(i, 2) != _cube.get_color(i, 3)) wrongPlacedEdges++;
+	}
+	_cube.rotate(x, CKW);
+	Cube tmpCube(_cube);
+
+	switch (wrongPlacedEdges) {
+	case 0: return BOT_E_DONE;
+	case 3: {
+		for (int i = 0; i < 4; i++) {
+			res = iToDir(i); // TODO оптимизировать
+			if (tmpCube.get_color(5, 8) == tmpCube.get_color(5, 5))
+				break;
+
+			tmpCube.rotate(y, CKW);
+		}
+
+		if (tmpCube.get_color(3, 6) == tmpCube.get_color(0, 5))
+			return BOT_E_SHIFT_CKW;
+		if (tmpCube.get_color(1, 4) == tmpCube.get_color(0, 5))
+			return BOT_E_SHIFT_ACKW;
+		break;
+	}
+	case 4: {
+		if (tmpCube.get_color(3, 6) == tmpCube.get_color(1, 1) &&
+			tmpCube.get_color(1, 4) == tmpCube.get_color(3, 9))
+			return BOT_E_CROSS;
+
+		for (int i = 0; i < 2; i++) {
+			if (tmpCube.get_color(3, 6) == tmpCube.get_color(0, 3) &&
+				tmpCube.get_color(0, 2) == tmpCube.get_color(3, 3))
+				return BOT_E_SLAIGH;
+
+			tmpCube.rotate(y, CKW);
+			res = CKW;
+		}
+	}
+
+	default:
+		break;
+	}
+	throw 1; // Situation not found
+}

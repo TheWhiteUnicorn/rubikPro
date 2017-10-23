@@ -4,6 +4,7 @@
 
 Assembler::Assembler(Cube & c) : _cube(c), _liveCube(c){
 	_analyser = new Analyser(_liveCube);
+	prepareFormulasForStandartAssembly(formLib);
 }
 
 Assembler::~Assembler() {

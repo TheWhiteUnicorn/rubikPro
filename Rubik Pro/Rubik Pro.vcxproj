@@ -149,6 +149,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="res\Formula.cpp" />
+    <ClCompile Include="res\formulasReader.cpp" />
     <ClCompile Include="res\res.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\Formula.h" />
+    <ClInclude Include="res\formulasReader.h" />
     <ClInclude Include="res\res.hpp" />
   </ItemGroup>
   <ItemGroup>

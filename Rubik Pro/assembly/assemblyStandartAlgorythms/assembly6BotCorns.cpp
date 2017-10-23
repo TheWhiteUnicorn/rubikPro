@@ -19,6 +19,7 @@ void Assembler::doBotCorns(FormulaStack & res) {
 		frontEdgeAdgustment
 
 		applyOperation(res, BOT_CORNS_CYCLIC_SHIFT_ACKW);
+		applyOperation(res, x, ACKW);
 		break;
 	}
 	case 1: {
@@ -27,12 +28,14 @@ void Assembler::doBotCorns(FormulaStack & res) {
 		frontEdgeAdgustment
 
 		applyOperation(res, BOT_CORNS_CYCLIC_SHIFT_CKW);
+		applyOperation(res, x, ACKW);
 		break;
 	}
 	case 2: {
 		applyOperation(res, BOT_CORNS_DIAGONAL_SWITCH);
-		frontEdgeAdgustment
-
+		Color topLeftCornerColor = _liveCube.get_color(0, 1);
+		Dir rotDirection = findOptimalYRot(sideToAdv(findMidColor(topLeftCornerColor, _liveCube)), 2, BOT);
+		applyOperation(res, U, rotDirection);
 		break;
 	}
 	case 3: {

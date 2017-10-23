@@ -22,6 +22,7 @@
     <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly5BotFacet.cpp" />
     <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly6BotCorns.cpp" />
     <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly7BotEdges.cpp" />
+    <ClCompile Include="res\formulasReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,6 +48,7 @@
     <ClInclude Include="cv\Camera.h" />
     <ClInclude Include="res\Formula.h" />
     <ClInclude Include="assembly\formulasLib.h" />
+    <ClInclude Include="res\formulasReader.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
