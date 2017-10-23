@@ -28,10 +28,6 @@ Analyser::~Analyser() {
 	}
 }
 
-//bool cmpEdgeVectorsBySecondColor(pair<Edge*, bool> x, pair<Edge*, bool> y) {
-//	return x.first->get_second() < y.first->get_second();
-//}
-
 void Analyser::refresh() {
 	for (int i = 0; i < NUM_OF_WHITES; i++) {
 		_whitesEdge[i]->placed = false;
@@ -47,6 +43,7 @@ _edgeVector& Analyser::findWhitesEdge() {
 			side = 0;
 			layer++;
 		}
+		if (addedEdges == NUM_OF_MID_EDGES) break;
 
 		Color first = _cube.get_edges()[_edgesMap[i][0][0]][_edgesMap[i][0][1]][_edgesMap[i][0][2]];
 		Color second = _cube.get_edges()[_edgesMap[i][1][0]][_edgesMap[i][1][1]][_edgesMap[i][1][2]];
@@ -72,6 +69,7 @@ _cornVector& Analyser::findWhitesCorn() {
 			side = 0;
 			layer = 2;
 		}
+		if (addedCorners == NUM_OF_WHITES) break;
 
 		Color prim  = _cube.get_edges()[_cornersMap[i][0][0]][_cornersMap[i][0][1]][_cornersMap[i][0][2]];
 		Color side1 = _cube.get_edges()[_cornersMap[i][1][0]][_cornersMap[i][1][1]][_cornersMap[i][1][2]];
@@ -93,7 +91,7 @@ _cornVector& Analyser::findWhitesCorn() {
 	return _whitesCorn;
 }
 
-_edgeVector & Analyser::findMidEdge() { //TODO Оптимизировать, чтоб функция не искала, если уже нашла 4 элемента
+_edgeVector & Analyser::findMidEdge() {
 	int addedEdges = 0;
 
 	for (int i = 0, side = 0, layer = 0; i < 12; i++, side++) {
@@ -101,6 +99,7 @@ _edgeVector & Analyser::findMidEdge() { //TODO Оптимизировать, чтоб функция не и
 			side = 0;
 			layer++;
 		}
+		if (addedEdges == NUM_OF_MID_EDGES) break;
 
 		Color first = _cube.get_edges()[_edgesMap[i][0][0]][_edgesMap[i][0][1]][_edgesMap[i][0][2]];
 		Color second = _cube.get_edges()[_edgesMap[i][1][0]][_edgesMap[i][1][1]][_edgesMap[i][1][2]];
@@ -131,13 +130,13 @@ _edgeVector & Analyser::findMidEdge() { //TODO Оптимизировать, чтоб функция не и
 
 // вспом. функция для findYellow Layer/Cross Situations, преобразует значения счетчика цикла в направление вращения
 Dir iToDir(int i) {
+	assert(i >= 0 && i <= 3);
 	switch (i) {
 	case 0: return NONE;
 	case 1: return CKW;
 	case 2: return DOUBL;
 	case 3: return ACKW;
 	}
-	throw 1; // Unexpected i value
 }
 
 YellowCrossSituation Analyser::findYellowCrossSituations(Dir& res) {
@@ -251,7 +250,7 @@ YellowLayerSituation Analyser::findYellowLayerSituations(Dir & res) {
 	throw 1; // Situation not found
 }
 
-int Analyser::findBotCornsConfig(Color & res) {
+BotCornsSituation Analyser::findBotCornsConfig(Color & res) {
 	Cube tmpCube(_cube);
 	tmpCube.rotate(x, CKW);
 	bool foundFlag = false;
@@ -259,22 +258,22 @@ int Analyser::findBotCornsConfig(Color & res) {
 	if (tmpCube.get_color(2, 9) == tmpCube.get_color(2, 7) &&
 		tmpCube.get_color(4, 7) == tmpCube.get_color(4, 9)) {
 		res = tmpCube.get_color(2, 5);
-		return 3;
+		return BOT_C_DONE;
 	}
 	for (int i = 0; i < 4; i++) {
 
 		if (tmpCube.get_color(3, 9) == tmpCube.get_color(3, 7)) {
 			res = tmpCube.get_color(2, 5);
-			return 0; // Глаза справа
+			return BOT_C_CYCLIC_SHIFT_ACKW; // Глаза справа
 		}
 		else if (tmpCube.get_color(5, 7) == tmpCube.get_color(3, 3)) {
 			res = tmpCube.get_color(2, 5);
-			return 1; // Галаза по диагонали
+			return BOT_C_CYCLIC_SHIFT_CKW; // Галаза по диагонали
 		}
 		else if (tmpCube.get_color(2, 9) == tmpCube.get_color(4, 7) &&
 				tmpCube.get_color(2, 7) == tmpCube.get_color(4, 9)) {
 			res = tmpCube.get_color(2, 5);
-			return 2; // Глаз нет
+			return BOT_C_DIAGONAL_SWITCH; // Глаз нет
 		}
 		tmpCube.rotate(z, CKW);
 	}
@@ -297,7 +296,7 @@ BotEdgesSituation Analyser::findBotEdgesSituation(Dir & res) {
 	case 0: return BOT_E_DONE;
 	case 3: {
 		for (int i = 0; i < 4; i++) {
-			res = iToDir(i); // TODO оптимизировать
+			res = iToDir(i);
 			if (tmpCube.get_color(5, 8) == tmpCube.get_color(5, 5))
 				break;
 
