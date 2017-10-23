@@ -7,11 +7,18 @@
 using namespace std;
 
 const int NUM_OF_WHITES = 4; //Имеется в виду количество элементов одного класса (4 - угловых и 4 - ребра)
+const int NUM_OF_MID_EDGES = 4;
 const int NUM_OF_YELLOWS = 4;
-const int NUM_OF_SIDE_EDGES = 4;
+
 
 #define _edgeVector vector<Edge*>
 #define _cornVector vector<Corner*>
+
+// Ситуации, которые могут возникать на нажнем кресте (палка, галка, точка, крест)
+enum YellowCrossSituation { STICK, DAW, DOT, CROSS };
+
+// Ситуации, которые могут возникать на нижнем слое (левая рыбка, правая рыбка, глаза, уши, восьмерка, двойные глаза, вертолет, сторона собрана)
+enum YellowLayerSituation {L_FISH, R_FISH, EYES, EARS, EIGHT, D_EYES, HELI, LAYER_DONE};
 
 class Analyser {
 public:
@@ -26,27 +33,29 @@ public:
 	_edgeVector& findWhitesEdge();
 	// Найти все уголки, на которых есть белая наклейка
 	_cornVector& findWhitesCorn();
+	// Найти все грани, на которых нет ни белой ни желтой наклейки
+	_edgeVector& findMidEdge();
+	// Находит ситуации, которые могут возникать на нажнем кресте (палка, галка, точка, крест). Предполагается, что желтая грань расположена сверху
+	YellowCrossSituation findYellowCrossSituations(Dir&);
+	// Находит ситуации, которые могут возникать на нижнем слое (см. объявление перечисления). Предполагается, что желтая грань расположена сверху
+	YellowLayerSituation findYellowLayerSituations(Dir&);
+	// Анализатор конфигурации нижних угловых элементов, возвращает статус: 0 - "глаза" найдены, 1- "галаза" по диагонали, 2 - "глеза" не найдены, 3 - собранное состояние
+	// Через параметр возвращает цвет, который должен быть сверху при выравнивании
+	int findBotCornsConfig(Color&);
 
 private:
 	Cube & _cube;
 
-	// Второе значение пары сигнализирует о том, проинициализирован ли объект на данный момент
 	_edgeVector _whitesEdge;
 	_cornVector _whitesCorn;
-
-	//Element* _elements[NUM_OF_ELEMENTS];
-
-	//Corner* _whitesCorn[NUM_OF_WHITES];
-	//Edge* _whitesEdge[NUM_OF_WHITES];
-
-	Element* _yellows[NUM_OF_YELLOWS];
-	Element* _sideEdges[NUM_OF_SIDE_EDGES];
+	_edgeVector _midEdges;
 
 
 
+	// ++++++++++ Вспомогательные констркции ++++++++++++++++
 
 	// Восемь уголков - карта
-	int _cornersMap[8][3][3]{ // ЗДЕСЬ ВСЕ ОЧЕНЬ ПЛОХО И НЕПРАВИЛЬНО
+	int _cornersMap[8][3][3]{ // ЗДЕСЬ ВСЕ ОЧЕНЬ ХОРОШО И ПРАВИЛЬНО :3
 		{ { 2, 2, 0 },{ 5, 2, 2 },{ 3, 2, 2 } }, // Верхний слой
 		{ { 2, 0, 0 },{ 3, 0, 2 },{ 0, 0, 2 } },
 		{ { 2, 0, 2 },{ 0, 0, 0 },{ 1, 0, 0 } },
@@ -76,7 +85,8 @@ private:
 		{ { 4, 1, 0 },{ 1, 1, 2 } },
 	};
 
-//	std::map<Color, Color>  sideEdgesAssoc[4] { { GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE}, {ORANGE, GREEN} };
+	// Карта сопоставления главного и дополнительного цвета граней среднего слоя
+	map<Color, Color>  sideEdgesAssoc { { ORANGE, GREEN },{ GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE} };
 
-	
+
 };

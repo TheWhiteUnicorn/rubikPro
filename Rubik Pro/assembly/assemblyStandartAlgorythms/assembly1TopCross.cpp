@@ -1,4 +1,4 @@
-#include "Assembler.h"
+#include "..\Assembler.h"
 
 #define curEdge whitesEdge[i]
 
@@ -34,7 +34,7 @@ void Assembler::doTopCross(FormulaStack & res) {
 						applyOperation(res, F, CKW);
 						Operation& tmp = applyOperation(res, U, findOptimalYRot(sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 1, TOP));
 						applyOperation(res, R, CKW);
-						applyOperation(res, tmp);
+						applyOperation(res, tmp.invert());
 					}
 				}
 				

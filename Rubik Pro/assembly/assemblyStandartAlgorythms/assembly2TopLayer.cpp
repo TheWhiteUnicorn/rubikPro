@@ -1,4 +1,4 @@
-#include "Assembler.h"
+#include "..\Assembler.h"
 
 #define curCorn whitesCorn[i]
 
@@ -10,9 +10,9 @@ void Assembler::doTopLayer(FormulaStack & res) {
 
 	for (int i = 0; i < NUM_OF_WHITES; i++) {	
 		if (!curCorn->placed) {
+			_analyser->findWhitesCorn();
 			switch (curCorn->layer) {
 			case BOT: {
-				_analyser->findWhitesCorn();
 				if (curCorn->get_side1() == _liveCube.get_edges()[advToSide((curCorn->side) + 1)][1][1]) {
 					allign(res, YELLOW, curCorn->get_side1());
 

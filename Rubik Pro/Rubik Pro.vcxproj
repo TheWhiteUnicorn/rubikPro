@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -131,11 +131,15 @@
   <ItemGroup>
     <ClCompile Include="assembly\analysis\Analyser.cpp" />
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
-    <ClCompile Include="assembly\assemblyCommon.cpp" />
     <ClCompile Include="assembly\Assembler.cpp" />
-    <ClCompile Include="assembly\assembly3MidLayer.cpp" />
-    <ClCompile Include="assembly\assembly1TopCross.cpp" />
-    <ClCompile Include="assembly\assembly2TopLayer.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly1TopCross.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly2TopLayer.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly3MidLayer.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly4BotCross.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly5BotFacet.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly6BotCorns.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly7BotEdges.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assemblyCommon.cpp" />
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\Element.cpp" />
@@ -158,6 +162,7 @@
     <ClInclude Include="assembly\analysis\Analyser.h" />
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
     <ClInclude Include="assembly\Assembler.h" />
+    <ClInclude Include="assembly\formulasLib.h" />
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />

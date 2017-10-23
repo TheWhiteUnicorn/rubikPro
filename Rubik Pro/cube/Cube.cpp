@@ -3,9 +3,6 @@
 #include <ctime>
 #include "..\res\consoleManager.h"
 
-
-
-
 #define invD(dir) dir == 2 ? dir : Dir(1 - int(dir))
 const int NUM_OF_MOVEMENTS = 18, NUM_OF_DIRS = 3;
 
@@ -47,8 +44,30 @@ Cube::~Cube()
 	delete[]edges;
 }
 
-const Color *** Cube::get_edges() {
+const Color *** Cube::get_edges() const {
 	return (const Color ***)edges;
+}
+
+// Номер наклейки по развертке -> координаты по строке и столбцу
+int coordsOfStickers[9][2]{
+	{ 0,0 },
+	{ 0,1 },
+	{ 0,2 },
+	{ 1,0 },
+	{ 1,1 },
+	{ 1,2 },
+	{ 2,0 },
+	{ 2,1 },
+	{ 2,2 }
+};
+
+const Color Cube::get_color(int facet, int num) const{
+	num--;
+	return edges[facet][coordsOfStickers[num][0]][coordsOfStickers[num][1]];
+}
+
+void Cube::set_color(Color col, int i, int j, int k) {
+	edges[i][j][k] = col;
 }
 
 void Cube::reset() {
@@ -62,8 +81,8 @@ void Cube::reset() {
 
 
 
-void Cube::trick(int numOfOperations) {
-	srand(3/*time(0)*/);
+void Cube::trick(int numOfOperations, int randomizerKey) {
+	srand(randomizerKey);
 	for (int i = 0; i < numOfOperations; i++) {
 		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
 	}
@@ -164,7 +183,6 @@ void Cube::rotate(Move move, Dir dir) {
 	cout << move << dir << endl;
 	dispEdges((const Color ***)this->edges);
 #endif // DISP_ALL_MOVEMENTS
-
 }
 
 void Cube::rotate(Operation op) {

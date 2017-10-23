@@ -17,13 +17,18 @@ public:
 	~Cube();
 
 	// Геттер для граней, возвращаемое значение недоступно для изменения
-	const Color *** get_edges();
+	const Color *** get_edges() const;
+
+	// Возвращает цвет наклейки по номеру грани и номеру наклейки в соответствии с разверткой
+	const Color get_color(int facet, int num) const;
+
+
 
 	// Преобразовать кубик в собранное состояние
 	void reset();
 
 	// Запутать кубик
-	void trick(int numOfOperations);
+	void trick(int numOfOperations, int randomizerKey);
 
 	// Совершить поворот. принимает значение типа перечисления Move и Dir.
 	void rotate(Move move, Dir dir);
@@ -40,10 +45,14 @@ public:
 	// Применить готовую формулу к модели
 	void applyFormula(Formula& f);
 	
+	// Оператор присваивания
 	Cube& operator=(Cube& cub);
 private:
 	// Массив граней
 	Color*** edges;
+
+	// ВНИМАНИЕ! ИСПОЛЬЗОВАНИЕ ДАННОЙ ФУНКЦИИ МОЖЕТ ПРИВЕСТИ К НАРУШЕНИЮ ЦЕЛОСТНОСТИ МОДЕЛИ! 
+	void set_color(Color col, int i, int j, int k);
 
 	// Создать трехмерный массив граней
 	void initEdges();
@@ -62,4 +71,3 @@ private:
 	// Поворот боковой плоскости слоя
 	void rot(int edge, Dir dir);
 };
-

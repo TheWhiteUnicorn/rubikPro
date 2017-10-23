@@ -1,5 +1,5 @@
-#include "Assembler.h"
-#include <cassert>
+#include "..\Assembler.h"
+#include <assert.h>
 
 // +++++++++++ Приватные функции +++++++++++++
 int Assembler::findMidColor(Color color, Cube & cube) {
@@ -15,7 +15,6 @@ int Assembler::findMidColor(Color color, Cube & cube) {
 
 Dir Assembler::findOptimalYRot(int src, int tgt, ElementLocLayer layer) {
 	Dir answ;
-
 
 	int diff = src - tgt;
 
@@ -78,6 +77,7 @@ ElementLocSide Assembler::sideToAdv(int side) {
 	case 3: return ElementLocSide(1);
 	case 0: return ElementLocSide(2);
 	}
+	throw 1;
 }
 
 //Автоматическое преобразование из кода по расширенной системе позиционирования в номер боковой грани (только для координат ребер!)
@@ -88,6 +88,7 @@ int Assembler::advToSide(ElementLocSide side) {
 	case 2: return 0;
 	case 3: return 1;
 	}
+	throw 1;
 }
 
 // Записывает операцию в результат и сразу же применяет к _liveCube
@@ -102,6 +103,13 @@ Operation Assembler::applyOperation(FormulaStack & res, Move mov, Dir dir) {
 	res.pushBack(oper);
 	_liveCube.rotate(oper);
 	return oper;
+}
+
+Operation Assembler::applyOperation(FormulaStack & res, const vector<pair<Move, int>> opers) {
+	for (auto i = opers.begin(); i != opers.end(); i++) {
+		applyOperation(res, i->first, Dir(i->second));
+	}
+	return Operation();
 }
 
 void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront) {
@@ -138,3 +146,38 @@ void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront)
 	int frontPos = findMidColor(colorOnFront, _liveCube);
 	applyOperation(res, Operation{ y, findOptimalYRot(sideToAdv(frontPos).side, 2, TOP) });
 }
+
+//void Assembler::allign(Color colorOnTop, Color colorOnFront, Cube& cube) {
+//	assert(colorOnTop != colorOnFront); // Цвета верхнего и нижнего центрального элемента не могут совпадать
+//
+//	int topPos = findMidColor(colorOnTop, cube);
+//
+//	switch (topPos)
+//	{
+//	case 0: {
+//		applyOperation(res, Operation{ x, CKW });
+//		break;
+//	}
+//	case 1: {
+//		applyOperation(res, Operation{ z, CKW });
+//		break;
+//	}
+//	case 3: {
+//		applyOperation(res, Operation{ z, ACKW });
+//		break;
+//	}
+//	case 4: {
+//		applyOperation(res, Operation{ x, DOUBL });
+//		break;
+//	}
+//	case 5: {
+//		applyOperation(res, Operation{ x, ACKW });
+//		break;
+//	}
+//	default:
+//		break;
+//	}
+//
+//	int frontPos = findMidColor(colorOnFront, cube);
+//	applyOperation(res, Operation{ y, findOptimalYRot(sideToAdv(frontPos).side, 2, TOP) });
+//}
