@@ -1,5 +1,5 @@
-#include "Assembler.h"
-#include "formulasLib.h"
+#include "..\Assembler.h"
+//#include "..\formulasLib.h"
 
 void Assembler::doBotFacet(FormulaStack & res) {
 	_liveCube = _cube;

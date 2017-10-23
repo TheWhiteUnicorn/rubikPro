@@ -44,3 +44,48 @@ const vector<pair<Move, int>> BOT_FACET_R_FISH = {
 	{ U, 2 },
 	{ R, 1 }
 };
+
+// Формулы для сборки углов нижней грани (6 этап)
+const vector<pair<Move, int>> BOT_CORNS_CYCLIC_SHIFT_ACKW = { //Смещение по часовой (если смотреть на желтую грань)
+	{ R, 2 },
+	{ D, 2 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 1 },
+	{ D, 2 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 0 },
+};
+
+const vector<pair<Move, int>> BOT_CORNS_CYCLIC_SHIFT_CKW = { //Смещение против часовой (если смотреть на желтую грань)
+	{ R, 1 },
+	{ U, 0 },
+	{ R, 1 },
+	{ D, 2 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 1 },
+	{ D, 2 },
+	{ R, 2 },
+};
+
+const vector<pair<Move, int>> BOT_CORNS_DIAGONAL_SWITCH = {
+	{ F, 0 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 1 },
+	{ F, 1 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 1 },
+	{ F, 0 },
+	{ R, 0 },
+	{ F, 1 }
+};

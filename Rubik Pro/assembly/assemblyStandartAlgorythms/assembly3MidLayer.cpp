@@ -1,4 +1,4 @@
-#include "Assembler.h"
+#include "..\Assembler.h"
 //TODO перенести это в библиотеку формул!
 #define MOVE_TO_LEFT	applyOperation(res, U, ACKW);\
 							applyOperation(res, L, ACKW);\

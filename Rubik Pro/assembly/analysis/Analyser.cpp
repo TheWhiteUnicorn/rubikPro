@@ -129,6 +129,16 @@ _edgeVector & Analyser::findMidEdge() { //TODO Оптимизировать, чтоб функция не и
 	return _midEdges;
 }
 
+// вспом. функция для findYellow Layer/Cross Situations, преобразует значения счетчика цикла в направление вращения
+Dir iToDir(int i) {
+	switch (i) {
+	case 0: return NONE;
+	case 1: return CKW;
+	case 2: return DOUBL;
+	case 3: return ACKW;
+	}
+	throw 1; // Unexpected i value
+}
 
 YellowCrossSituation Analyser::findYellowCrossSituations(Dir& res) {
 	assert(_cube.get_edges()[2][1][1] == YELLOW);
@@ -146,10 +156,7 @@ YellowCrossSituation Analyser::findYellowCrossSituations(Dir& res) {
 		Cube tmpCube(_cube);
 
 		for (int i = 0; i < 4; i++) {
-			switch (i) {
-			case 1: {res = CKW;	break;}
-			case 2: {res = DOUBL; break;}
-			case 3: {res = ACKW; break;}}
+			res = iToDir(i);
 
 			if (tmpCube.get_color(2, 6) == YELLOW && tmpCube.get_color(2, 8) == YELLOW)
 				return DAW;
@@ -165,16 +172,6 @@ YellowCrossSituation Analyser::findYellowCrossSituations(Dir& res) {
 		break;
 	}
 	throw 1; // Situation not found
-}
-
-// вспом. функция для findYellowLayerSituations, преобразует значения счетчика цикла в направление вращения
-Dir iToDir(int i) {
-	switch (i) {
-		case 0: return NONE;
-		case 1: return CKW;
-		case 2: return DOUBL;
-		case 3: return ACKW;
-	}
 }
 
 YellowLayerSituation Analyser::findYellowLayerSituations(Dir & res) {
@@ -250,6 +247,36 @@ YellowLayerSituation Analyser::findYellowLayerSituations(Dir & res) {
 		}
 		break;
 	}
+	}
+	throw 1; // Situation not found
+}
+
+int Analyser::findBotCornsConfig(Color & res) {
+	Cube tmpCube(_cube);
+	tmpCube.rotate(x, CKW);
+	bool foundFlag = false;
+
+	if (tmpCube.get_color(2, 9) == tmpCube.get_color(2, 7) &&
+		tmpCube.get_color(4, 7) == tmpCube.get_color(4, 9)) {
+		res = tmpCube.get_color(2, 5);
+		return 3;
+	}
+	for (int i = 0; i < 4; i++) {
+
+		if (tmpCube.get_color(3, 9) == tmpCube.get_color(3, 7)) {
+			res = tmpCube.get_color(2, 5);
+			return 0; // Глаза справа
+		}
+		else if (tmpCube.get_color(5, 7) == tmpCube.get_color(3, 3)) {
+			res = tmpCube.get_color(2, 5);
+			return 1; // Галаза по диагонали
+		}
+		else if (tmpCube.get_color(2, 9) == tmpCube.get_color(4, 7) &&
+				tmpCube.get_color(2, 7) == tmpCube.get_color(4, 9)) {
+			res = tmpCube.get_color(2, 5);
+			return 2; // Глаз нет
+		}
+		tmpCube.rotate(z, CKW);
 	}
 	throw 1; // Situation not found
 }

@@ -1,4 +1,4 @@
-#include "Assembler.h"
+#include "..\Assembler.h"
 
 void Assembler::doBotCross(FormulaStack & res) {
 	_liveCube = _cube;

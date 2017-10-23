@@ -1,4 +1,4 @@
-#include "Assembler.h"
+#include "..\Assembler.h"
 
 #define curEdge whitesEdge[i]
 

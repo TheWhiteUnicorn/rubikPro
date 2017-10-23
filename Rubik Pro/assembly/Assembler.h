@@ -19,11 +19,11 @@ class Assembler {
 	// +++++++++++++++ Приватные функции +++++++++++++++++++
 	// Найти, на какой грани находится цвет
 	int findMidColor(Color color, Cube & cube);
-	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
 	Dir findOptimalYRot(int src, int tgt, ElementLocLayer layer);
-	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
 	Dir findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer);
-	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую
+	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
 	Dir findOptimalYRot(ElementLocSide & src, int tgt, ElementLocLayer layer);
 	// Найти, на какой стороне по расширенной системе должен в итоге стоять угловой элемент
 	ElementLocSide findCornAdvSide(Corner& corn);
@@ -40,18 +40,23 @@ class Assembler {
 	// Записывает все операции массива в результат и сразу же применяет к _liveCube
 	Operation applyOperation(FormulaStack & res, const vector<pair<Move, int>>);
 	// Выставить кубик по верхнему и переднему цвету
-	void allign(FormulaStack &, Color colorOnTop, Color colorOnFront);
+	void allign(FormulaStack & res, Color colorOnTop, Color colorOnFront);
+	// Выставить указанный кубик по верхнему и переднему цвету (без записи в стэк формул)
+	//void allign(Color colorOnTop, Color colorOnFront, Cube& cube);
 
+	friend void Cube::set_color(int i, int j, int k);
 public:
 	Assembler(Cube & c);
 	~Assembler();
 	
 	void refresh();
 	void allignCube(FormulaStack &, Color colorOnTop, Color colorOnFront);
+	
 	void doTopCross(FormulaStack &);
 	void doTopLayer(FormulaStack &);
 	void doMidLayer(FormulaStack &);
 	void doBotCross(FormulaStack &);
 	void doBotFacet(FormulaStack &);
+	void doBotCorns(FormulaStack &);
+	void doBotEdges(FormulaStack &);
 };
-

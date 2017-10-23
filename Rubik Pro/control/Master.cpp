@@ -1,4 +1,5 @@
 #include "Master.h"
+#include <ctime> // для рандома кубика
 
 void Master::applyAllFormulas(FormulaStack& formStack) {
 	while (formStack.doFirstUnperfOper(_cube)) {}
@@ -17,7 +18,7 @@ void Master::standartAssembly(){
 
 	int iteration = 0;
 	while (true) {
-		_cube.trick(20);
+		_cube.trick(20, iteration);
 		cout << "++++++++++++Tricked++++++++++++" << endl;
 		dispEdges(_cube.get_edges());
 		
@@ -48,7 +49,16 @@ void Master::standartAssembly(){
 		_assembler.doBotFacet(stack);
 		applyAllFormulas(stack);
 
+		cout << "BotCorns" << endl;
+		_assembler.doBotCorns(stack);
+		applyAllFormulas(stack);
+
+		cout << "BotEdges" << endl;
+		//_assembler.doBotEdges(stack);
+		//applyAllFormulas(stack);
+
 		iteration++;
+		system("cls");
 	}
 }
 

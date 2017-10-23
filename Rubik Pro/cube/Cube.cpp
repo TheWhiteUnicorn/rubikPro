@@ -66,6 +66,10 @@ const Color Cube::get_color(int facet, int num) const{
 	return edges[facet][coordsOfStickers[num][0]][coordsOfStickers[num][1]];
 }
 
+void Cube::set_color(int i, int j, int k) {
+
+}
+
 void Cube::reset() {
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 3; j++) {
@@ -77,8 +81,8 @@ void Cube::reset() {
 
 
 
-void Cube::trick(int numOfOperations) {
-	srand(time(0));
+void Cube::trick(int numOfOperations, int randomizerKey) {
+	srand(randomizerKey);
 	for (int i = 0; i < numOfOperations; i++) {
 		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
 	}

@@ -22,11 +22,13 @@ public:
 	// Возвращает цвет наклейки по номеру грани и номеру наклейки в соответствии с разверткой
 	const Color get_color(int facet, int num) const;
 
+
+
 	// Преобразовать кубик в собранное состояние
 	void reset();
 
 	// Запутать кубик
-	void trick(int numOfOperations);
+	void trick(int numOfOperations, int randomizerKey);
 
 	// Совершить поворот. принимает значение типа перечисления Move и Dir.
 	void rotate(Move move, Dir dir);
@@ -48,6 +50,9 @@ public:
 private:
 	// Массив граней
 	Color*** edges;
+
+
+	void set_color(int i, int j, int k);
 
 	// Создать трехмерный массив граней
 	void initEdges();
