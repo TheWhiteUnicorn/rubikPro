@@ -66,8 +66,8 @@ const Color Cube::get_color(int facet, int num) const{
 	return edges[facet][coordsOfStickers[num][0]][coordsOfStickers[num][1]];
 }
 
-void Cube::set_color(int i, int j, int k) {
-
+void Cube::set_color(Color col, int i, int j, int k) {
+	edges[i][j][k] = col;
 }
 
 void Cube::reset() {

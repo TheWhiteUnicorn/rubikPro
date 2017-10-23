@@ -51,8 +51,8 @@ private:
 	// Массив граней
 	Color*** edges;
 
-
-	void set_color(int i, int j, int k);
+	// ВНИМАНИЕ! ИСПОЛЬЗОВАНИЕ ДАННОЙ ФУНКЦИИ МОЖЕТ ПРИВЕСТИ К НАРУШЕНИЮ ЦЕЛОСТНОСТИ МОДЕЛИ! 
+	void set_color(Color col, int i, int j, int k);
 
 	// Создать трехмерный массив граней
 	void initEdges();

@@ -44,7 +44,6 @@ class Assembler {
 	// Выставить указанный кубик по верхнему и переднему цвету (без записи в стэк формул)
 	//void allign(Color colorOnTop, Color colorOnFront, Cube& cube);
 
-	friend void Cube::set_color(int i, int j, int k);
 public:
 	Assembler(Cube & c);
 	~Assembler();
