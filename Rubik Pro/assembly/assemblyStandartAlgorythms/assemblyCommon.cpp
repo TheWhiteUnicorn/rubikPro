@@ -146,38 +146,3 @@ void Assembler::allign(FormulaStack & res, Color colorOnTop, Color colorOnFront)
 	int frontPos = findMidColor(colorOnFront, _liveCube);
 	applyOperation(res, Operation{ y, findOptimalYRot(sideToAdv(frontPos).side, 2, TOP) });
 }
-
-//void Assembler::allign(Color colorOnTop, Color colorOnFront, Cube& cube) {
-//	assert(colorOnTop != colorOnFront); // ÷вета верхнего и нижнего центрального элемента не могут совпадать
-//
-//	int topPos = findMidColor(colorOnTop, cube);
-//
-//	switch (topPos)
-//	{
-//	case 0: {
-//		applyOperation(res, Operation{ x, CKW });
-//		break;
-//	}
-//	case 1: {
-//		applyOperation(res, Operation{ z, CKW });
-//		break;
-//	}
-//	case 3: {
-//		applyOperation(res, Operation{ z, ACKW });
-//		break;
-//	}
-//	case 4: {
-//		applyOperation(res, Operation{ x, DOUBL });
-//		break;
-//	}
-//	case 5: {
-//		applyOperation(res, Operation{ x, ACKW });
-//		break;
-//	}
-//	default:
-//		break;
-//	}
-//
-//	int frontPos = findMidColor(colorOnFront, cube);
-//	applyOperation(res, Operation{ y, findOptimalYRot(sideToAdv(frontPos).side, 2, TOP) });
-//}

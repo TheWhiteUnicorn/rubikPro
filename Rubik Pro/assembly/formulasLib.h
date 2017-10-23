@@ -3,7 +3,27 @@
 #include "..\res\res.hpp"
 using namespace std;
 // Формулы для сборки среднего слоя (3 этап)
+const vector<pair<Move, int>> MID_EDGES_MOVE_TO_LEFT = {
+	{ U, 1 },
+	{ L, 1 },
+	{ U, 1 },
+	{ L, 0 },
+	{ U, 0 },
+	{ F, 0 },
+	{ U, 0 },
+	{ F, 1 }
+};
 
+const vector<pair<Move, int>> MID_EDGES_MOVE_TO_RIGHT = {
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 1 },
+	{ F, 0 },
+	{ R, 1 },
+	{ F, 1 },
+	{ R, 0 }
+};
 
 // Формулы для сборки нижнего креста (4 этап)
 const vector<pair<Move, int>> BOT_CROSS_STICK = {
@@ -88,4 +108,32 @@ const vector<pair<Move, int>> BOT_CORNS_DIAGONAL_SWITCH = {
 	{ F, 0 },
 	{ R, 0 },
 	{ F, 1 }
+};
+
+const vector<pair<Move, int>> BOT_EDGES_TRIANGLE_ACKW = {
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 2 },
+};
+
+const vector<pair<Move, int>> BOT_EDGES_TRIANGLE_CKW = {
+	{ R, 2 },
+	{ U, 0 },
+	{ R, 0 },
+	{ U, 0 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 1 },
+	{ R, 1 },
+	{ U, 0 },
+	{ R, 1 },
 };

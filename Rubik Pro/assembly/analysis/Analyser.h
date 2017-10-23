@@ -20,6 +20,12 @@ enum YellowCrossSituation { STICK, DAW, DOT, CROSS };
 // Ситуации, которые могут возникать на нижнем слое (левая рыбка, правая рыбка, глаза, уши, восьмерка, двойные глаза, вертолет, сторона собрана)
 enum YellowLayerSituation {L_FISH, R_FISH, EYES, EARS, EIGHT, D_EYES, HELI, LAYER_DONE};
 
+// Ситуации, которые могут возникать c вершинами нижнего слоя
+enum BotCornsSituation { BOT_C_CYCLIC_SHIFT_CKW, BOT_C_CYCLIC_SHIFT_ACKW, BOT_C_DIAGONAL_SWITCH, BOT_C_DONE };
+
+// Ситуации, которые могут возникать c ребрами нижнего слоя ()
+enum BotEdgesSituation {BOT_E_SHIFT_CKW, BOT_E_SHIFT_ACKW, BOT_E_SLAIGH, BOT_E_CROSS, BOT_E_DONE};
+
 class Analyser {
 public:
 	Analyser(Cube & cube);
@@ -39,9 +45,11 @@ public:
 	YellowCrossSituation findYellowCrossSituations(Dir&);
 	// Находит ситуации, которые могут возникать на нижнем слое (см. объявление перечисления). Предполагается, что желтая грань расположена сверху
 	YellowLayerSituation findYellowLayerSituations(Dir&);
-	// Анализатор конфигурации нижних угловых элементов, возвращает статус: 0 - "глаза" найдены, 1- "галаза" по диагонали, 2 - "глеза" не найдены, 3 - собранное состояние
+	// Анализатор конфигурации нижних угловых элементов
 	// Через параметр возвращает цвет, который должен быть сверху при выравнивании
-	int findBotCornsConfig(Color&);
+	BotCornsSituation findBotCornsConfig(Color&);
+	// Находит ситуации, которые могут возникать c ребрами нижнего слоя
+	BotEdgesSituation findBotEdgesSituation(Dir& res);
 
 private:
 	Cube & _cube;
@@ -87,6 +95,4 @@ private:
 
 	// Карта сопоставления главного и дополнительного цвета граней среднего слоя
 	map<Color, Color>  sideEdgesAssoc { { ORANGE, GREEN },{ GREEN, RED }, {RED, BLUE}, {BLUE, ORANGE} };
-
-
 };

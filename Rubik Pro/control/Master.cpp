@@ -7,11 +7,11 @@ void Master::applyAllFormulas(FormulaStack& formStack) {
 	formStack.clear();
 }
 
-Master::Master(){
+Master::Master() {
 
 }
 
-Master::~Master(){
+Master::~Master() {
 	
 }
 
@@ -70,8 +70,8 @@ void Master::standartAssembly(){
 		applyAllFormulas(stack);
 
 		cout << "BotEdges" << endl;
-		//_assembler.doBotEdges(stack);
-		//applyAllFormulas(stack);
+		_assembler.doBotEdges(stack);
+		applyAllFormulas(stack);
 
 		iteration++;
 		system("cls");

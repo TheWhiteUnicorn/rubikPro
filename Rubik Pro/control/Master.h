@@ -24,4 +24,3 @@ public:
 	//—борка кубика стандартным способом
 	void standartAssembly();
 };
-

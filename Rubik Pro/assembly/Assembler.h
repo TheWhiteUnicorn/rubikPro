@@ -5,6 +5,7 @@
 #include "..\res\Formula.h"
 #include <assert.h>
 #include "formulasLib.h"
+#include "..\res\formulasReader.h"
 
 
 //Класс, отвечающий за процесс сборки. В нем производится анализ модели и подбираются алгоритмы, необходимые на текущем этапе сборки
@@ -15,6 +16,9 @@ class Assembler {
 	Cube _liveCube;
 	//Класс анализатор
 	Analyser * _analyser;
+
+	// Библиотека формул для стандартной сборки
+	map<string, list<pair<Move, Dir>>> formLib;
 
 	// +++++++++++++++ Приватные функции +++++++++++++++++++
 	// Найти, на какой грани находится цвет

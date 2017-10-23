@@ -16,7 +16,7 @@ ElementLocSide & ElementLocSide::operator--() {
 ElementLocSide & ElementLocSide::operator+(int x) {
 	ElementLocSide res(this->side);
 	for (int i = 0; i < x; i++) {
-		res++;
+		++res;
 	}
 	return res;
 }
@@ -24,7 +24,7 @@ ElementLocSide & ElementLocSide::operator+(int x) {
 ElementLocSide & ElementLocSide::operator-(int x) {
 	ElementLocSide res(this->side);
 	for (int i = 0; i < x; i++) {
-		res--;
+		--res;
 	}
 	return res;
 }
