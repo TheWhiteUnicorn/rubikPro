@@ -22,19 +22,25 @@ const Point SQUARES_FRAME = { FRAME_MID_X, FRAME_MID_Y };
 const int SQUARES_FRAME_W = 120;
 const int SQUARES_FRAME_H = 120;
 
+const int SQUARES_H = 45;
+const int SQUARES_W = 45;
+
 const vector<vector<Point>> SQUARES_COORDS = { 
 	// ¬ерхн€€ строка
-    { { SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 },
+   {{ SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 },
 	{ SQUARES_FRAME.x, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 },
 	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 } },
 
 	// —редн€€ строка
 	{ { SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y },
 	{ SQUARES_FRAME.x, SQUARES_FRAME.y },
-	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y }},
+	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y } },
 
 	// Ќижн€€ строка
 	{ { SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 },
 	{ SQUARES_FRAME.x, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 },
 	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 } },
-}
+};
+
+#define squaresTopLeft(i, j) Point(SQUARES_COORDS[i][j].x - SQUARES_W / 2, SQUARES_COORDS[i][j].y - SQUARES_H / 2)
+#define squaresBotRight(i, j) Point(SQUARES_COORDS[i][j].x + SQUARES_W / 2, SQUARES_COORDS[i][j].y + SQUARES_H / 2)

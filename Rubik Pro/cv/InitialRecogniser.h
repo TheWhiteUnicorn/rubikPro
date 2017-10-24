@@ -28,10 +28,11 @@ class InitialRecogniser
 	Scalar referenceColors[6];
 
 	// Вспомогательные функции
-	void preprocessing(Mat &image);
+	void preprocessing(Mat & image);
 	double angle(Point pt1, Point pt2, Point pt0);
 	Color classifyColor(Scalar rawColor);
 	//void properSquaresArrangement();
+	void drawBoundingSquares(Mat & image);
 
 public:
 	// К-тор
