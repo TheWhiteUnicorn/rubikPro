@@ -16,7 +16,7 @@ void Master::readEdges() {
 	{
 		initRec.showFrame();
 		char c = cvWaitKey(33);
-		if (c == 27)  // нажата ESC
+		if (c == 13)  // нажата Enter
 
 			break;
 	}
@@ -34,4 +34,8 @@ void Master::standartAssembly(){
 void Master::freeMode(){
 	cubeDemo(_cube);
 }
+
+/*RubikState Master::getState() {
+	return this->state;
+}*/
 

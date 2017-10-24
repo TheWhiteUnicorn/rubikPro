@@ -3,6 +3,7 @@
 #include "..\cube\Cube.h"
 #include "..\assembly\Assembler.h"
 #include "..\res\consoleManager.h"
+//#include "..\cv\RubikState.h"
 
 //Класс, контролирующий основной процесс работы приложения
 class Master
@@ -10,6 +11,9 @@ class Master
 	//Рабочая модель кубика
 	Cube _cube;
 	Assembler _assembler{_cube};
+	//RubikState state;
+
+
 public:
 	Master();
 	~Master();
@@ -21,5 +25,6 @@ public:
 
 	//Сборка кубика стандартным способом
 	void standartAssembly();
-};
 
+	//RubikState getState();
+};
