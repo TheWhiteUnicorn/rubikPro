@@ -34,9 +34,28 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 };
 
 
-void InitialRecogniser::gridRecognition(Mat & image)
+void InitialRecogniser::gridRecognition(int edgeShow)
 {
-	
+	Mat image;
+	int j = 2, k = 2;
+
+
+	{
+		Rect gridBox = boundingRect();
+
+		Mat roiImage = image(gridBox);
+
+		Mat roi = roiImage(gridBox);
+		Scalar temp_color = mean(roi);
+
+		rawColors.colors[edgeShow][j][k] = temp_color;
+
+		k++;
+		if (k == 3) {
+			k = 0;
+			j++;
+		}
+	}
 };
 
 

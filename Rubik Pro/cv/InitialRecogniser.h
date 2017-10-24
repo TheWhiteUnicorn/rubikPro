@@ -13,9 +13,8 @@ struct RubickColors
 	Scalar colors[6][3][3];
 };
 
-const Rect box = boundingRect(frame);
+const Rect box = boundingRect(FRAME);
 
-//const vector<Point> 
 
 // Класс начального распознавания
 class InitialRecogniser
@@ -58,5 +57,5 @@ public:
 
 	// Показать кадр
 	void showFrame();
-	void gridRecognition(Mat &image);
+	void gridRecognition(int edgeShow);
 };

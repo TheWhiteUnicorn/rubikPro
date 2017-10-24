@@ -2,9 +2,8 @@
 
 
 
-void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую показывают, вызывая эту функцию, поле массива с соотв. гранью и нужно отображать*/) {
-	//RubickColors *color = new RubickColors();
-
+void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую показывают, вызывая эту функцию, поле массива с соотв. гранью и нужно отображать*/) 
+{
 	Mat image;
 	vector<vector<Point>> squares;
 
@@ -18,7 +17,7 @@ void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую по
 		drawSquares(image, squares);
 
 
-		int j = 2, k = 2;
+		//int j = 2, k = 2;
 		if (squares.size() != 9)
 			continue;
 
@@ -41,8 +40,7 @@ void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую по
 
 				Scalar temp_color = mean(roi);
 
-				rawColors.colors[edgeShown][j][k] = temp_color;
-
+				//rawColors.colors[edgeShown][j][k] = temp_color;
 
 				polylines(roiImage, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
@@ -50,11 +48,11 @@ void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую по
 
 				ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
 
-				k--;
+				/*k--;
 				if (k == -1) {
 					k = 2;
 					j--;
-				}
+				}*/
 
 			}
 		
