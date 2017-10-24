@@ -34,18 +34,20 @@ RubickColors * InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, 
 			r.width = r.width / 2;
 			r.height = r.height / 2;
 
-			Mat roi = image(r);
+			Mat roiImage = image(box);
+
+			Mat roi = roiImage(r);
 			
 			Scalar temp_color = mean(roi);
 				
 			color->colors[edgeShown][j][k] = temp_color;
 			
 
-			polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+			polylines(roiImage, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
 			Point center(r.x + r.width / 2, r.y + r.height / 2);
 
-			ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+			ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
 
 			k--;
 			if (k == -1)
@@ -70,30 +72,25 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 		int shift = 1;
 
 		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
-		r.x = r.x + r.width / 16;
-		r.y = r.y + r.height / 16;
+		r.x = r.x + r.width / 4;
+		r.y = r.y + r.height / 4;
 		r.width = r.width / 2;
 		r.height = r.height / 2;
 
-		Mat roi = image(r);
-		
+		Mat roiImage = image(box);
+
+		Mat roi = roiImage(r);
 		Scalar temp_color = mean(roi);
 
 		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
-		ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+		ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
 
-		rectangle(image, Point(500), Point(-500), Scalar(0, 255, 0), 2);
+
 	}
 };
 
-
-//void draw_box(Mat & image)
-//{
-//	rectangle(image, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height),	Scalar(0, 0, 255), 2);
-//	Rect rect2 = Rect(box.x, box.y, box.width, box.height);
-//}
 
 void InitialRecogniser::showFrame()
 {
@@ -101,6 +98,11 @@ void InitialRecogniser::showFrame()
 	vector<vector<Point> > squares;
 
 	*cap >> frame;
+
+	//Mat roiImage = frame(box);
+
+	//Mat roiImage;
+	//frame.copyTo(roiImage);
 
 	Mat temp_frame;
 	frame.copyTo(temp_frame);
@@ -111,7 +113,7 @@ void InitialRecogniser::showFrame()
 	rectangle(frame, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), Scalar(0, 0, 255), 2);
 
 	imshow("Rubic Detection", frame);
-	imshow("Rubic Huection", temp_frame);
+	//imshow("Rubic Huection", temp_frame);
 }
 
 int InitialRecogniser::ready()

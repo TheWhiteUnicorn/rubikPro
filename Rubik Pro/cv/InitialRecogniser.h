@@ -12,7 +12,7 @@ struct RubickColors
 };
 
 // Рамка области распознавания
-const vector<Point> frame = { { 100, 100 },{ 100, 400 },{ 400, 100 },{ 400, 400 } };
+const vector<Point> frame = { { 420, 120 },{ 220, 320 }};
 const Rect box = boundingRect(frame);
 
 
