@@ -35,7 +35,3 @@ void Master::freeMode(){
 	cubeDemo(_cube);
 }
 
-/*RubikState Master::getState() {
-	return this->state;
-}*/
-
