@@ -18,12 +18,12 @@ Master::~Master() {
 void Master::readEdges() {
 	InitialRecogniser initRec;
 	initRec.ready();
+
 	for (;;)
 	{
 		initRec.showFrame();
 		char c = cvWaitKey(33);
 		if (c == 13)  // нажата Enter
-
 			break;
 	}
 

@@ -2,7 +2,6 @@
 
 
 
-
 void InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, которую показывают, вызывая эту функцию, поле массива с соотв. гранью и нужно отображать*/) {
 	//RubickColors *color = new RubickColors();
 
