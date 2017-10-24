@@ -3,6 +3,7 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include "..\res\res.hpp"
+#include "constants.h"
 
 using namespace cv;
 using namespace std;
@@ -12,13 +13,6 @@ struct RubickColors
 	Scalar colors[6][3][3];
 };
 
-// Рамка области распознавания
-const int FRAME_X = 240;
-const int FRAME_Y = 120;
-const int FRAME_W = 200;
-const int FRAME_H = 200;
-
-const vector<Point> frame = { { FRAME_X, FRAME_Y },{ FRAME_X + FRAME_W, FRAME_Y + FRAME_H }};
 const Rect box = boundingRect(frame);
 
 //const vector<Point> 

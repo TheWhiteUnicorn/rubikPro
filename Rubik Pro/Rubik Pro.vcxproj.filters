@@ -41,6 +41,7 @@
     <ClInclude Include="res\Formula.h" />
     <ClInclude Include="res\formulasReader.h" />
     <ClInclude Include="res\res.hpp" />
+    <ClInclude Include="cv\constants.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />
