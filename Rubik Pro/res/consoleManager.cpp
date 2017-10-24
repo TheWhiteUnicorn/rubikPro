@@ -72,6 +72,7 @@ void dispEdges(const Color*** edg) {
 		cout << endl;
 	}
 	SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | 15)); // set to default
+	cout << endl;
 }
 
 // Показывает в консоли развертку кубика, и позволяет совершать повороты

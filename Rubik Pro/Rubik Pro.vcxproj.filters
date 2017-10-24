@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="cube\Cube.cpp" />
-    <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />
     <ClCompile Include="cube\movements.cpp" />
@@ -13,6 +12,21 @@
     <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="cv\findingSquares.cpp" />
     <ClCompile Include="cv\fillingRawColors.cpp" />
+    <ClCompile Include="interface\MyForm.cpp" />
+    <ClCompile Include="cv\Camera.cpp" />
+    <ClCompile Include="res\Formula.cpp" />
+    <ClCompile Include="res\res.cpp" />
+    <ClCompile Include="cube\Element.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly1TopCross.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly2TopLayer.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly3MidLayer.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assemblyCommon.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly4BotCross.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly5BotFacet.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly6BotCorns.cpp" />
+    <ClCompile Include="assembly\assemblyStandartAlgorythms\assembly7BotEdges.cpp" />
+    <ClCompile Include="res\formulasReader.cpp" />
+	<ClCompile Include="cv\InitialRecogniser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cube\Cube.h" />
-    <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
     <ClInclude Include="res\res.hpp" />
     <ClInclude Include="cube\Element.h" />
@@ -35,8 +48,12 @@
     <ClInclude Include="assembly\analysis\Analyser.h" />
     <ClInclude Include="assembly\Assembler.h" />
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
-    <ClInclude Include="assembly\Formula.h" />
-    <ClInclude Include="cv\InitialRecogniser.h" />
+    <ClInclude Include="interface\MyForm.h" />
+    <ClInclude Include="cv\Camera.h" />
+    <ClInclude Include="res\Formula.h" />
+    <ClInclude Include="assembly\formulasLib.h" />
+    <ClInclude Include="res\formulasReader.h" />
+	 <ClInclude Include="cv\InitialRecogniser.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

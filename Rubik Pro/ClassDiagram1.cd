@@ -3,35 +3,35 @@
   <Class Name="Cube">
     <Position X="1" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAkAIwAAAAAAAQQAAACAAAAAAABAAAAAAAAQAA=</HashCode>
+      <HashCode>IAAAAAAkAIwAAABAAAQQAAACAAAAAAABAAAwAAAAQAA=</HashCode>
       <FileName>cube\Cube.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Master">
     <Position X="7.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAQIAACAAAAAAAAAAAAAAAAACAAAJIAAAAA=</HashCode>
       <FileName>control\Master.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Element">
     <Position X="4.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAIgAAAAAAAAAQAAAAAAABAAAAAA=</HashCode>
       <FileName>cube\Element.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Corner">
-    <Position X="3.25" Y="3" Width="1.5" />
+    <Position X="3.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAQAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAABAIAAAAAQAIAgAAQAAAAACAAAAAAAAIAAAAAAAAQ=</HashCode>
       <FileName>cube\Element.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Edge">
-    <Position X="5.5" Y="3" Width="1.5" />
+    <Position X="5.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAgEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAEAAAAAAAAAgAgUAAAAAAAAABAAAAAAAAQAAAAA=</HashCode>
       <FileName>cube\Element.h</FileName>
     </TypeIdentifier>
   </Struct>
