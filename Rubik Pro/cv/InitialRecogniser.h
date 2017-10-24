@@ -21,6 +21,7 @@ class InitialRecogniser
 {
 	VideoCapture *cap;
 
+	Scalar curFacetBuffer[3][3];
 	// Это массив, который нужно заполнять с каждым вызовом
 	RubickColors rawColors;
 
@@ -34,6 +35,7 @@ class InitialRecogniser
 	//void properSquaresArrangement();
 	void drawBoundingSquares(Mat & image);
 
+	void gridRecognition(Mat& image);
 public:
 	// К-тор
 	InitialRecogniser();
@@ -58,5 +60,5 @@ public:
 
 	// Показать кадр
 	void showFrame();
-	void gridRecognition(int edgeShow);
+	
 };
