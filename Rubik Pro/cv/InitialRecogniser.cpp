@@ -37,18 +37,20 @@ RubickColors * InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, 
 			r.width = r.width / 2;
 			r.height = r.height / 2;
 
-			Mat roi = image(r);
+			Mat roiImage = image(box);
+
+			Mat roi = roiImage(r);
 			
 			Scalar temp_color = mean(roi);
 				
 			color->colors[edgeShown][j][k] = temp_color;
 			
 
-			polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+			polylines(roiImage, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 
 			Point center(r.x + r.width / 2, r.y + r.height / 2);
 
-			ellipse(image, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+			ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
 
 			k--;
 			if (k == -1)
