@@ -15,7 +15,7 @@ struct RubickColors
 const vector<Point> frame = { { 420, 120 },{ 220, 320 }};
 const Rect box = boundingRect(frame);
 
-
+// Класс начального распознавания
 class InitialRecogniser
 {
 	VideoCapture *cap;
@@ -33,9 +33,15 @@ public:
 	// Функция подготовки к работе, открывет камеру
 	int ready();
 
-
+	// Заполнить массив цветов rawColors для определенной грани
 	RubickColors * fillSquares(int edgeShow);
+
+	// Найти 9 наклеек на изображении
 	void findSquares(Mat & image, vector<vector<Point>>& squares);
+
+	// Отрисовать квадратики, соответствующие наклейкам в изображении
 	void drawSquares(Mat & image, const vector<vector<Point>>& squares);
+
+	// Показать кадр
 	void showFrame();
 };

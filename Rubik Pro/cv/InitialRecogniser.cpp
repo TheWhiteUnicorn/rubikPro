@@ -20,42 +20,44 @@ RubickColors * InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, 
 		
 		int j = 2, k = 2;
 
-		if (squares.size() != 9) continue;
-		for (size_t i = 0; i < squares.size(); i++)
-		{
-			const Point* p = &squares[i][0];
-			int n = (int)squares[i].size();
-			int shift = 1;
-
-			// Ограничивающие прямоугольники
-			Rect r = boundingRect(Mat(squares[i]));  
-			r.x = r.x + r.width / 4;
-			r.y = r.y + r.height / 4;
-			r.width = r.width / 2;
-			r.height = r.height / 2;
-
-			Mat roiImage = image(box);
-
-			Mat roi = roiImage(r);
-			
-			Scalar temp_color = mean(roi);
-				
-			color->colors[edgeShown][j][k] = temp_color;
+		if (squares.size() != 9) {
 			
 
-			polylines(roiImage, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
-
-			Point center(r.x + r.width / 2, r.y + r.height / 2);
-
-			ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
-
-			k--;
-			if (k == -1)
+			for (size_t i = 0; i < squares.size(); i++)
 			{
-				k = 2;
-				j--;
+				const Point* p = &squares[i][0];
+				int n = (int)squares[i].size();
+				int shift = 1;
+
+				// Ограничивающие прямоугольники
+				Rect r = boundingRect(Mat(squares[i]));
+				r.x = r.x + r.width / 4;
+				r.y = r.y + r.height / 4;
+				r.width = r.width / 2;
+				r.height = r.height / 2;
+
+				Mat roiImage = image(box);
+
+				Mat roi = roiImage(r);
+
+				Scalar temp_color = mean(roi);
+
+				color->colors[edgeShown][j][k] = temp_color;
+
+
+				polylines(roiImage, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+
+				Point center(r.x + r.width / 2, r.y + r.height / 2);
+
+				ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+
+				k--;
+				if (k == -1) {
+					k = 2;
+					j--;
+				}
+
 			}
-		
 		}
 		
 	}
@@ -72,6 +74,7 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 		int shift = 1;
 
 		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
+
 		r.x = r.x + r.width / 4;
 		r.y = r.y + r.height / 4;
 		r.width = r.width / 2;
@@ -115,6 +118,7 @@ void InitialRecogniser::showFrame()
 	imshow("Rubic Detection", frame);
 	//imshow("Rubic Huection", temp_frame);
 }
+
 
 int InitialRecogniser::ready()
 {
