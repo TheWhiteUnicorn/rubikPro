@@ -15,6 +15,25 @@ const int FRAME_MID_Y = WINDOW_HEIGTH / 2;
 const int FRAME_W = 120;
 const int FRAME_H = 120;
 
-const vector<Point> frame = {{ FRAME_MID_X - FRAME_W / 2, FRAME_MID_Y - FRAME_H / 2},
+const vector<Point> FRAME = {{ FRAME_MID_X - FRAME_W / 2, FRAME_MID_Y - FRAME_H / 2},
 							 { FRAME_MID_X + FRAME_W / 2, FRAME_MID_Y + FRAME_H / 2} };
 
+const Point SQUARES_FRAME = { FRAME_MID_X, FRAME_MID_Y };
+const int SQUARES_FRAME_W = 120;
+const int SQUARES_FRAME_H = 120;
+
+const vector<vector<Point>> SQUARES_COORDS = { // ¬ерхн€€ строка
+   {{ SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 },
+	{ SQUARES_FRAME.x, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 },
+	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y + SQUARES_FRAME_H / 2 } },
+
+	// —редн€€ строка
+	{ { SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y },
+	{ SQUARES_FRAME.x, SQUARES_FRAME.y },
+	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y },
+
+	// Ќижн€€ строка
+	{ { SQUARES_FRAME.x - SQUARES_FRAME_W / 2, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 },
+	{ SQUARES_FRAME.x, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 },
+	{ SQUARES_FRAME.x + SQUARES_FRAME_W / 2, SQUARES_FRAME.y - SQUARES_FRAME_H / 2 } },
+}
