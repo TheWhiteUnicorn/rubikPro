@@ -11,9 +11,8 @@ class Master
 	//Рабочая модель кубика
 	Cube _cube;
 	Assembler _assembler{_cube};
-	//RubikState state;
 
-
+	void applyAllFormulas(FormulaStack& );
 public:
 	Master();
 	~Master();

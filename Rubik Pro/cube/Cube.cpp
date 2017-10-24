@@ -1,6 +1,7 @@
 #include "Cube.h"
 #include <iostream>
 #include <ctime>
+#include "..\res\consoleManager.h"
 
 #define invD(dir) dir == 2 ? dir : Dir(1 - int(dir))
 const int NUM_OF_MOVEMENTS = 18, NUM_OF_DIRS = 3;
@@ -22,6 +23,16 @@ Cube::Cube(Color(&edg)[6][3][3])
 	}
 }
 
+Cube::Cube(Cube & cub) { // Возможно, не работает. Протестировать
+	initEdges();
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cub.get_edges()[i][j][k];
+		}
+	}
+}
+
 Cube::~Cube()
 {
 	for (int i = 0; i < 6; i++) {
@@ -33,8 +44,30 @@ Cube::~Cube()
 	delete[]edges;
 }
 
-const Color *** Cube::get_edges() {
+const Color *** Cube::get_edges() const {
 	return (const Color ***)edges;
+}
+
+// Номер наклейки по развертке -> координаты по строке и столбцу
+int coordsOfStickers[9][2]{
+	{ 0,0 },
+	{ 0,1 },
+	{ 0,2 },
+	{ 1,0 },
+	{ 1,1 },
+	{ 1,2 },
+	{ 2,0 },
+	{ 2,1 },
+	{ 2,2 }
+};
+
+const Color Cube::get_color(int facet, int num) const{
+	num--;
+	return edges[facet][coordsOfStickers[num][0]][coordsOfStickers[num][1]];
+}
+
+void Cube::set_color(Color col, int i, int j, int k) {
+	edges[i][j][k] = col;
 }
 
 void Cube::reset() {
@@ -48,14 +81,12 @@ void Cube::reset() {
 
 
 
-void Cube::trick(int numOfOperations) {
-	srand(time(0));
+void Cube::trick(int numOfOperations, int randomizerKey) {
+	srand(randomizerKey);
 	for (int i = 0; i < numOfOperations; i++) {
 		rotate(rand() % NUM_OF_MOVEMENTS, rand() % NUM_OF_DIRS);
 	}
 }
-
-
 
 void Cube::rotate(Move move, Dir dir) {
 	switch (move)
@@ -147,12 +178,37 @@ void Cube::rotate(Move move, Dir dir) {
 	default:
 		break;
 	}
+
+#ifdef DISP_ALL_MOVEMENTS
+	cout << move << dir << endl;
+	dispEdges((const Color ***)this->edges);
+#endif // DISP_ALL_MOVEMENTS
+}
+
+void Cube::rotate(Operation op) {
+	this->rotate(op.move, op.direction);
 }
 
 void Cube::rotate(int move, int dir) {
 	if (move >= 0 && move <= 17 && dir >= 0 && dir <= 2) {
 		this->rotate(Move(move), Dir(dir));
 	}
+}
+
+void Cube::applyFormula(Formula & f) {
+	for (auto i = f.get_sequence().begin(); i != f.get_sequence().end(); ++i) {
+		rotate(*i);
+	}
+}
+
+Cube & Cube::operator=(Cube & cub) {
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cub.get_edges()[i][j][k];
+		}
+	}
+	return *this;
 }
 
 void Cube::initEdges() {
