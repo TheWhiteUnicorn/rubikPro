@@ -170,6 +170,7 @@
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />
+    <ClInclude Include="cv\constants.h" />
     <ClInclude Include="cv\InitialRecogniser.h" />
     <ClInclude Include="interface\MyForm.h" />
     <ClInclude Include="res\consoleManager.h" />
