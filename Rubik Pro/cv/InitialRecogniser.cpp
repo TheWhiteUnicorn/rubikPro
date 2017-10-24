@@ -10,7 +10,7 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 	{
 		const Point* p = &squares[i][0];
 		int n = (int)squares[i].size();
-		int shift = 0;
+		int shift = 1;
 
 		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
 
@@ -24,7 +24,7 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 		Mat roi = roiImage(r);
 		Scalar temp_color = mean(roi);
 
-		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, 0);
+		//polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
 		fillPoly(image, &p, &n, 1, temp_color, LINE_AA, shift);
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
@@ -33,6 +33,11 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 	}
 };
 
+
+void InitialRecogniser::gridRecognition(Mat & image)
+{
+	
+};
 
 
 

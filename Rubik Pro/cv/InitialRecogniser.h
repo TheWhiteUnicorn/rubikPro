@@ -13,13 +13,15 @@ struct RubickColors
 };
 
 // Рамка области распознавания
-const int FRAME_X = 260;
-const int FRAME_Y = 180;
-const int FRAME_W = 120;
-const int FRAME_H = 120;
+const int FRAME_X = 240;
+const int FRAME_Y = 120;
+const int FRAME_W = 200;
+const int FRAME_H = 200;
 
 const vector<Point> frame = { { FRAME_X, FRAME_Y },{ FRAME_X + FRAME_W, FRAME_Y + FRAME_H }};
 const Rect box = boundingRect(frame);
+
+//const vector<Point> 
 
 // Класс начального распознавания
 class InitialRecogniser
@@ -62,5 +64,5 @@ public:
 
 	// Показать кадр
 	void showFrame();
-	void nineRect(Mat &image);
+	void gridRecognition(Mat &image);
 };
