@@ -22,10 +22,13 @@ class InitialRecogniser
 
 	// Это массив, который нужно заполнять с каждым вызовом
 	RubickColors rawColors;
+	// 
 
 	// Вспомогательные функции
 	void preprocessing(Mat &image);
 	double angle(Point pt1, Point pt2, Point pt0);
+
+	void properSquaresArrangement();
 public:
 	// К-тор
 	InitialRecogniser();
@@ -34,7 +37,7 @@ public:
 	int ready();
 
 	// Заполнить массив цветов rawColors для определенной грани
-	RubickColors * fillSquares(int edgeShow);
+	void fillSquares(int edgeShow);
 
 	// Найти 9 наклеек на изображении
 	void findSquares(Mat & image, vector<vector<Point>>& squares);

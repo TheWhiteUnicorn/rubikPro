@@ -12,6 +12,7 @@
     <ClCompile Include="assembly\analysis\readinessAuditor.cpp" />
     <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="cv\findingSquares.cpp" />
+    <ClCompile Include="cv\fillingRawColors.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

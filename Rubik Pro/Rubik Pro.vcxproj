@@ -135,6 +135,7 @@
     <ClCompile Include="control\Master.cpp" />
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\movements.cpp" />
+    <ClCompile Include="cv\fillingRawColors.cpp" />
     <ClCompile Include="cv\findingSquares.cpp" />
     <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
