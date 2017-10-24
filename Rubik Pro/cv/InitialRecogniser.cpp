@@ -69,7 +69,7 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 	{
 		const Point* p = &squares[i][0];
 		int n = (int)squares[i].size();
-		int shift = 1;
+		int shift = 0;
 
 		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
 		r.x = r.x + r.width / 4;
@@ -82,13 +82,16 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 		Mat roi = roiImage(r);
 		Scalar temp_color = mean(roi);
 
-		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+		polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, 0);
+		fillPoly(image, &p, &n, 1, temp_color, LINE_AA, shift);
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
-		ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+		ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA); 
 
 	}
 };
+
+
 
 
 void InitialRecogniser::showFrame()
@@ -98,11 +101,6 @@ void InitialRecogniser::showFrame()
 
 	*cap >> frame;
 
-	//Mat roiImage = frame(box);
-
-	//Mat roiImage;
-	//frame.copyTo(roiImage);
-
 	Mat temp_frame;
 	frame.copyTo(temp_frame);
 
@@ -110,6 +108,7 @@ void InitialRecogniser::showFrame()
 	drawSquares(frame, squares);
 
 	rectangle(frame, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), Scalar(0, 0, 255), 2);
+
 
 	imshow("Rubic Detection", frame);
 	//imshow("Rubic Huection", temp_frame);
