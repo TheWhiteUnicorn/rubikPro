@@ -55,7 +55,7 @@ void InitialRecogniser::showFrame()
 	drawSquares(frame, squares);
 
 	rectangle(frame, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), Scalar(0, 0, 255), 2);
-
+	drawBoundingSquares(frame);
 
 	imshow("Rubic Detection", frame);
 	//imshow("Rubic Huection", temp_frame);
@@ -72,4 +72,14 @@ int InitialRecogniser::ready()
 	}
 
 	return 0;
+}
+
+void InitialRecogniser::drawBoundingSquares(Mat & image) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			//Point topLeft(SQUARES_COORDS[i][j].x - SQUARES_W / 2, SQUARES_COORDS[i][j].y - SQUARES_H / 2);
+			//Point botRight(SQUARES_COORDS[i][j].x + SQUARES_W / 2, SQUARES_COORDS[i][j].y + SQUARES_H / 2);
+			rectangle(image,  squaresTopLeft(i, j), squaresBotRight(i, j), Scalar(0, 0, 255), 2);
+		}
+	}
 }

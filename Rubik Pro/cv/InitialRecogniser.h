@@ -13,7 +13,7 @@ struct RubickColors
 	Scalar colors[6][3][3];
 };
 
-const Rect box = boundingRect(frame);
+const Rect box = boundingRect(FRAME);
 
 //const vector<Point> 
 
@@ -29,10 +29,11 @@ class InitialRecogniser
 	Scalar referenceColors[6];
 
 	// Вспомогательные функции
-	void preprocessing(Mat &image);
+	void preprocessing(Mat & image);
 	double angle(Point pt1, Point pt2, Point pt0);
 	Color classifyColor(Scalar rawColor);
 	//void properSquaresArrangement();
+	void drawBoundingSquares(Mat & image);
 
 public:
 	// К-тор
