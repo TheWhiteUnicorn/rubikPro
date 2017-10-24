@@ -44,4 +44,5 @@ public:
 
 	// Показать кадр
 	void showFrame();
+	
 };
