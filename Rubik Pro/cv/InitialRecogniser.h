@@ -19,14 +19,21 @@ const Rect box = boundingRect(frame);
 class InitialRecogniser
 {
 	VideoCapture *cap;
+
+	// Это массив, который нужно заполнять с каждым вызовом
+	RubickColors rawColors;
+
+	// Вспомогательные функции
 	void preprocessing(Mat &image);
-
+	double angle(Point pt1, Point pt2, Point pt0);
 public:
-
+	// К-тор
 	InitialRecogniser();
 
-	int CubeCV();
-	double angle(Point pt1, Point pt2, Point pt0);
+	// Функция подготовки к работе, открывет камеру
+	int ready();
+
+
 	RubickColors * fillSquares(int edgeShow);
 	void findSquares(Mat & image, vector<vector<Point>>& squares);
 	void drawSquares(Mat & image, const vector<vector<Point>>& squares);
