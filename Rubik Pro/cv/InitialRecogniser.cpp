@@ -37,24 +37,17 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 void InitialRecogniser::gridRecognition(int edgeShow)
 {
 	Mat image;
-	int j = 2, k = 2;
-
 
 	{
-		Rect gridBox = boundingRect();
+		Rect gridBox = boundingRect(SQUARES_COORDS[0]);
 
 		Mat roiImage = image(gridBox);
 
 		Mat roi = roiImage(gridBox);
 		Scalar temp_color = mean(roi);
 
-		rawColors.colors[edgeShow][j][k] = temp_color;
+		rawColors.colors[edgeShow][0][0] = temp_color;
 
-		k++;
-		if (k == 3) {
-			k = 0;
-			j++;
-		}
 	}
 };
 
@@ -96,8 +89,7 @@ int InitialRecogniser::ready()
 void InitialRecogniser::drawBoundingSquares(Mat & image) {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
-			//Point topLeft(SQUARES_COORDS[i][j].x - SQUARES_W / 2, SQUARES_COORDS[i][j].y - SQUARES_H / 2);
-			//Point botRight(SQUARES_COORDS[i][j].x + SQUARES_W / 2, SQUARES_COORDS[i][j].y + SQUARES_H / 2);
+			
 			rectangle(image,  squaresTopLeft(i, j), squaresBotRight(i, j), Scalar(0, 0, 255), 2);
 		}
 	}
