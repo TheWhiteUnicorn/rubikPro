@@ -31,4 +31,5 @@ public:
 	void findSquares(Mat & image, vector<vector<Point>>& squares);
 	void drawSquares(Mat & image, const vector<vector<Point>>& squares);
 	void showFrame();
+	
 };

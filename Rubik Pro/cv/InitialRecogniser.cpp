@@ -50,7 +50,7 @@ RubickColors * InitialRecogniser::fillSquares(int edgeShown /* Это номер грани, 
 
 			Point center(r.x + r.width / 2, r.y + r.height / 2);
 
-			ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+			ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color , 2, LINE_AA);
 
 			k--;
 			if (k == -1)
@@ -89,7 +89,6 @@ void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& sq
 
 		Point center(r.x + r.width / 2, r.y + r.height / 2);
 		ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
-
 
 	}
 };
