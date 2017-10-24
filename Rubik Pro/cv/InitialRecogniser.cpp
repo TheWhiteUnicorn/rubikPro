@@ -1,8 +1,5 @@
 #include "InitialRecogniser.h"
 
-// Это массив, который нужно заполнять с каждым вызовом
-RubickColors rawColors;
-
 InitialRecogniser::InitialRecogniser (){
 };
 
@@ -117,7 +114,7 @@ void InitialRecogniser::showFrame()
 	imshow("Rubic Huection", temp_frame);
 }
 
-int InitialRecogniser::CubeCV()
+int InitialRecogniser::ready()
 {
 	cap = new VideoCapture(0); // opens default webcam
 

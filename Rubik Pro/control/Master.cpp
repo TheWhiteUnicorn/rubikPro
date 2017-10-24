@@ -11,7 +11,7 @@ Master::~Master(){
 
 void Master::readEdges() {
 	InitialRecogniser initRec;
-	initRec.CubeCV();
+	initRec.ready();
 	for (;;)
 	{
 		initRec.showFrame();

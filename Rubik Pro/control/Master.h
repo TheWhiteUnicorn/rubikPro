@@ -25,6 +25,4 @@ public:
 
 	//—борка кубика стандартным способом
 	void standartAssembly();
-
-	//RubikState getState();
 };
