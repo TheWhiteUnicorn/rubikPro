@@ -46,6 +46,7 @@ class Assembler {
 	Operation applyOperation(FormulaStack & res, const vector<pair<Move, int>>);
 	// Выставить кубик по верхнему и переднему цвету
 	void allign(FormulaStack & res, Color colorOnTop, Color colorOnFront);
+	Operation findAllignmentOperation(Color colorOnTop);
 	// Выставить указанный кубик по верхнему и переднему цвету (без записи в стэк формул)
 	//void allign(Color colorOnTop, Color colorOnFront, Cube& cube);
 
@@ -55,6 +56,7 @@ public:
 
 	void refresh();
 	void allignCube(FormulaStack &, Color colorOnTop, Color colorOnFront);
+	Operation findAllignmentOperation(Color colorOnTop, Cube& cub);
 
 	void doTopCross(FormulaStack &);
 	void doTopLayer(FormulaStack &);

@@ -25,7 +25,6 @@ void InitialRecogniser::gridRecognition(Mat& image) {
 
 			Mat roi = image(gridBox);
 
-			//Mat roi = roiImage(gridBox);
 			Scalar temp_color = mean(roi);
 
 			curFacetBuffer[i][j] = temp_color;

@@ -5,6 +5,7 @@
 #include "..\res\res.hpp"
 #include "constants.h"
 #include "..\cube\Cube.h"
+#include "..\res\Formula.h"
 
 using namespace cv;
 using namespace std;
@@ -25,7 +26,6 @@ class InitialRecogniser
 	Scalar curFacetBuffer[3][3];
 	// Это массив, который нужно заполнять с каждым вызовом
 	RubickColors rawColors;
-
 	// Массив скаляров эталонных значений каждого цвета
 	Scalar referenceColors[6];
 
@@ -45,9 +45,10 @@ class InitialRecogniser
 	 // Распознать квадратики по шаблону
 	void gridRecognition(Mat& image);
 
+	// Семантическое преобразование цветов для заданной грани
+	void semanticTransformationOfColors(FacetColorsMatrix& res, int facet);
+
 public:
-	// К-тор
-	InitialRecogniser();
 
 	// Функция подготовки к работе, открывет камеру
 	int ready();
@@ -61,8 +62,7 @@ public:
 	// Начальное семантическое преобразование и заполнение всех граней модели кубика
 	void initialModelFilling(CubeColorsTable& res);
 
-	// Семантическое преобразование цветов для заданной грани
-	void semanticTransformationOfColors(FacetColorsMatrix& res, int facet);
+	bool checkRotCorrectness(Cube& cub, Operation& oper);
 
 	// Показать кадр
 	void showFrame();

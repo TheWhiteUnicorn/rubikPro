@@ -1,6 +1,6 @@
 #include "Master.h"
 #include <ctime> // для рандома кубика
-#include "..\cv\InitialRecogniser.h"
+
 
 void Master::applyAllFormulas(FormulaStack& formStack) {
 	while (formStack.doFirstUnperfOper(_cube)) {}
@@ -8,7 +8,7 @@ void Master::applyAllFormulas(FormulaStack& formStack) {
 }
 
 Master::Master() {
-
+	initRec.ready();
 }
 
 Master::~Master() {
@@ -16,9 +16,7 @@ Master::~Master() {
 }
 
 void Master::readEdges() {
-	InitialRecogniser initRec;
-	initRec.ready();
-
+	
 	int edgeNum = 0;
 	for (;;)
 	{
@@ -41,6 +39,8 @@ void Master::readEdges() {
 		}
 	}
 }
+
+
 
 void Master::standartAssembly(){
 
@@ -95,6 +95,18 @@ void Master::standartAssembly(){
 		//		cout << движ/направление
 		//	}
 		//}
+	}
+}
+
+void Master::performOperation() {
+	for (;;)
+	{
+		initRec.showFrame();
+		char c = cvWaitKey(33);
+		if (c == 13) { // нажата Enter
+			if (initRec.checkRotCorrectness(_cube, Operation(F, CKW)))
+				break;
+		}
 	}
 }
 

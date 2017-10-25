@@ -34,6 +34,26 @@ void InitialRecogniser::initialModelFilling(CubeColorsTable& res) {
 	}
 }
 
+bool InitialRecogniser::checkRotCorrectness(Cube & cub, Operation & oper) {
+	Cube tmp(cub);
+	tmp.rotate(oper);
+	
+	saveEdgeColorsBuffer(0);
+
+	FacetColorsMatrix realEdge;
+
+	semanticTransformationOfColors(realEdge, 0);
+
+	for (int j = 0; j < 3; j++) {
+		for (int k = 0; k < 3; k++) {
+			if (realEdge.colors[j][k] != tmp.get_edges()[0][j][k])
+				return false;
+		}
+	}
+
+	return true;
+}
+
 void InitialRecogniser::semanticTransformationOfColors(FacetColorsMatrix& res, int facet) {
 	for (int j = 0; j < 3; j++) {
 		for (int k = 0; k < 3; k++) {

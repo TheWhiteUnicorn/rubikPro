@@ -20,7 +20,8 @@ int main() {
 	Master master;
 	
 	//master.freeMode();
-	//master.readEdges();
+	master.readEdges();
+	master.performOperation();
 	master.standartAssembly();
 
 	return 0;

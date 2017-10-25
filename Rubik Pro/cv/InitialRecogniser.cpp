@@ -1,8 +1,5 @@
 #include "InitialRecogniser.h"
 
-InitialRecogniser::InitialRecogniser (){
-};
-
 
 void InitialRecogniser::showFrame()
 {
