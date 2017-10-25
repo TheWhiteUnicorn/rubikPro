@@ -27,9 +27,9 @@ class Assembler {
 	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
 	Dir findOptimalYRot(int src, int tgt, ElementLocLayer layer);
 	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
-	Dir findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer);
+	Dir findOptimalYRot(ElementLocSide src, ElementLocSide tgt, ElementLocLayer layer);
 	// Найти самый эффективный поворот для перестановки элемента с одной позиции в другую перпендикулярно оси Y
-	Dir findOptimalYRot(ElementLocSide & src, int tgt, ElementLocLayer layer);
+	Dir findOptimalYRot(ElementLocSide  src, int tgt, ElementLocLayer layer);
 	// Найти, на какой стороне по расширенной системе должен в итоге стоять угловой элемент
 	ElementLocSide findCornAdvSide(Corner& corn);
 
@@ -39,7 +39,7 @@ class Assembler {
 	int advToSide(ElementLocSide side);
 
 	// Записывает операцию в результат и сразу же применяет к _liveCube
-	Operation applyOperation(FormulaStack & res, Operation & oper);
+	Operation applyOperation(FormulaStack & res, Operation  oper);
 	// Оформляет и записывает операцию в результат и сразу же применяет к _liveCube
 	Operation applyOperation(FormulaStack & res, Move mov, Dir dir);
 	// Записывает все операции массива в результат и сразу же применяет к _liveCube
@@ -52,10 +52,10 @@ class Assembler {
 public:
 	Assembler(Cube & c);
 	~Assembler();
-	
+
 	void refresh();
 	void allignCube(FormulaStack &, Color colorOnTop, Color colorOnFront);
-	
+
 	void doTopCross(FormulaStack &);
 	void doTopLayer(FormulaStack &);
 	void doMidLayer(FormulaStack &);

@@ -29,13 +29,13 @@ void Assembler::doTopCross(FormulaStack & res) {
 				else {
 					if (curEdge->get_orientation() == 0) {
 						applyOperation(res, F, CKW);
-						Operation& tmp = applyOperation(res, U, findOptimalYRot(sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
+						Operation tmp = applyOperation(res, U, findOptimalYRot(sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
 						applyOperation(res, F, ACKW);
 						applyOperation(res, tmp.invert());
 					}
 					else {
 						applyOperation(res, F, CKW);
-						Operation& tmp = applyOperation(res, U, findOptimalYRot(sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 1, TOP));
+						Operation tmp = applyOperation(res, U, findOptimalYRot(sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 1, TOP));
 						applyOperation(res, R, CKW);
 						applyOperation(res, tmp.invert());
 					}
@@ -47,12 +47,12 @@ void Assembler::doTopCross(FormulaStack & res) {
 				
 				if(curEdge->get_orientation() == 0){
 					allign(res, WHITE, _liveCube.get_edges()[(advToSide(++(curEdge->side)))][1][1]);
-					Operation& tmp = applyOperation(res, U, findOptimalYRot( sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
+					Operation tmp = applyOperation(res, U, findOptimalYRot( sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
 					applyOperation(res, F, ACKW);
 					applyOperation(res, tmp.invert());
 				} else {
 					allign(res, WHITE, _liveCube.get_edges()[(advToSide((curEdge->side)))][1][1]);
-					Operation& tmp = applyOperation(res, U, findOptimalYRot( sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
+					Operation tmp = applyOperation(res, U, findOptimalYRot( sideToAdv(findMidColor(curEdge->get_second(), _liveCube)).side, 2, TOP));
 					applyOperation(res, F, CKW);
 					applyOperation(res, tmp.invert());
 				}

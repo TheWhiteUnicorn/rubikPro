@@ -55,11 +55,11 @@ Dir Assembler::findOptimalYRot(int src, int tgt, ElementLocLayer layer) {
 	return answ;
 }
 
-Dir Assembler::findOptimalYRot(ElementLocSide& src, ElementLocSide& tgt, ElementLocLayer layer) {
+Dir Assembler::findOptimalYRot(ElementLocSide src, ElementLocSide tgt, ElementLocLayer layer) {
 	return findOptimalYRot(src.side, tgt.side, layer);
 }
 
-Dir Assembler::findOptimalYRot(ElementLocSide& src, int tgt, ElementLocLayer layer) {
+Dir Assembler::findOptimalYRot(ElementLocSide src, int tgt, ElementLocLayer layer) {
 	return findOptimalYRot(src.side, tgt, layer);
 }
 
@@ -92,7 +92,7 @@ int Assembler::advToSide(ElementLocSide side) {
 }
 
 // Записывает операцию в результат и сразу же применяет к _liveCube
-Operation Assembler::applyOperation(FormulaStack & res, Operation & oper) {
+Operation Assembler::applyOperation(FormulaStack & res, Operation oper) {
 	res.pushBack(oper);
 	_liveCube.rotate(oper);
 	return oper;
