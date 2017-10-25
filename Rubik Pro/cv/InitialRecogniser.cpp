@@ -18,17 +18,18 @@ void InitialRecogniser::showFrame()
 	drawSquares(frame, squares);
 	gridRecognition(frame);
 
-	rectangle(frame, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), Scalar(0, 0, 255), 2);
+	rectangle(frame, Point(box.x, box.y), Point(box.x + box.width, box.y + box.height), Scalar(255, 0, 0), 1);
 	drawBoundingSquares(frame);
 
 	imshow("Rubic Detection", frame);
-	//imshow("Rubic Huection", temp_frame);
+	imshow("Rubic Borders ", temp_frame);
 }
 
 
 int InitialRecogniser::ready()
 {
-	cap = new VideoCapture(0); // opens default webcam
+	// открывает камеру по умолчанию
+	cap = new VideoCapture(0); 
 
 	if (!cap->isOpened())
 	{
