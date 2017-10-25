@@ -10,6 +10,11 @@ void InitialRecogniser::drawBoundingSquares(Mat & image) {
 }
 
 void InitialRecogniser::saveEdgeColorsBuffer(int edge) {
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 3; j++) {
+			rawColors.colors[edge][i][j] = curFacetBuffer[i][j];
+		}
+	}
 }
 
 void InitialRecogniser::gridRecognition(Mat& image) {

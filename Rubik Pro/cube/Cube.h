@@ -4,6 +4,16 @@
 
 #define DISP_ALL_MOVEMENTS
 
+// Хранит конфигурацию цветов на одной грани
+struct FacetColorsMatrix {
+	Color colors[3][3];
+};
+
+// Хранит все грани кубика с конфигурацей цветов на них
+struct CubeColorsTable {
+	FacetColorsMatrix facets[6];
+};
+
 class Cube
 {
 public:
@@ -11,6 +21,8 @@ public:
 	Cube();
 	// Конструктор, принимающий массив граней
 	Cube(Color(&edg)[6][3][3]);
+	// Конструктор, принимающий 
+	Cube(CubeColorsTable& cfg);
 	// К-тор копирования
 	Cube(Cube&);
 	// Деструктор
@@ -21,6 +33,8 @@ public:
 
 	// Возвращает цвет наклейки по номеру грани и номеру наклейки в соответствии с разверткой
 	const Color get_color(int facet, int num) const;
+
+	void set(CubeColorsTable& cfg);
 
 	// ВНИМАНИЕ! ИСПОЛЬЗОВАНИЕ ДАННОЙ ФУНКЦИИ МОЖЕТ ПРИВЕСТИ К НАРУШЕНИЮ ЦЕЛОСТНОСТИ МОДЕЛИ! 
 	void set_color(Color col, int i, int j, int k);

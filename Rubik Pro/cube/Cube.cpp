@@ -23,6 +23,16 @@ Cube::Cube(Color(&edg)[6][3][3])
 	}
 }
 
+Cube::Cube(CubeColorsTable & cfg) {
+	initEdges();
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cfg.facets[i].colors[j][k];
+		}
+	}
+}
+
 Cube::Cube(Cube & cub) { // Возможно, не работает. Протестировать
 	initEdges();
 	for (int i = 0; i < 6; i++) {
@@ -64,6 +74,15 @@ int coordsOfStickers[9][2]{
 const Color Cube::get_color(int facet, int num) const{
 	num--;
 	return edges[facet][coordsOfStickers[num][0]][coordsOfStickers[num][1]];
+}
+
+void Cube::set(CubeColorsTable& cfg) {
+	for (int i = 0; i < 6; i++) {
+		for (int j = 0; j < 3; j++) {
+			for (int k = 0; k < 3; k++)
+				edges[i][j][k] = cfg.facets[i].colors[j][k];
+		}
+	}
 }
 
 void Cube::set_color(Color col, int i, int j, int k) {

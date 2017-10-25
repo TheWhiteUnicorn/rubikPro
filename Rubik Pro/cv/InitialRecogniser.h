@@ -4,6 +4,7 @@
 #include "opencv2/highgui.hpp"
 #include "..\res\res.hpp"
 #include "constants.h"
+#include "..\cube\Cube.h"
 
 using namespace cv;
 using namespace std;
@@ -14,7 +15,6 @@ struct RubickColors
 };
 
 const Rect box = boundingRect(FRAME);
-
 
 //  ласс начального распознавани€
 class InitialRecogniser
@@ -59,10 +59,10 @@ public:
 	void fillSquares(int edgeShow);
 
 	// Ќачальное семантическое преобразование и заполнение всех граней модели кубика
-	void initialModelFilling(Color*** res);
+	void initialModelFilling(CubeColorsTable& res);
 
 	// —емантическое преобразование цветов дл€ заданной грани
-	void semanticTransformationOfColors(Color** res, int facet);
+	void semanticTransformationOfColors(FacetColorsMatrix& res, int facet);
 
 	// ѕоказать кадр
 	void showFrame();

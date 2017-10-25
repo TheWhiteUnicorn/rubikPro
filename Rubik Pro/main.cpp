@@ -22,7 +22,5 @@ int main() {
 	//master.freeMode();
 	master.readEdges();
 
-	//master.getState().launchCapture();
-
 	return 0;
 }

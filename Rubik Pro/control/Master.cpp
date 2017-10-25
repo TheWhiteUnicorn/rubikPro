@@ -19,15 +19,28 @@ void Master::readEdges() {
 	InitialRecogniser initRec;
 	initRec.ready();
 
+	int edgeNum = 0;
 	for (;;)
 	{
 		initRec.showFrame();
 		char c = cvWaitKey(33);
-		if (c == 13)  // нажата Enter
-			break;
-	}
+		if (c == 13) { // нажата Enter
+			initRec.saveEdgeColorsBuffer(edgeNum);
+			edgeNum++;
+			if (edgeNum > 5) {
+				CubeColorsTable table;
+				initRec.initialModelFilling(table);
+				_cube.set(table);
+				dispEdges(_cube.get_edges());
+				break;
+			}
+				
+		}
+		if (c == 'r') { // Ждем клавишу r, если нужно начать запись заново
+			edgeNum = 0;
+		}
 
-	initRec.fillSquares(0);
+	}
 }
 
 void Master::standartAssembly(){
