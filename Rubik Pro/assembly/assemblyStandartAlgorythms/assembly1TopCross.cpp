@@ -4,12 +4,15 @@
 
 void Assembler::doTopCross(FormulaStack & res) {
 	_liveCube = _cube;
-	
+	setSPurp(HS_STACK_1);
+
 	 _edgeVector & whitesEdge = _analyser->findWhitesEdge();
 
 	for (int i = 0; i < NUM_OF_WHITES; i++) {
 		_analyser->findWhitesEdge();
 		if (curEdge->placed == false) {
+
+			setFPurp(HS_FORM_POS_WHITE_EDG);
 
 			switch (curEdge->layer) {
 			case TOP: {

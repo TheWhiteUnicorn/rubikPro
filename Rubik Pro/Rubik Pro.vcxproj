@@ -168,6 +168,7 @@
     <ClInclude Include="assembly\analysis\readinessAuditor.h" />
     <ClInclude Include="assembly\Assembler.h" />
     <ClInclude Include="assembly\formulasLib.h" />
+    <ClInclude Include="assembly\hintStrings.h" />
     <ClInclude Include="control\Master.h" />
     <ClInclude Include="cube\Cube.h" />
     <ClInclude Include="cube\Element.h" />

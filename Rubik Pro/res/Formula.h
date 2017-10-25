@@ -5,6 +5,8 @@ class Cube;
 
 using namespace std;
 
+
+
 // —труктура, хран€ща€ данные одной операции над кубиком
 struct Operation {
 	// ƒвижение
@@ -29,6 +31,13 @@ private:
 	deque<Operation>::iterator firstUnperf;
 	
 public:
+	// ќтражает, какую конкретную подзадачу решает эта формула
+	string purpose;
+
+	/*Color color1 = Color(-1); //≈сли цвета проинициализированы значением -1, их выводить не надо
+	Color color2 = Color(-1);
+	Color color3 = Color(-1); */
+
 	// ѕоказывает, примен€лась ли уже эта операци€
 	bool performed = false;
 
@@ -59,10 +68,14 @@ private:
 	deque<Formula>::iterator firstUnperf;
 	
 public:
+	// ќтражает, какую конкретную задачу решает эта совокупность формул
+	string purpose;
+
 	FormulaStack();
 	// ¬озвращает ссылку на формулы (не рекомендуетс€ использовать дл€ добавлени€/выполнени€ операций!!)
 	deque<Formula>& get_formulas() { return formulas; }
-
+	
+	Formula& get_last();
 
 	// ¬ернуть первую еще не примененную операцию
 	const Operation& getFirstUnperfOper() const;

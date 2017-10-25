@@ -2,6 +2,8 @@
 
 void Assembler::doBotEdges(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_7);
+
 	allign(res, YELLOW, BLUE);
 
 	Dir allignRotDirection;

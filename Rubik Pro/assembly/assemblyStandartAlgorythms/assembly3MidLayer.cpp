@@ -24,6 +24,7 @@ void sortAssocMap(int* map, _edgeVector& edges, int begin) {
 
 void Assembler::doMidLayer(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_3);
 
 	_edgeVector & midEdge = _analyser->findMidEdge();
 	

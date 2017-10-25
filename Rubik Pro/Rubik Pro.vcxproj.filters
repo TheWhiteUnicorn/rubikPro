@@ -43,6 +43,7 @@
     <ClInclude Include="res\formulasReader.h" />
     <ClInclude Include="res\res.hpp" />
     <ClInclude Include="cv\constants.h" />
+    <ClInclude Include="assembly\hintStrings.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="interface\MyForm.resx" />

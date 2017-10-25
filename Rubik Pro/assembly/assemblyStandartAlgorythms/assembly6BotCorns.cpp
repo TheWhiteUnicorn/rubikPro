@@ -8,6 +8,7 @@
 
 void Assembler::doBotCorns(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_6);
 	
 	Color colorOnTop; // ÷вет, которого должен быть центральный правый елемент, чтоб "ситуаци€" сто€ла на своем месте
 	BotCornsSituation situation = _analyser->findBotCornsConfig(colorOnTop);

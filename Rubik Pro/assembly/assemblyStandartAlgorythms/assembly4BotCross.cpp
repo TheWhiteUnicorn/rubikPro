@@ -2,6 +2,7 @@
 
 void Assembler::doBotCross(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_4);
 
 	Dir allignRotDirection;
 	YellowCrossSituation situation = _analyser->findYellowCrossSituations(allignRotDirection);

@@ -52,6 +52,10 @@ FormulaStack::FormulaStack() {
 	newFormula();
 }
 
+Formula & FormulaStack::get_last() {
+	return formulas.back();
+}
+
 const Operation & FormulaStack::getFirstUnperfOper() const {
 	if (formulas.back().performed) throw 1;// исключение выбрасывается, если в списке нет невыполненных формул. Для избежания, следует проверять поле performed
 	return firstUnperf->getFirstUnperfOper();

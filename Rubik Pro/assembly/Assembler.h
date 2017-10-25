@@ -5,6 +5,7 @@
 #include "..\res\Formula.h"
 #include <assert.h>
 #include "formulasLib.h"
+#include "hintStrings.h"
 #include "..\res\formulasReader.h"
 
 

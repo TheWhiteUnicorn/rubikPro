@@ -3,6 +3,7 @@
 
 void Assembler::doBotFacet(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_5);
 
 	Dir allignRotDirection;
 	YellowLayerSituation situation = _analyser->findYellowLayerSituations(allignRotDirection);

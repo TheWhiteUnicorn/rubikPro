@@ -4,12 +4,16 @@
 
 void Assembler::doTopLayer(FormulaStack & res) {
 	_liveCube = _cube;
+	setSPurp(HS_STACK_2);
+
 	allign(res, YELLOW, GREEN);
 
 	_cornVector & whitesCorn = _analyser->findWhitesCorn();
 
 	for (int i = 0; i < NUM_OF_WHITES; i++) {	
 		if (!curCorn->placed) {
+			setFPurp(HS_FORM_POS_WHITE_CRN);
+
 			_analyser->findWhitesCorn();
 			switch (curCorn->layer) {
 			case BOT: {
