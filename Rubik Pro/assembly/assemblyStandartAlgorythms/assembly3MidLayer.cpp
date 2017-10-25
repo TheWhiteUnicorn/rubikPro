@@ -37,17 +37,20 @@ void Assembler::doMidLayer(FormulaStack & res) {
 		sortAssocMap(sortedAssocMap, midEdge, i);
 		if (curEdge->layer == MID) { // если элемент на середине, мы ее поднимаеми потом обработаем как элемент с верхнего слоя
 			if (_liveCube.get_edges()[(advToSide((curEdge->side)))][1][1] != curEdge->get_second() || curEdge->get_orientation() == 0) { //проверяем, не стоит ли элемент уже на месте
-
+				setFPurp(HS_FORM_MID_EXTRACT);
 				allign(res, YELLOW, _liveCube.get_edges()[(advToSide((curEdge->side)+1))][1][1]);
 
 				applyOperation(res, MID_EDGES_MOVE_TO_RIGHT);
-
+				res.newFormula();
 				_analyser->findMidEdge();
 			}
 		}
 
 		if (curEdge->layer == TOP) {
 			if (curEdge->get_orientation() == 0) {
+
+				setFPurp(HS_FORM_MID_EDG_LFT);
+
 				allign(res, YELLOW, curEdge->get_second());
  				_analyser->findMidEdge();
 				applyOperation(res, U, findOptimalYRot(curEdge->side, 2, TOP));
@@ -55,6 +58,9 @@ void Assembler::doMidLayer(FormulaStack & res) {
 				applyOperation(res, MID_EDGES_MOVE_TO_LEFT);
 			}
 			else {
+
+				setFPurp(HS_FORM_MID_EDG_RGHT);
+
 				allign(res, YELLOW, curEdge->get_first());
 				_analyser->findMidEdge();
 				applyOperation(res, U, findOptimalYRot(curEdge->side, 2, TOP));

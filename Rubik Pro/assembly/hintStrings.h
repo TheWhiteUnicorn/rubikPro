@@ -28,17 +28,18 @@
 #define HS_FORM_YLW_CROSS_DAW "Формула \"Галка\""
 #define HS_FORM_YLW_CROSS_DOT "Формула \"Точка\""
 
-#define HS_FORM_YLW_LYR_D_EYES "Формула \"Палка\""
-//#define HS_FORM_YLW_LYR_HELI
-//#define HS_FORM_YLW_LYR_EYES
-//#define HS_FORM_YLW_LYR_EARS
-//#define HS_FORM_YLW_LYR_EIGHT
+#define HS_FORM_YLW_LYR_D_EYES "Формула \"Двойные глаза\""
+#define HS_FORM_YLW_LYR_HELI "Формула \"Вертолет\""
+#define HS_FORM_YLW_LYR_EYES "Формула \"Глаза\""
+#define HS_FORM_YLW_LYR_EARS "Формула \"Уши\""
+#define HS_FORM_YLW_LYR_EIGHT "Формула \"Восемь\""
 #define HS_FORM_YLW_LYR_L_FISH "Формула \"Левая рыбка\""
 #define HS_FORM_YLW_LYR_R_FISH "Формула \"Правая рыбка\""
 
 #define HS_FORM_BOT_CRN_CYCLIC_SHIFT_ACKW "Формула циклическго сдвига угловых элементов против часовой стрелки"
 #define HS_FORM_BOT_CRN_CYCLIC_SHIFT_CKW "Формула циклическго сдвига угловых элементов по часовой стрелке"
 #define HS_FORM_BOT_CRN_BOT_CORNS_DIAGONAL_SWITCH "Формула обмена угловых элементов по диагонали"
+#define HS_FORM_BOT_CRN_DONE "Подстройка"
 
 #define HS_FORM_BOT_EDG_TRIANGLE_CKW "Формула \"Треугольник\" по часовой"
 #define HS_FORM_BOT_EDG_TRIANGLE_ACKW "Формула \"Треугольник\" против часовой"

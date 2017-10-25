@@ -11,12 +11,15 @@ void Assembler::doBotCross(FormulaStack & res) {
 	switch (situation)
 	{
 	case STICK:
+		setFPurp(HS_FORM_YLW_CROSS_STICK);
 		applyOperation(res, BOT_CROSS_STICK);
 		break;
 	case DAW:
+		setFPurp(HS_FORM_YLW_CROSS_DAW);
 		applyOperation(res, BOT_CROSS_DAW);
 		break;
 	case DOT:
+		setFPurp(HS_FORM_YLW_CROSS_DOT);
 		applyOperation(res, BOT_CROSS_STICK);
 		applyOperation(res, U, DOUBL);
 		applyOperation(res, BOT_CROSS_DAW);

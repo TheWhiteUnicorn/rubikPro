@@ -15,6 +15,7 @@ void Assembler::doBotCorns(FormulaStack & res) {
 
 	switch (situation) {
 	case BOT_C_CYCLIC_SHIFT_ACKW: {
+		setFPurp(HS_FORM_BOT_CRN_CYCLIC_SHIFT_ACKW);
 		allign(res, colorOnTop, WHITE);
 
 		frontEdgeAdgustment
@@ -24,6 +25,7 @@ void Assembler::doBotCorns(FormulaStack & res) {
 		break;
 	}
 	case BOT_C_CYCLIC_SHIFT_CKW: {
+		setFPurp(HS_FORM_BOT_CRN_CYCLIC_SHIFT_CKW);
 		allign(res, colorOnTop, WHITE);
 
 		frontEdgeAdgustment
@@ -33,6 +35,7 @@ void Assembler::doBotCorns(FormulaStack & res) {
 		break;
 	}
 	case BOT_C_DIAGONAL_SWITCH: {
+		setFPurp(HS_FORM_BOT_CRN_BOT_CORNS_DIAGONAL_SWITCH);
 		applyOperation(res, BOT_CORNS_DIAGONAL_SWITCH);
 		Color topLeftCornerColor = _liveCube.get_color(0, 1);
 		Dir rotDirection = findOptimalYRot(sideToAdv(findMidColor(topLeftCornerColor, _liveCube)), 2, BOT);
@@ -40,6 +43,7 @@ void Assembler::doBotCorns(FormulaStack & res) {
 		break;
 	}
 	case BOT_C_DONE: {
+		setFPurp(HS_FORM_BOT_CRN_DONE);
 		Color topLeftCornerColor = _liveCube.get_color(0, 1); 
 		Dir rotDirection = findOptimalYRot(sideToAdv(findMidColor(topLeftCornerColor, _liveCube)), 2, BOT);
 		applyOperation(res, U, rotDirection);
