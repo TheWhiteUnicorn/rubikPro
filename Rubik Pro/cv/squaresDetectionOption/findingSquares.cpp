@@ -1,4 +1,4 @@
-#include "InitialRecogniser.h"
+#include "..\InitialRecogniser.h"
 
 // вспомогательная функция:
 // находит косинус угла между векторами
@@ -73,3 +73,32 @@ void InitialRecogniser::findSquares(Mat& image, vector<vector<Point> >& squares)
 		}
 	}
 }
+
+
+void InitialRecogniser::drawSquares(Mat & image, const vector<vector<Point>>& squares) {
+	for (size_t i = 0; i < squares.size(); i++)
+	{
+		const Point* p = &squares[i][0];
+		int n = (int)squares[i].size();
+		int shift = 1;
+
+		Rect r = boundingRect(Mat(squares[i])); // Ограничивающие прямоугольники 
+
+		r.x = r.x + r.width / 4;
+		r.y = r.y + r.height / 4;
+		r.width = r.width / 2;
+		r.height = r.height / 2;
+
+		Mat roiImage = image(box);
+
+		Mat roi = roiImage(r);
+		Scalar temp_color = mean(roi);
+
+		//polylines(image, &p, &n, 1, true, temp_color, 2, LINE_AA, shift);
+		fillPoly(image, &p, &n, 1, temp_color, LINE_AA, shift);
+
+		Point center(r.x + r.width / 2, r.y + r.height / 2);
+		ellipse(roiImage, center, Size(r.width / 2, r.height / 2), 0, 0, 360, temp_color, 2, LINE_AA);
+
+	}
+};

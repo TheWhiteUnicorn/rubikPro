@@ -144,10 +144,11 @@
     <ClCompile Include="cube\Cube.cpp" />
     <ClCompile Include="cube\Element.cpp" />
     <ClCompile Include="cube\movements.cpp" />
-    <ClCompile Include="cv\fillingRawColors.cpp" />
-    <ClCompile Include="cv\findingSquares.cpp" />
+    <ClCompile Include="cv\gridDetection.cpp" />
     <ClCompile Include="cv\InitialRecogniser.cpp" />
     <ClCompile Include="cv\semanticTransformation.cpp" />
+    <ClCompile Include="cv\squaresDetectionOption\fillingRawColors.cpp" />
+    <ClCompile Include="cv\squaresDetectionOption\findingSquares.cpp" />
     <ClCompile Include="interface\MyForm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="res\consoleManager.cpp" />

@@ -75,6 +75,14 @@ void Master::standartAssembly(){
 
 		iteration++;
 		system("cls");
+
+		//stack./*Верхний крест*/
+		//for (auto i = stack.get_formulas().begin(); i != stack.get_formulas().end(); i++) {
+		//	cout << *i << ". Первая формула" << /*Бело-красный*/ << endl;
+		//	for (auto j = i->get_sequence.begin(); j != i->get_sequence.end(); j++) {
+		//		cout << движ/направление
+		//	}
+		//}
 	}
 }
 
